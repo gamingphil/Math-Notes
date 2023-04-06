@@ -1,0 +1,231 @@
+\documentclass{article}
+\usepackage[ngerman]{babel} % |
+\usepackage[utf8]{inputenc} % | Language and special characters
+\usepackage[T1]{fontenc} %    |
+\usepackage{amsmath} % |
+\usepackage{amssymb} % | Math symbols and environments
+\usepackage{amsthm} %  |
+\usepackage{siunitx} %  Typesetting (SI) units
+\DeclareSIUnit\litre{l}
+%\usepackage{physics} % Advanced Mathematics of Physics, conflicts with siunitx
+\usepackage{multirow} % Tables with cells that span more than one row
+\usepackage{fancyhdr} % Custom page layout
+\usepackage{graphicx} % Insert images
+\usepackage{gensymb} % Generic units of measurement in math and text typeface
+\usepackage{xfrac} % Split-level fractions
+\usepackage{xcolor} % Handling colors
+\usepackage{float} % Improved floating objects such as figures and tables
+\usepackage{tikz} % Graphics and figures
+\usetikzlibrary{arrows} % -> customizable arrow tips
+\usepackage{pgfplots} % Plotting functions and data 
+\usepgfplotslibrary{fillbetween} % -> filling areas in pgfplots
+\pgfplotsset{compat=newest}
+\usepackage{systeme} % Systems of equations
+\usepackage{romanbar} % Roman numbers with bars
+\usepackage{titlepic} % Putting picture on the title page
+\usepackage{ragged2e} % Commands and environments for setting ragged text
+\usepackage{multicol} % Multicolumn formating
+\usepackage[a4paper, ignoreheadfoot, left=2.5cm, right=2.5cm, top=2cm, bottom=3.5cm, headsep=1cm]{geometry} % Margins etc.
+\usepackage{cancel} % Cancel terms in equations
+\usepackage[version=4]{mhchem} % Write chemical equations
+\usepackage{wrapfig} % Figures with text wrapped around them
+\usepackage{hyperref} % Extensive support for hypertext
+\usepackage{sidecap} % Typeset captions sideways
+\sidecaptionvpos{figure}{c} % -> Vertical alignment of caption
+\usepackage{pdfpages} % Include PDF documents
+\usepackage{setspace} % Set space between lines 
+% (\singlespacing, \onehalfspacing, \doublespacing)
+\usepackage{subcaption}
+\usepackage[scale=0.96]{XCharter} % Use the XCharter text font
+% \usepackage[xcharter]{newtxmath} % Set the math font
+
+% Hyperref setup:
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+    citecolor=black
+}
+
+
+\definecolor{page}{HTML}{FFFFFF} % white
+\definecolor{text}{HTML}{000000} % black
+\definecolor{primary}{HTML}{019875}
+\definecolor{contrastColour}{HTML}{E8F1F2} % white
+\definecolor{tertiary}{HTML}{C47238} % yellow
+\definecolor{secondary}{HTML}{C6B53C} % orange
+\definecolor{quaternary}{HTML}{BD3E4C} % red
+\definecolor{alternativePrimary}{HTML}{13293D} % blue
+\colorlet{infoBulleBackground}{page!98!text}
+% Shades
+\definecolor{LightGrey}{HTML}{a5b1c2}
+\definecolor{Grey}{HTML}{778ca3}
+\definecolor{DarkGrey}{HTML}{4b6584}
+\definecolor{Black}{HTML}{231F20}
+% Primary Colours
+\definecolor{Red}{HTML}{eb3b47}
+\definecolor{LightRed}{HTML}{fc5c65}
+\definecolor{DarkRed}{HTML}{d91c38}
+
+\definecolor{Yellow}{HTML}{f7b731}
+\definecolor{LightYellow}{HTML}{fed330}
+\definecolor{DarkYellow}{HTML}{f0a132}
+
+\definecolor{Blue}{HTML}{3867d6}
+\definecolor{LightBlue}{HTML}{4b7bec}
+\definecolor{DarkBlue}{HTML}{2654bf}
+% tertiary Colours
+\definecolor{Green}{HTML}{20bf6b}
+\definecolor{LightGreen}{HTML}{26de81}
+\definecolor{DarkGreen}{HTML}{1ba155}
+
+\definecolor{Orange}{HTML}{fa8231}
+\definecolor{LightOrange}{HTML}{fd9644}
+\definecolor{DarkOrange}{HTML}{f76b20}
+
+\definecolor{Purple}{HTML}{8854d0}
+\definecolor{LightPurple}{HTML}{a55eea}
+\definecolor{DarkPurple}{HTML}{6e49b8}
+% secondary+ Colours
+% \definecolor{Brown}{HTML}{}
+\definecolor{Cyan}{HTML}{0fb9b1}
+\definecolor{LightCyan}{HTML}{2bcbba}
+\definecolor{DarkCyan}{HTML}{00a8a8}
+
+
+\usetikzlibrary{calc}
+
+\usepackage[many]{tcolorbox}
+
+\newtcolorbox{boxx}[2][]{
+    enhanced,
+    fonttitle=\fontsize{11}{13.2}\selectfont\bfseries,
+    coltitle=text,
+    colback=infoBulleBackground,
+    colbacktitle=infoBulleBackground,
+    colframe=infoBulleBackground,
+    toprule=4pt,titlerule=0pt,bottomrule=0pt,rightrule=0pt,leftrule=0pt,
+    segmentation hidden,
+    sharpish corners,
+    overlay={\draw[line width=2.5pt,#1] (frame.north west)--(frame.south west);},
+    % margins & padding
+    before skip=\baselineskip,
+    after skip=\baselineskip,
+    boxsep=2pt,
+    top=6pt,
+    bottom=4pt,
+    left=8pt,
+    right=6pt,
+    breakable,
+    title=#2,
+    extras middle and last={%
+        %top=20pt,
+        overlay={%
+            \draw[line width=2.5pt,#1] (frame.north west)--(frame.south west);
+            % \draw[line width=0.5pt,dashed,#1] (frame.north west)--(frame.north east);
+            % \draw[] {([yshift=-12pt,xshift=4.5pt]frame.north west)} node[anchor=west] {#2};
+            % \draw[] {([yshift=-12pt,xshift=-4.5pt]frame.north east)} node[anchor=east] {eg};
+        }
+    },
+}
+
+\definecolor{codegreen}{HTML}{369432}
+\definecolor{codegray}{HTML}{3a3d41}
+\definecolor{codepurple}{HTML}{c586c0}
+\definecolor{backcolour}{HTML}{1e1e1e}
+\definecolor{standartcolor}{HTML}{cccccc}
+\definecolor{codeorange}{HTML}{f48771}
+
+\setlength{\parindent}{0pt}
+\definecolor{bg}{rgb}{0.13, 0.13, 0.13}
+%\pagecolor{bg}
+%\color{white}
+\begin{document}
+%---COLORS---
+\definecolor{pRed}{RGB}{255, 55, 55}
+\definecolor{pOrange}{RGB}{219, 132, 36}
+
+%\pagestyle{fancy}
+%\fancyhf{}
+%\lhead{Moathekuchenaufgabe}
+%\rhead{Lösung}
+%\cfoot{\thepage}
+
+\subsection[]{Tangente und Normale von Außen}
+
+Gegeben ist eine Funktion $f$ und sowie ein Punkt $P$, der nicht auf $f$ liegt.
+
+Bestimme die Gleichung(en) der Tangente(n) durch $P$ an $f$.
+
+\begin{boxx}[LightGreen]{Allgemeine Tangentengleichung}
+    \begin{align*}
+        \frac{\Delta y}{\Delta x} = \frac{t(x)-f(u)}{x-u} &= f'(x) & &|\;\cdot (x-u) \\
+        t(x) - f(u) &= f'(u) \cdot (x-u) & & |\; + f(u) \\
+        t(x) &= f'(u)\cdot(x-u)+f(u)
+    \end{align*}
+\end{boxx}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        height = 10cm,
+        width = 13cm,
+        axis lines = middle,
+        ymin = -4,
+        axis equal,
+        xlabel = {\(x\)},
+        ylabel = {\(y\)},
+    ]
+    \addplot[
+        line width = 1pt,
+        color = DarkBlue,
+        samples = 100,
+        domain = -3:3
+    ]{x^2} node[anchor= east, pos = 0.98] {\(f(x)\)};
+    \addplot[Green, domain = -1:4]{2*2^(0.5)*x - 2} node[anchor= west, pos = 0.98] {\(t_1(x)\)};
+    \addplot[Green, domain = -4:1]{-2*2^(0.5)*x - 2} node[anchor= east, pos = 0.03] {\(t_2(x)\)};
+    \addplot[] coordinates {(2.47, 5) (3.54,5)} node[anchor = north, pos = 0.5] {\(\Delta x\)};
+    \addplot[] coordinates {(3.54, 5) (3.54,8)} node[anchor = west, pos = 0.5] {\(\Delta y\)};
+    \addplot[Red, domain = -6:6]{(-1/(2*2^(0.5)))*x + 2.5} node[anchor= south west, pos = 0.98] {\(n_1(x)\)};
+    \addplot[Red, domain = -6:6]{(1/(2*2^(0.5)))*x + 2.5} node[anchor= south east, pos = 0.02] {\(n_2(x)\)};
+    \node[label={10:{\(Q(u,f(u))\)}},circle,fill,inner sep=1.5pt] at (axis cs:1.41,2) {};
+    \node[label={0:{\(P(0,-2)\)}},circle,fill,inner sep=1.5pt] at (axis cs:0,-2) {};
+    \end{axis}
+    \end{tikzpicture}
+    
+\end{figure}
+
+
+\begin{enumerate}
+    \item Terme von $f(u)$ bzw. $f'(u)$ bestimmen.
+    \begin{align*}
+        f(u)=u^2;\;f'(u)=2u
+    \end{align*}
+    \item $P$ in $t(x)$ einsetzen.
+    \begin{align*}
+        -2 &= 2u\cdot (0-u)+u^2 \\
+        -2 &= -2u^2 +u^2 \\
+        -2 &= -u^2 \\
+        u &= \pm \sqrt{2}
+    \end{align*}
+    \item $u_1$ / $u_2$ in $t(x)$ einsetzen.
+    \begin{align*}
+        &u_1: & t_1(x) &= 2\sqrt{2} \cdot (x-\sqrt{2}) + \left(\sqrt{u}\right)^2  &&\\
+        & & &= 2\sqrt{2} x -2 &&\\
+        & u_2: & t_2(x) &= -2\sqrt{2} x -2 &&
+    \end{align*}
+\end{enumerate}
+\begin{boxx}[Red]{Normale}
+    Die Gerade, die die Tangente orthogonal schneidet heißt \textbf{Normale}.
+
+    Für die Steigung der Normalen gilt:
+    \begin{align*}
+        m_t \cdot m_n &= -1 \\
+        m_n &= -\frac{1}{m_t}
+    \end{align*}
+    \[n(x) = -\frac{1}{f'(u)}\cdot (x-u)+f(u)\]
+\end{boxx}
+
+\end{document}

@@ -1,0 +1,1595 @@
+\documentclass{article}
+\usepackage[ngerman]{babel} % |
+\usepackage[utf8]{inputenc} % | Language and special characters
+\usepackage[T1]{fontenc} %    |
+\usepackage{amsmath} % |
+\usepackage{amssymb} % | Math symbols and environments
+\usepackage{amsthm} %  |
+\usepackage{siunitx} %  Typesetting (SI) units
+\DeclareSIUnit\litre{l}
+%\usepackage{physics} % Advanced Mathematics of Physics, conflicts with siunitx
+\usepackage{multirow} % Tables with cells that span more than one row
+\usepackage{fancyhdr} % Custom page layout
+\usepackage{graphicx} % Insert images
+\usepackage{gensymb} % Generic units of measurement in math and text typeface
+\usepackage{xfrac} % Split-level fractions
+\usepackage{xcolor} % Handling colors
+\usepackage{float} % Improved floating objects such as figures and tables
+\usepackage{tikz} % Graphics and figures
+\usetikzlibrary{arrows} % -> customizable arrow tips
+\usepackage{pgfplots} % Plotting functions and data 
+\usepgfplotslibrary{fillbetween} % -> filling areas in pgfplots
+\pgfplotsset{compat=newest}
+\usepackage{systeme} % Systems of equations
+\usepackage{romanbar} % Roman numbers with bars
+\usepackage{titlepic} % Putting picture on the title page
+\usepackage{ragged2e} % Commands and environments for setting ragged text
+\usepackage{multicol} % Multicolumn formating
+\usepackage[a4paper, ignoreheadfoot, left=2.5cm, right=2.5cm, top=2cm, bottom=3.5cm, headsep=1cm]{geometry} % Margins etc.
+\usepackage{cancel} % Cancel terms in equations
+\usepackage[version=4]{mhchem} % Write chemical equations
+\usepackage{wrapfig} % Figures with text wrapped around them
+\usepackage{hyperref} % Extensive support for hypertext
+\usepackage{sidecap} % Typeset captions sideways
+\sidecaptionvpos{figure}{c} % -> Vertical alignment of caption
+\usepackage{pdfpages} % Include PDF documents
+\usepackage{setspace} % Set space between lines 
+% (\singlespacing, \onehalfspacing, \doublespacing)
+\usepackage{subcaption}
+\usepackage[scale=0.96]{XCharter} % Use the XCharter text font
+% \usepackage[xcharter]{newtxmath} % Set the math font
+
+% Hyperref setup:
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+    citecolor=black
+}
+
+
+\definecolor{page}{HTML}{FFFFFF} % white
+\definecolor{text}{HTML}{000000} % black
+\definecolor{primary}{HTML}{019875}
+\definecolor{contrastColour}{HTML}{E8F1F2} % white
+\definecolor{tertiary}{HTML}{C47238} % yellow
+\definecolor{secondary}{HTML}{C6B53C} % orange
+\definecolor{quaternary}{HTML}{BD3E4C} % red
+\definecolor{alternativePrimary}{HTML}{13293D} % blue
+\colorlet{infoBulleBackground}{page!98!text}
+% Shades
+\definecolor{LightGrey}{HTML}{a5b1c2}
+\definecolor{Grey}{HTML}{778ca3}
+\definecolor{DarkGrey}{HTML}{4b6584}
+\definecolor{Black}{HTML}{231F20}
+% Primary Colours
+\definecolor{Red}{HTML}{eb3b47}
+\definecolor{LightRed}{HTML}{fc5c65}
+\definecolor{DarkRed}{HTML}{d91c38}
+
+\definecolor{Yellow}{HTML}{f7b731}
+\definecolor{LightYellow}{HTML}{fed330}
+\definecolor{DarkYellow}{HTML}{f0a132}
+
+\definecolor{Blue}{HTML}{3867d6}
+\definecolor{LightBlue}{HTML}{4b7bec}
+\definecolor{DarkBlue}{HTML}{2654bf}
+% tertiary Colours
+\definecolor{Green}{HTML}{20bf6b}
+\definecolor{LightGreen}{HTML}{26de81}
+\definecolor{DarkGreen}{HTML}{1ba155}
+
+\definecolor{Orange}{HTML}{fa8231}
+\definecolor{LightOrange}{HTML}{fd9644}
+\definecolor{DarkOrange}{HTML}{f76b20}
+
+\definecolor{Purple}{HTML}{8854d0}
+\definecolor{LightPurple}{HTML}{a55eea}
+\definecolor{DarkPurple}{HTML}{6e49b8}
+% secondary+ Colours
+% \definecolor{Brown}{HTML}{}
+\definecolor{Cyan}{HTML}{0fb9b1}
+\definecolor{LightCyan}{HTML}{2bcbba}
+\definecolor{DarkCyan}{HTML}{00a8a8}
+
+
+\usetikzlibrary{calc}
+
+\usepackage[many]{tcolorbox}
+
+\newtcolorbox{boxx}[2][]{
+    enhanced,
+    fonttitle=\fontsize{11}{13.2}\selectfont\bfseries,
+    coltitle=text,
+    colback=infoBulleBackground,
+    colbacktitle=infoBulleBackground,
+    colframe=infoBulleBackground,
+    toprule=4pt,titlerule=0pt,bottomrule=0pt,rightrule=0pt,leftrule=0pt,
+    segmentation hidden,
+    sharpish corners,
+    overlay={\draw[line width=2.5pt,#1] (frame.north west)--(frame.south west);},
+    % margins & padding
+    before skip=\baselineskip,
+    after skip=\baselineskip,
+    boxsep=2pt,
+    top=6pt,
+    bottom=4pt,
+    left=8pt,
+    right=6pt,
+    breakable,
+    title=#2,
+    extras middle and last={%
+        %top=20pt,
+        overlay={%
+            \draw[line width=2.5pt,#1] (frame.north west)--(frame.south west);
+            % \draw[line width=0.5pt,dashed,#1] (frame.north west)--(frame.north east);
+            % \draw[] {([yshift=-12pt,xshift=4.5pt]frame.north west)} node[anchor=west] {#2};
+            % \draw[] {([yshift=-12pt,xshift=-4.5pt]frame.north east)} node[anchor=east] {eg};
+        }
+    },
+}
+
+\definecolor{codegreen}{HTML}{369432}
+\definecolor{codegray}{HTML}{3a3d41}
+\definecolor{codepurple}{HTML}{c586c0}
+\definecolor{backcolour}{HTML}{1e1e1e}
+\definecolor{standartcolor}{HTML}{cccccc}
+\definecolor{codeorange}{HTML}{f48771}
+
+\setlength{\parindent}{0pt}
+\definecolor{bg}{rgb}{0.13, 0.13, 0.13}
+%\pagecolor{bg}
+%\color{white}
+\begin{document}
+%---COLORS---
+\definecolor{pRed}{RGB}{255, 55, 55}
+\definecolor{pOrange}{RGB}{219, 132, 36}
+
+%\pagestyle{fancy}
+%\fancyhf{}
+%\lhead{Moathekuchenaufgabe}
+%\rhead{Lösung}
+%\cfoot{\thepage}
+
+\section{Differenzialrechnung}
+
+\subsection{Wiederholung Klasse 10}
+\begin{boxx}[Red]{Definition: Funktion}
+    Eine eindeutige Zuordnung, die jedem $x$-Wert (aus dem Definitionsbereich) 
+    einen $y$-Wert zuordnet, nennt man \textbf{Funktion}.
+\end{boxx}
+
+\begin{boxx}[Red]{Definition: Graph}
+    Die Menge aller Punkte, die einer gemeinsamen Zuordnungsvorschrift folgen 
+    (z.B. $\displaystyle y = x^2$), bilden einen \textbf{Graphen}.
+\end{boxx}
+
+\begin{boxx}[Red]{Definition: Differenzenquotient}
+    Gegeben sind zwei Punkte $\displaystyle P\left(x_0\;|\;f\left(x_0\right)\right)$ und
+    $\displaystyle Q\left(x_0 + h\;|\;f\left(x_0 + h\right)\right)$.
+    \\\\
+    Der Quotient $\displaystyle \frac{f\left(x_0 + h\right)- f\left(x_0\right)}{h}$
+    heißt Differenzenquotient und beschreibt im Sachzusammenhang die 
+    \textbf{mittlere Änderungsrate} in einem Intervall.
+    \\\\
+    Anschaulich entspricht der Differenzenquotient der \textbf{Steigung der Sekante}
+    durch die beiden Punkte $P$ und $Q$.
+\end{boxx}
+
+\begin{boxx}[Red]{Definition: Ableitung}
+    Existiert der Grenzwert des Differenzenquotienten für $h \to 0$, so nennt man
+    diesen Wert die \textbf{Ableitung von} $\mathbf{f}$ \textbf{an der Stelle} $\mathbf{x_0}$.
+
+    \[f'\left(x_0\right) = \lim_{h \to 0} \frac{f\left(x_0 + h\right)- f\left(x_0\right)}{h}\]
+
+    Die Ableitung beschreibt im Sachzusammenhang die \textbf{momentane Änderungsrate}
+    und entspricht anschaulich der \textbf{Steigung der Tangente am Graphen von} $\mathbf{f}$ 
+    \textbf{an der Stelle} $\mathbf{x_0}$. 
+    \\\\
+    Existiert der Grenzwert $\forall x$ aus dem Intevall, so nennt man $f$ differenzierbar.
+\end{boxx}
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} Zeiche den Graph von $f$ in mit $\displaystyle f(x) = \frac{1}{2}x^2$
+    in eine geeignetes Koordinatensystem.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            height = 6cm,
+            width = 8cm,
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+        ]
+        \addplot[
+            thick,
+            color = LightPurple,
+            samples = 100,
+            smooth,
+        ] {0.5*x^2} node[anchor = east, pos = 0.95] {\(G_f\)};
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+
+    $b)$\hspace{3mm} Bestimme die mittlere Änderungsrate von $f$ in $\left[0;3\right]$.
+    \begin{align*}
+        \frac{f(3)-f(1)}{3-1} &= \frac{4.5 - 0.5}{2} = 2
+    \end{align*}
+
+    $c)$\hspace{3mm} Bestimme die momentane Änderungsrate an der Stelle $x_0 = 2$ zeichnerisch.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            clip = false,
+            height = 7cm,
+            width = 8cm,
+            axis lines = middle,
+            xtick = {-2,-1,1,2,3,4,5,6},
+            xmin = -2,
+            xmax = 6,
+            ymin = -2,
+            ymax = 10,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            restrict y to domain = -2:10,
+        ]
+        \addplot[
+            thick,
+            color = LightPurple,
+            samples = 100,
+            domain = -2:6,
+            smooth,
+        ] {0.5*x^2} node[anchor = east, pos = 0.95] {\(G_f\)};
+        \addplot[
+            color = Black,
+            domain = 0.5:5,
+        ]{2*x - 2};
+        \addplot[Black] coordinates {
+            (2, 2) (3, 2) (3, 4)
+        };
+        \node at (axis cs:2.5,1.5) {\(1\)};
+        \node at (axis cs:3.25,3) {\(2\)};
+        \node at (axis cs:6,3) {\(\displaystyle \frac{\Delta y}{\Delta x} = \frac{2}{1} = 2\)};
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+\end{boxx}
+
+\subsection{Verkettete Funktionen}
+
+Gegeben seien zwei Funktionen $g$ und $h$.
+
+Die Funktion $\displaystyle f = g \circ h$ (''$g$ nach $h$'') 
+ist die \textbf{verkettete Funktion} mit
+$(g \circ h)(x) = g\left(h(x)\right)$
+\\\\
+Dabei wird der Funktionsterm von $h(x)$ für die Variable in $g(x)$ eingesetzt.
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} $g(x) = 3x + 1;\; h(x)= 2x^2$. 
+    Bestimme $(g \circ h)(x)$ und $(h \circ g)(x)$.
+
+    \begin{align*}
+        (g \circ h)(x) &= 6x^2+1 \\
+        (h \circ g)(x) &= 2(3x+1)^2 = 18x^2 + 12x + 2
+    \end{align*}
+    
+    $b)$\hspace{3mm} Bestimme je 2 Funktionen für $g$ und $h$, für die gilt
+    $g \circ h = f$ mit $\displaystyle f(x) = \frac{2}{\left(x^2-1\right)^3}$
+
+    \begin{align*}
+        &&&\text{1.} & g(x) &= \frac{2}{x^3} &&&&\\
+        &&&& h(x) &= x^2-1 &&&&\\\\
+        &&&\text{2.} & g(x) &= \frac{2}{x} &&&&\\
+        &&&& h(x) &= \left(x^2 - 1\right)^3 &&&&
+    \end{align*}
+\end{boxx}
+
+\newpage
+
+\subsection{Die Kettenregel}
+
+Gegeben sind zwei differenzierbare Funktionen $u$ und $v$.
+Gesucht ist die Ableitungsfunktion $f'$ mit $f = u \circ v$. Es gilt:
+\[f'(x) = u'\left(v(x)\right) \cdot v'(x)\]
+
+\begin{boxx}[Purple]{Beweis}
+    \begin{align*}
+        f'\left(x_1\right) &= \lim_{x_2 \to x_1} \frac{f\left(x_2\right)-f\left(x_1\right)}{x_2 - x_1} & &|\;\text{Differenzenquotient}\\
+        &= \lim_{x_2 \to x_1} \frac{u\left(v\left(x_2\right)\right)- u\left(v\left(x_1\right)\right)}{x_2 - x_1}& &|\;\text{Einsetzen} \\
+        &= \lim_{x_2 \to x_1} \frac{u\left(v\left(x_2\right)\right)- u\left(v\left(x_1\right)\right)}{v\left(x_2\right)-v\left(x_1\right)} \cdot \frac{v\left(x_2\right)-v\left(x_1\right)}{x_2 - x_1}& &|\;\text{Multiplikation einer 1} \\
+        &= \lim_{x_2 \to x_1} \frac{u\left(v\left(x_2\right)\right)- u\left(v\left(x_1\right)\right)}{v\left(x_2\right)-v\left(x_1\right)} \cdot \lim_{x_2 \to x_1} \frac{v\left(x_2\right)-v\left(x_1\right)}{x_2 - x_1}& &|\;\text{Grenzwerte separat berechnen} \\
+        &\;\;\;\;\;\;\;\text{da } v \text{ stetig ist } \Rightarrow  \lim_{x_2 \to x_1} v\left(x_2\right) = v\left(x_1\right) \\
+        &= u'\left(v\left(x_1\right)\right) \cdot v'\left(x_1\right)
+    \end{align*}
+    \qed
+\end{boxx}
+
+Bezeichnet man $u(x)$ und $v(x)$ als äußere bzw. innere Funktion, dann lautet die Kettenregel salopp:
+
+''Äußere Ableitung mal innere Ableitung''
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    Leite ab!
+
+    $a)$\hspace{3mm} $\displaystyle f(x) = (2x-1)^5$
+    \begin{align*}
+        f'(x) &= 10(2x-1)^4
+    \end{align*}
+    $b)$\hspace{3mm} $\displaystyle g(x) = \frac{1}{\frac{1}{2}x^2-2x}$
+    \begin{align*}
+        g'(x) &= -\frac{x-2}{\left(\frac{1}{2}x^2-2x\right)^2}
+    \end{align*}
+    $c)$\hspace{3mm} $\displaystyle h(x) = 2\cos\left(\frac{1}{3}x^2+\frac{1}{2}x\right)$
+    \begin{align*}
+        h'(x) &= -\left(\frac{4}{3}x + 1\right)\sin\left(\frac{1}{3}x^2+\frac{1}{2}x\right)
+    \end{align*}
+\end{boxx}
+
+\newpage
+
+\subsection{Die Produktregel}
+
+Gegeben sind die Funktionen $f$ und $g$ (differenzierbar). 
+Für $h(x) = f(x) \cdot g(x)$ gilt für Ableitungsfunktion
+
+\[h'(x) = f'(x) \cdot g(x) + f(x) \cdot g'(x)\]
+
+Salopp: ''abgeleitet hingeschrieben plus hingeschrieben abgeleitet''
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    Leite ab!
+
+    $a)$\hspace{3mm} $\displaystyle f(x) = x^2 \cdot \cos x$
+
+    \begin{align*}
+        f'(x) &= -x^2\sin(x) + 2x\cos(x)
+    \end{align*}
+
+    $b)$\hspace{3mm} $\displaystyle g(x) = \sqrt{x} \cdot \left(3x-5\right)^4$
+
+    \begin{align*}
+        g'(x) &= \frac{\left(3x-5\right)^4}{2\sqrt{x}} + 12\sqrt{x}\left(3x-5\right)^3
+    \end{align*}
+\end{boxx}
+
+\subsection{Monotonie und Krümmungsverhalten}
+\begin{boxx}[Red]{Definition}
+    Eine Funktion $f$ sei definiert auf einem Intervall $I$.
+    \\\\
+    $f$ heißt \textbf{streng monoton wachsend} wenn:
+    \[\forall x_1;x_2 \in I: \; x_1 < x_2 \Rightarrow f\left(x_1\right)<f\left(x_2\right)\]
+
+    $f$ heißt \textbf{streng monoton fallend} wenn: \\
+    \[\forall x_1;x_2 \in I: \; x_1 < x_2 \Rightarrow f\left(x_1\right)>f\left(x_2\right)\]
+\end{boxx}
+
+\begin{boxx}[LightGreen]{Monotoniesatz}
+    Die Funktion $f$ sei differenzierbar.
+    \\\\
+    Wenn $f'(x)>0 \; \forall \; x \in I$ dann ist $f$ in $I$ streng monoton wachsend.
+
+    Entsprechend gilt für $f'(x)<0$, dass $f$ streng monoton fallend ist.
+    \\\\
+    \textbf{Anmerkung:} Die Umkehrung des Satzes gilt im Allgemeinen nicht.
+    (siehe $\displaystyle f(x) = x^2$)
+\end{boxx}
+
+\begin{boxx}[Red]{Definition: Links-/Rechtskurve}
+    Sei $f$ eine auf dem Intevall $I$ zweimal differenzierbare Funktion.
+
+    \begin{itemize}
+        \item $f''(x)>0$ in $I$ $\rightarrow$ Linkskurve, $f'$ ist streng monoton wachsend
+        \item $f''(x)>0$ in $I$ $\rightarrow$ Rechtskurve, $f'$ ist streng monoton fallend
+    \end{itemize}
+\end{boxx}
+\newpage
+\begin{boxx}[DarkBlue]{Beispiel}
+    $\displaystyle f(x) = -2x^3 - 6x^2 + 18x$. 
+    Untersuche $f$ auf ihr Krümmungsverhalten.
+        \[f'(x) = -6x^2-12x+18;\; f''(x) = -12x-12\]
+    \begin{align*}
+        f''(x) &= 0 \\
+        \Rightarrow x_1 &= -1\\
+        f''(0) = -12 < 0 &\Rightarrow \text{Rechtskurve} \\
+        f''(-2) = 12 > 0 &\Rightarrow \text{Linkskurve} \\
+    \end{align*}
+    In $\displaystyle (-\infty; -1]$ beschreibt $f$ eine Linkskurve.
+
+    In $\displaystyle [-1; \infty)$ beschreibt $f$ eine Rechtskurve.
+\end{boxx}
+
+\subsection{Extremstellen}
+Geben ist eine zweimal differenzierbare Funktion $f$. 
+Die \textbf{notwendige Bedingung} für Extremstellen in $f$ lautet:
+
+\[f'(x)=0\]
+
+\begin{boxx}[LightYellow]{Notwendigkeit}
+    Notwendigkeit bedeutet:
+
+    Liegt in $f$ eine Extremstelle vor, so ist $f'(x) = 0$.
+    Die Umkehrung gilt im Allgemeinen \textbf{nicht}.
+
+    \begin{align*}
+        \text{Extremstelle} &\Rightarrow f'(x) = 0 \\
+        f'(x) = 0 &\not\Rightarrow \text{Extremstelle} \\
+    \end{align*}
+\end{boxx}
+Gilt zusätzlich, dass $f'$ an der Extremstelle einen \textbf{Vorzeichenwechsel (VZW)} aufweist,
+so weiß man beim Übergang
+\begin{itemize}
+    \item von $+$ nach $-$ liegt eine \textbf{Maximumstelle} vor.
+    \item von $-$ nach $+$ liegt eine \textbf{Minimumstelle} vor.
+\end{itemize}
+Gilt
+\begin{align*}
+    &&&& f'\left(x_e\right) &= 0 &&\text{und} & f''\left(x_e\right) &\not = 0 &&&&
+\end{align*}
+so liegt in $f$ am der Stelle $x_e$ eine Extremstelle vor.
+
+\begin{align*}
+    f''\left(x_e\right)<0 &\Rightarrow \text{Maximumstelle} \\
+    f''\left(x_e\right)>0 &\Rightarrow \text{Minimumstelle}
+\end{align*}
+
+\newpage
+\begin{boxx}[DarkBlue]{Beispiel}
+    $\displaystyle f(x) = x^3 + 3x^2 - 9x$. Untersuche $f$ auf Extremstellen.
+    \[f'(x) = 3x^2+6x-9;\; f''(x)=6x+6\]
+    \begin{align*}
+        f'(x) &= 0 \\
+        3x^2 + 6x - 9 &= & &|\; \cdot \frac{1}{3} \\
+        x^2 -2x -3 &= 0 & &|\; \text{Satz von Vieta} \\
+        (x-3)(x+1) &= 0 \\
+        \Rightarrow x_1= 3;\; x_2 &= -1 \\\\
+        f''(3) = 12 > 0 &\rightarrow \text{Minimumstelle} \\
+        f''(-1) = -12 < 0 &\rightarrow \text{Maximumstelle} \\
+    \end{align*}
+\end{boxx}
+
+\subsection{Wendestellen}
+Sei $f$ eine mindestens 3-mal differenzierbare Funktion. 
+Ist $x_w$ eine Wendestelle von $f$, so gilt
+\begin{align*}
+    &&&& f''\left(x_w\right) &= 0 & &\text{(notwendige Bedingung)} &&\\\\
+    &&&\text{sowie} & f'''\left(x_w\right) &\not = 0
+\end{align*}
+Ebenfalls gilt, dass $f''$ um $x_w$ einen VZW besitzt, 
+bzw. in $f'$ eine Extremstelle mit VZW vorliegt. (notwendig und hinreichend)
+\begin{boxx}[DarkBlue]{Beispiel}
+    Berechne die Wendestellen von $f$ mit $\displaystyle f(x) = x^3\left(2 + x\right)$.
+    \begin{align*}
+        f'(x) &= 3x^2(2+x) + x^3 \\
+        f''(x) &= 6x(2+x)+3x^2 + 3x^2 \\
+        &= 12x^2 + 12x \\
+        f'''(x) &= 24x + 12\\\\
+        f''(x) &= 0 \\
+        12x^2 + 12x &= 0 \\
+        12x(x+1)&= 0 \\
+        \Rightarrow x_1 &= 0;\; x_2 = -1 \\\\
+        f'''\left(x_1\right) &= 12 \not = 0 \\
+        f'''\left(x_2\right) &= -12 \not = 0 \\
+    \end{align*}
+
+    $f$ hat Wendestellen bei $x_1 = 0$ und $x_2 = -1$.
+\end{boxx}
+
+\newpage
+\subsection{Tangente und Normale von Außen}
+Gegeben ist eine Funktion $f$ und sowie ein Punkt $P$, der nicht auf $f$ liegt.
+
+Bestimme die Gleichung(en) der Tangente(n) durch $P$ an $f$.
+
+\begin{boxx}[LightGreen]{Allgemeine Tangentengleichung}
+    \begin{align*}
+        \frac{\Delta y}{\Delta x} = \frac{t(x)-f(u)}{x-u} &= f'(x) & &|\;\cdot (x-u) \\
+        t(x) - f(u) &= f'(u) \cdot (x-u) & & |\; + f(u) \\
+        t(x) &= f'(u)\cdot(x-u)+f(u)
+    \end{align*}
+\end{boxx}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        height = 10cm,
+        width = 13cm,
+        axis lines = middle,
+        ymin = -4,
+        axis equal,
+        xlabel = {\(x\)},
+        ylabel = {\(y\)},
+    ]
+    \addplot[
+        line width = 1pt,
+        color = DarkBlue,
+        samples = 100,
+        domain = -3:3
+    ]{x^2} node[anchor= east, pos = 0.98] {\(f(x)\)};
+    \addplot[Green, domain = -1:4]{2*2^(0.5)*x - 2} node[anchor= west, pos = 0.98] {\(t_1(x)\)};
+    \addplot[Green, domain = -4:1]{-2*2^(0.5)*x - 2} node[anchor= east, pos = 0.03] {\(t_2(x)\)};
+    \addplot[] coordinates {(2.47, 5) (3.54,5)} node[anchor = north, pos = 0.5] {\(\Delta x\)};
+    \addplot[] coordinates {(3.54, 5) (3.54,8)} node[anchor = west, pos = 0.5] {\(\Delta y\)};
+    \addplot[Red, domain = -6:6]{(-1/(2*2^(0.5)))*x + 2.5} node[anchor= south west, pos = 0.98] {\(n_1(x)\)};
+    \addplot[Red, domain = -6:6]{(1/(2*2^(0.5)))*x + 2.5} node[anchor= south east, pos = 0.02] {\(n_2(x)\)};
+    \node[label={10:{\(Q(u,f(u))\)}},circle,fill,inner sep=1.5pt] at (axis cs:1.41,2) {};
+    \node[label={0:{\(P(0,-2)\)}},circle,fill,inner sep=1.5pt] at (axis cs:0,-2) {};
+    \end{axis}
+    \end{tikzpicture}
+    
+\end{figure}
+
+
+\begin{enumerate}
+    \item Terme von $f(u)$ bzw. $f'(u)$ bestimmen.
+    \begin{align*}
+        f(u)=u^2;\;f'(u)=2u
+    \end{align*}
+    \item $P$ in $t(x)$ einsetzen.
+    \begin{align*}
+        -2 &= 2u\cdot (0-u)+u^2 \\
+        -2 &= -2u^2 +u^2 \\
+        -2 &= -u^2 \\
+        u &= \pm \sqrt{2}
+    \end{align*}
+    \item $u_1$ / $u_2$ in $t(x)$ einsetzen.
+    \begin{align*}
+        &u_1: & t_1(x) &= 2\sqrt{2} \cdot (x-\sqrt{2}) + \left(\sqrt{u}\right)^2  &&\\
+        & & &= 2\sqrt{2} x -2 &&\\
+        & u_2: & t_2(x) &= -2\sqrt{2} x -2 &&
+    \end{align*}
+\end{enumerate}
+\begin{boxx}[Red]{Normale}
+    Die Gerade, die die Tangente orthogonal schneidet heißt \textbf{Normale}.
+
+    Für die Steigung der Normalen gilt:
+    \begin{align*}
+        m_t \cdot m_n &= -1  & m_n &= -\frac{1}{m_t}
+    \end{align*}
+    \[n(x) = -\frac{1}{f'(u)}\cdot (x-u)+f(u)\]
+\end{boxx}
+\subsection{Extremwertaufgaben mit Nebenbedingungen (Minimax)}
+
+Beim Lösen von Minimax-Aufgaben ist folgendes Verfahren empfehlenswert:
+\begin{enumerate}
+    \item Aufgabe abchecken, ggf. Skizze machen
+    \item \textbf{Hauptbedingung} formulieren. Diese hängt von zwei Variablen ab.
+    \item In der Aufgabe wird die zu maximierende bzw. minimierende Größe 
+    aus der Hauptbedingung durch irgendeine zusätzliche Größe begrenzt.
+    Diese wird durch die sogenannte \textbf{Nebenbedingung} beschrieben.
+    Die Nebenbedingung hängt auch von zwei Variablen ab.
+    \item Jetzt stellt man die Nebenbedingung nach einer der Variablen um
+    und setzt diese in die Hauptbedingung ein.
+    Man erhält eine Gleichung, die nur noch von einer Variable abhängt und
+    \textbf{Zielfunktion} genannt wird.
+    \item Zielfunktion $Z(x)$ ableiten und notwendige und hinreichende Bedingungen
+    für Extremstellen aufstellen:
+    \begin{align*}
+        Z'(x) &= 0 \\
+        Z''(x) &\lessgtr 0
+    \end{align*}
+    \item Theoretisch Ränder überprüfen.
+    \item Die Wert für die Variablen berechnen und einen Antwortsatz formulieren.
+\end{enumerate}
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    Die Summe zweier natürlicher Zahlen beträgt 21.
+    Berechne das größtmögliche Produkt der beiden Zahlen.
+
+    \begin{align*}
+        P(a,b) &= a\cdot b \\
+        a + b = 21 &\Leftrightarrow a = 21 - b \\
+        P(b) &= b(21-b) \\
+        &= -b^2 + 21b \\\\
+        P'(b) = -2b &+ 21;\;P''(b) = -2 \\\\
+        P'(b) &= 0 \\
+        -2b + 21 &= 0 \\
+        b &= 10.5 \Rightarrow 10 \\
+        a &= 21-10 = 11\\\\
+        P''(b) &< 0 \Rightarrow \text{Maximumstelle}\\\\
+        \Rightarrow a\cdot b &= 110
+    \end{align*}
+    Das größtmögliche Produkt beträgt 110 und ist Produkt der Zahlen 11 und 10.
+\end{boxx}
+
+\newpage
+
+\section{Exponentialfunktionen}
+
+Bei einer beliebigen Exponentialfunktion $f$ mit $f(x) = a^x;\; a \in \mathbb{R}$ gilt,
+dass die Zunahme des ''Bestands'' proportional zum Bestand ist.
+
+\[f'(x) \sim f(x)\]
+
+\subsection{Die natürliche Exponentialfunktion zur Basis \emph{e}}
+
+Es gibt eine Zahl, für die die Ableitung der Exponentialfunktion exakt gleich wie
+die Ausgangsfunktion ist.
+\\\\
+Für diese \textbf{Eulersche Zahl \emph{e}} $\mathbf{\approx 2.7182}$ gilt also
+\[f(x) = e^x = f'(x) = e^x\] 
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    Leite ab! \\
+    $a)$\hspace{3mm} $f(x) = \sin x \cdot e^x$
+    \begin{align*}
+        f'(x) &= e^x\cos x + e^x\sin x = e^x(\cos x + \sin x)
+    \end{align*}
+
+    $b)$\hspace{3mm} $g(x) = 4e^{3x-1}$
+    \begin{align*}
+        f'(x) &= 12e^{3x-1}
+    \end{align*}
+\end{boxx}
+
+\subsection{Exponentialgleichungen mit \emph{e}}
+
+Gegeben ist eine Zahl $b > 0$. Die Lösung der Gleichung
+\[e^x = b\]
+heißt \textbf{natürlicher Logarithmus} von $b$.
+
+\begin{boxx}[LightGreen]{Merke}
+    \[e^{\ln k} = k\]
+
+    Die natürliche Exponentialfunktion $e^x$ hat dementsprechend 
+    die Logarithmusfunktion $f(x) = \ln x$ als \textbf{Umkehrfunktion}.
+\end{boxx}
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    \begin{align*}
+        e^x + \frac{7}{e^x} &= 8 & &|\; -8 \\
+        e^x + \frac{7}{e^x} -8 &= 0 & &|\; \cdot e^x \\
+        e^2x + 7 - 8e^x &= 0 & &|\; u = e^x \\
+        u^2 - 8u + 7 &= 0 \\
+        (u-1)(u-7) &= 0 \\
+        u_1 = 1;\;&u_2 = 7 \\
+        \Rightarrow x_1 = 0;\;&x_2 = \ln 7
+    \end{align*}
+\end{boxx}
+
+\newpage
+
+\subsection{Kurvendiskussion bei \emph{e}-Funktionen}
+Zur Erinnerung:
+\begin{enumerate}
+    \item \textbf{Nullstellen bestimmen:}
+    \begin{align*}
+        f(x_n) &= 0 & e^0 =1 \\
+        & & \ln 0 \text{ ist nicht definiert.} 
+    \end{align*}
+    \item \textbf{Extremstellen bestimmen:} 
+    \begin{align*}
+        f'(x_e) &= 0\\
+        f''(x_e) &\lessgtr 0
+    \end{align*}
+    \item \textbf{Wendepunkte bestimmen:}
+    \begin{align*}
+        f''(x_w) &= 0\\
+        f'''(x_w) &\not= 0
+    \end{align*}
+\end{enumerate}
+
+\begin{boxx}[Red]{Verhalten für $x \to \pm \infty$ und Asymptoten bestimmen}
+    Eine waagerechte \textbf{Asymptote} ist eine Gerade der Form $y=a$,
+    wobei $a$ ein endlicher Wert des Grenzwerts von $f$ für $x \to \pm \infty$ ist.
+    
+    Der Graph von $f$ nähert sich dann infinitesimal an die Asymptote an.
+\end{boxx}
+
+\textbf{btw: Symmetrie}
+\begin{itemize}
+    \item achsensymmetrisch zur $y$-Achse: $f(x)=f(-x)$
+    \item punktsymmetrisch zum Ursprung: $f(x)=-f(-x)$
+\end{itemize}
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    Skizziere den Graph von $f$ mit $f(x)= x^5\cdot e^{-0.1x}$
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(f(x)\)},
+            xmax = 80,
+            xmin = -30,
+            ymax = 2400000,
+            restrict y to domain = -2200000:2400000
+        ]
+        \addplot [
+            smooth,
+            domain = -30:80, 
+            samples = 100, 
+            color = LightPurple,
+            thick
+        ]
+        {x^5*e^(-0.1*x)};
+        \end{axis}
+        \end{tikzpicture}
+        \end{figure}
+\end{boxx}
+
+\newpage
+
+\subsection{Funktionenscharen von \emph{e}-Funktionen}
+\begin{boxx}[Red]{Definition: Funktionenschar}
+    Eine Funktion $f_t$ mit einem \textbf{Parameter} $t$,
+    ordnet jedem $x$ einen Funktionswert $f_t(x)$ zu.
+    \\\\
+    Dabei ist ein Parameter ein beliebiger Wert, der wenn er einmal festgelegt wurde,
+    seinen Wert beibehält.
+    \\\\
+    Die Graphen von $f_t$ bilden eine sogenannte \textbf{Funktionenschar} von (Exponential-)Funktionen.
+\end{boxx}
+
+
+Die Graphen von $f_t$ können verschoben und/oder gestreckt werden:
+
+\begin{align*}
+    f_t(x)&=e^{x+t} & &\text{ist gegenüber } e^x \text{ um } t \text{ Einheiten} \\
+    & & &\text{nach links verschoben für } t>0 \\
+    & & &\text{und nach rechts für } t<0 \\\\
+    f_k(x)&=ke^{x} & &\text{ist in } y \text{-Richtung gestaucht  bzw. gestreckt}\\\\
+    f_b(x)&=e^{x}+b & &\text{ist in } y \text{-Richtung nach oben bzw.}\\
+    & & &\text{nach unten verschoben} \\\\
+    f_w(x)&=e^{wx} & &\text{ist in } x \text{-Richtung gestreckt bzw. gestaucht.}\\
+\end{align*}
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    Gegeben ist $f_t(x)=e^{x+t}-1$. \\\\
+    $a)$\hspace{3mm} Bestimme $f_{-2}(3)$.
+    \begin{align*}
+        f_{-2}(3) &= e^{3+(-2)} -1 = e - 1 \approx 1.718
+    \end{align*}
+    $b)$\hspace{3mm} Beschreibe die Wirkung des Parameters $t$ auf $f_t$.\\\\
+    Der Parameter $t$ verschriebt den Graphen in $x$-Richtung. 
+    Bei Erhöhung verschiebt sich der Graph nach links.
+    \\\\
+    $c)$\hspace{3mm} Gib die Koordinaten der Schnittpunkte mit den Koordinatenachsen an.
+    \begin{align*}
+        f_t(0) &= e^{0+t} -1 = e^t - 1 \\
+        &\Rightarrow S_t\left(0 \;|\; e^t-1\right)
+    \end{align*}
+    \begin{align*}
+        && e^{x+t}-1 &= 0 & &|\; +1 && \\
+        && e^{x+t} &= 1 & &|\; \ln && \\
+        && x + t &= \ln 1 && \\
+        && x + t &= 0 && \\
+        && x &= -t && \\
+        && &\Rightarrow N_t\left(-t \;|\;0\right)
+    \end{align*}
+\end{boxx}
+
+\newpage
+\subsection{Die Umkehrfunktion}
+\begin{boxx}[Red]{Definition}
+    Sei $f$ eine Funktion mit Definitionsmenge $D_f$ und Wertemenge $W_f$.
+
+    $f$ heißt \textbf{umkehrbar}, wenn zu jedem $y \in W_f$ genau ein
+    $x \in D_f$ mit $f(x) = y$ existiert.
+    \\\\
+    Bei einer umkehrbaren Funktion $f$ heißt die Funktion $\bar{f}$ \emph{(f quer)} mit
+    $\bar{f}(y)=x$ die \textbf{Umkehrfunktion} von $f$.
+    \\\\
+    Es gilt
+    \begin{align*}
+        &&&& \bar{f}\left(f(x)\right) &= x & & \forall x \in D_f &&\text{und} && \\
+        &&&& f\left(\bar{f}(x)\right) &= x & & \forall x \in D_{\bar{f}} = W_f &&&&
+    \end{align*}
+    \[\left(\text{z.B.}\;\;\; \sin^{-1}(\sin x)= x \;\;\;\text{bzw.}\;\;\;\sin^{-1}(\sin 30\degree)= 30\degree\right)\]
+\end{boxx}
+
+Ist $f$ streng monoton wachsend, so ist sie umkehrbar und es existiert eine Umkehrfunktion $\bar{f}$ von $f$.
+
+Also überprüft man ob $f'(x) > 0$ gilt. 
+\\\\
+Gleiches gilt auch wenn $f$ durchgehend streng monoton fallend ist.
+\\\\
+\textbf{Berechnung von } $\mathbf{\bar{f}:}$
+
+\begin{enumerate}
+    \item $y = f(x)$ setzen
+    \item Gleichung nach $x$ auflösen
+    \item $x$ und $y$ vertauschen
+    \item $y$ durch $\bar{f}(x)$ ersetzen
+\end{enumerate}
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    Gegeben ist $f$ mit $f(x)= \sqrt{2x-4} - 1$.\\
+    $a)$\hspace{3mm} Gib $D_f$ und $W_f$ an.
+    \begin{align*}
+        D_f &= [2; \infty) \\
+        W_f &= [-1; \infty) \\
+    \end{align*}
+    $b)$\hspace{3mm} Zeige, dass $f$ umkehrbar ist.
+    \begin{align*}
+        && f'(x) &= \frac{1}{\sqrt{2x-4}} \\
+        && f'(x) &= 0 \\
+        && \frac{1}{\sqrt{2x-4}} &= 0 & &\Rightarrow \text{keine Lösung} &&
+    \end{align*}
+    $c)$\hspace{3mm} Bestimme $\bar{f}$.
+    \begin{align*}
+        y &= \sqrt{2x-4} -1 & &|\;+1 \\
+        y+1 &= \sqrt{2x-4}  & &|\;()^2 \\
+        (y+1)^2 &= 2x-4  & &|\;+4 \\
+        (y+1)^2 +4 &= 2x  & &|\;\cdot \frac{1}{2} \\
+        x&=\frac{(y+1)^2 + 4}{2} \\
+        y &=\frac{(x+1)^2}{2} +2 \\\\
+        \Rightarrow \bar{f}(x) &= \frac{(x+1)^2}{2} +2
+        \end{align*}
+\end{boxx}
+
+\subsection{Der natürliche Logarithmus und seine Ableitungsfunktion}
+
+Von der natürlichen Exponentialfunktion $f(x) = e^x$ ist der natürliche Logarithmus $\bar{f}(x)=\ln x$
+die Umkehrfunktion.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            height = 6cm,
+            width = 10cm,
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            ymax = 2,
+            ymin = -2,
+        ]
+            \addplot[
+                color = Blue,
+                thick,
+                domain = 0:7,
+                samples = 100,
+            ] {ln(x)} node[anchor = north, pos = 0.95] {\(\ln x\)};
+            % \node[anchor = north, color=Blue] at (rel axis cs:0.75,0.75) {\(\ln x\)};
+            \node[label={150:{\((1,0)\)}},circle,fill,inner sep=1.5pt] at (axis cs:1,0) {};
+            \node[label={150:{\((e,1)\)}},circle,fill,inner sep=1.5pt] at (axis cs:2.718,1) {};
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
+\begin{align*}
+    D_{\bar{f}} &= (0;\infty) \\
+    W_{\bar{f}} &= (-\infty;\infty) \\
+\end{align*}
+
+Für die Ableitung von $\ln x$ gilt:
+\begin{align*}
+    && x &= e^{\ln x} & &|\; ()' &&\\
+    && 1 &= \left(e^{\ln x}\right)' &&\\
+    && 1 &= \left(\ln x\right)' \cdot e^{\ln x} & &|\; e^{\ln x} = x &&\\
+    && 1 &= \left(\ln x\right)' \cdot x & &|\; \frac{1}{x}\;\;(x \not= 0) &&\\
+    && \left(\ln x\right)' &= \frac{1}{x}
+\end{align*}
+\newpage
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} $f(x) = x \ln(3x)$. Leite ab!
+    \begin{align*}
+        f'(x) &= \ln(3x) + \frac{x}{x} = \ln(3x) + 1
+    \end{align*}
+    $b)$\hspace{3mm} $\displaystyle g(x) = \frac{1}{2} \ln(3x-6)$. Bestimme $\bar{g}, D_g, D_{\bar{g}}, W_g$ und $W_{\bar{g}}$.
+    \begin{align*}
+        \bar{g}(x) &= \frac{1}{3} e^{2x} + 2 \\
+        D_g = (2;\infty) &= W_{\bar{g}} = (2;\infty) \\
+        D_{\bar{g}} = (-\infty;\infty) &= W_{g} = (-\infty;\infty) \\
+    \end{align*}
+\end{boxx}
+
+\subsection{Exponentielles Wachstum}
+Aus Klasse 9:
+\begin{align*}
+    f(t) &= f(0) \cdot a^t
+\end{align*}
+\begin{center}
+    Für $a>1 \rightarrow$ exponentielle Zunahme \\
+    Für $a<1 \rightarrow$ exponentieller Zerfall \\
+\end{center}
+\vspace{3mm}
+Um die Exponentialfunktion ableiten zu können, ist es sinnvoll
+sie zur Basis $e$ zu schreiben.
+\[\Rightarrow f(t)=f(0)\cdot e^{\ln (a) \cdot t}\]
+\begin{align*}
+    &&&& \ln(a)&=k & &\text{Für }k>0 \rightarrow \text{Zunahme}&&&& \\
+    &&&& & & &\text{Für }k<0 \rightarrow \text{Zerfall}&&&& \\
+\end{align*}
+
+Für die Verdopplungszeit $T_V$ gilt:
+\[T_V = \frac{\ln 2}{k}\]
+
+Für die Halbwertszeit $T_H$ gilt:
+\[T_V = \frac{\ln 0.5}{k}\]
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    Gegeben ist $f(t) = 228 \cdot 1.04^t$  $t$ in $y$. \\
+    $a)$\hspace{3mm} Bestimme den Anfangsbestand.
+    \begin{align*}
+        f(0) &= 228
+    \end{align*}
+
+    $b)$\hspace{3mm} Handelt es sich um eine Zu- oder Abnahme? Begründe.
+
+    Es handelt sich um eine Zunahme, da $1.04 > 1$ \\\\
+
+    $c)$\hspace{3mm} Schreibe $f$ zur Basis $e$.
+    \begin{align*}
+        f(t) &= 228 \cdot e^{\ln(1.04)\cdot t}
+    \end{align*}
+
+    $d)$\hspace{3mm} Berechne $T_V/T_H$.
+    \begin{align*}
+        T_V&= \frac{\ln 2}{\ln 1.04} \approx 17.67 & T_H&= \frac{\ln 0.5}{\ln 1.04} \approx -17.77
+    \end{align*}
+\end{boxx}
+
+\newpage
+
+\section{Integralrechnung}
+\subsection{Bestimmen der Gesamtänderung - orientierter Flächeninhalt}
+
+Um von einer Größe die momentane Änderung zu berechnen, muss man ableiten.
+Will man umgekehrt von der momentanen Änderung einer Größe auf die Größe selbst schließen, 
+muss man den \textbf{orientierten Flächeninhalt} zwischen dem Graph der Änderungsrate und der $x$-Achse bestimmen.
+\\
+\begin{boxx}[LightYellow]{Anmerkung}
+    Ein Flächeninhalt ist stets positiv, ein orientierter Flächeninhalt kann negativ sein.
+\end{boxx}
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    Ein Tank ist anfangs leer. 
+    Über eine Leitung kann ihm Wasser hinzugefügt oder entfernt werden.
+    Bestimme aus der folgenden Zufluss-/Abflussmenge den Wasserinhalt nach 12 Sekunden.
+
+    \begin{align*}
+        V &= \left(4\cdot3+\frac{1}{2}\cdot2\cdot 4-\frac{1}{2}\cdot 1 \cdot 2 - 4 \cdot 2 + 2\cdot 3\right) \unit{\liter} = \qty{13}{\liter}
+    \end{align*}
+\end{boxx}
+
+\subsection{Das Integral als orientierter Flächeninhalt}
+Um den Flächeninhalt von krummlinigen Graphen zu bestimmen, 
+kann man die \textbf{Ober-} bzw. \textbf{Untersummen} zwischen Graph und $x$-Achse betrachten.
+\\\\
+\textbf{Anschaulich:} $\displaystyle f(x) = \frac{1}{2} x^2 +1;\; I=[0;5];\; n=5$
+\begin{table}[H]
+    \begin{tabular}{c|ccccc}
+        $\displaystyle x$ & 0 & 1 & 2 & 3 & 4 \\ \hline
+        $\displaystyle f(x)$ & 1 & 1.5 & 3 & 5.5 & 9 \\
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width = 7cm,
+                height = 6cm,
+                axis lines = middle,
+                xlabel = \(x\),
+                ylabel = \(f(x)\),
+                xmax = 5.5,
+                xmin = 0,
+                ymin = 0,
+            ]
+                \draw[fill = Red, fill opacity = 0.3] (0,0) rectangle (1,1.5);
+                \draw[fill = Red, fill opacity = 0.3] (1,0) rectangle (2,3);
+                \draw[fill = Red, fill opacity = 0.3] (2,0) rectangle (3,5.5);
+                \draw[fill = Red, fill opacity = 0.3] (3,0) rectangle (4,9);
+                \draw[fill = Red, fill opacity = 0.3] (4,0) rectangle (5,13.5);
+                \addplot[color=Black, line width = 1, samples = 100, domain = 0:5.5] {0.5*x^2+1};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Obersumme}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width = 7cm,
+                height = 6cm,
+                axis lines = middle,
+                xlabel = \(x\),
+                ylabel = \(f(x)\),
+                xmax = 5.5,
+                xmin = 0,
+                ymin = 0,
+            ]
+                \draw[fill = Blue, fill opacity = 0.3] (0,0) rectangle (1,1);
+                \draw[fill = Blue, fill opacity = 0.3] (1,0) rectangle (2,1.5);
+                \draw[fill = Blue, fill opacity = 0.3] (2,0) rectangle (3,3);
+                \draw[fill = Blue, fill opacity = 0.3] (3,0) rectangle (4,5.5);
+                \draw[fill = Blue, fill opacity = 0.3] (4,0) rectangle (5,9);
+                \addplot[color=Black, line width = 1, samples = 100, domain = 0:5.5] {0.5*x^2+1};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Untersumme}
+    \end{subfigure}
+\end{figure}
+
+Haben für $n \to \infty$ die Ober- und Untersumme den gleichen Wert,
+so nennt man $f$ \textbf{integrierbar}.
+\newpage
+\begin{boxx}[Red]{Definition: Integral}
+    Ist eine Funktion $f$ über $[a;b]$ integrierbar,
+    so nennt man den orientierten Flächeninhalt über $[a;b]$,
+    den der Graph von $f$ mit der $x$-Achse einschließt,
+    das (bestimme) \textbf{Integral} von $f$ über $[a;b]$.
+
+    Dabei nennt man $a$ die untere und $b$ die obere Grenze des Integrals.
+
+    \begin{align*}
+        \int_a^b f(x) \, dx
+    \end{align*}
+
+    Dabei nennt man $f(x)$ den \textbf{Integrand} und $dx$ die \textbf{Integrationsvariable}.
+\end{boxx}
+
+\begin{boxx}[LightGreen]{Integraladditivität}
+
+    \[\int_a^b f(x) \, dx + \int_b^c f(x) \, dx = \int_a^c f(x) \, dx\]
+
+    \[\int_a^b f(x) \, dx = - \int_b^a f(x) \, dx\]
+
+    \[\int_a^a f(x) \, dx = 0\]
+
+\end{boxx}
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme näherungsweise $\displaystyle \int_{-1}^2 x^3 \, dx$
+
+    \begin{align*}
+        \int_{-1}^2 x^3 \, dx &= \left[\frac{1}{4}x^4\right]_{-1}^2
+        = \left(\frac{1}{4}\cdot 2^4\right) - \left(\frac{1}{4} \cdot (-1)^4\right)
+        = 3.75
+    \end{align*}
+\end{boxx}
+
+
+\subsection{Der Hauptsatz der Differential- und Integralrechnung}
+
+\begin{boxx}[Red]{Definition: Stammfunktion}
+    Eine Funktion $F$ heißt Stammfunktion von $f$ im Intervall $I$, wenn gilt:
+
+    \begin{align*}
+        &&&&&& F'(x) &= f(x) & &\forall x \in I &&&&&&
+    \end{align*}
+\end{boxx}
+
+\begin{boxx}[Red]{Hauptsatz der Differential- und Integralrechnung}
+    Sei $f$ integrierbar auf $[a;b]$ und $F$ eine Stammfunktion von $f$, so gilt:
+
+    \[\int_a^b f(x) \, dx = F(b) - F(a)\]
+
+    Man schreibt:
+
+    \[\int_a^b f(x) \, dx = \left[F(x)\right]_a^b = F(b) - F(a)\]
+\end{boxx}
+
+\begin{boxx}[LightGreen]{Satz: Stammfunktion}
+    Von der Funktion $f$ existieren undendlich viele Stammfunktionen,
+    die sich um eine Konstante $c$ unterscheiden. Es gilt:
+
+    \begin{align*}
+        &&&&&& F(x) &= G(x) + c & &\forall x \in I &&&&&&
+    \end{align*}
+
+    \textbf{Beweis:}
+
+    \[F'(x)=f(x)=\left(G(x)+c\right)' = G'(x)\]
+\end{boxx}
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} Bestimme zwei Stammfunktionen von $\displaystyle f(x) = 3x^2$
+
+    \begin{align*}
+        F_1(x) &= x^3 \\
+        F_2(x) &= x^3 + \pi
+    \end{align*}
+    
+    $b)$\hspace{3mm} Berechne $\displaystyle \int_1^3 3x^2 \, dx$.
+
+    \begin{align*}
+        \int_1^3 3x^2 \, dx &= \left[x^3\right]_1^3 = 3^3 - 1^3 = 26
+    \end{align*}
+\end{boxx}
+
+\begin{boxx}[Red]{Integralfunktion}
+    Sei $f$ eine über $I$ integrierbare Funktion und $u \in I$.
+    Die Funktion $J_u$ mit $\displaystyle J_u(x) = \int_u^x f(t) \, dt$ 
+    heißt die \textbf{Integralfunktion} von $f$ zur unteren Grenze $u$.
+    \\\\
+    Beachte:
+    \begin{itemize}
+        \item Man sollte für die Integrationsvariable und die obere Grenze
+        nicht den gleichen Buchstaben wählen.
+        \item Es gilt: $\displaystyle J_u(u) = \int_u^u f(t) \, dt = 0$,
+        d.h. die untere Grenze ist stets eine Nullstelle der Integralfunktion.
+    \end{itemize}
+    
+    \textbf{Satz:}
+    Die Integralfunktion $J_u$ ist eine Stammfunktion von $f$:
+    \[J_u'(x)=f(x)\]
+\end{boxx}
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} $\displaystyle f(t) = 3t^2$. 
+    Bestimme $x$ so, dass gilt $\displaystyle \int_1^x f(t) \, dt = 26$.
+
+    \begin{align*}
+        \int_1^x 3t^2 \, dt &= 26 \\
+        \left[t^3\right]_1^x &= 26 \\
+        x^3 - 1 &= 26 \\
+        x = \sqrt[3]{27} &= 3
+    \end{align*}
+    \newpage
+    $b)$\hspace{3mm} Bestimme eine Integralfunktion von $\displaystyle f(t) = \frac{1}{4} e^{0.5t}$
+    zur unteren Grenze $u=-1$.
+
+    \begin{align*}
+        J_{-1}(x) &= \int_{-1}^x \frac{1}{4}e^{0.5t} \, dt = \left[\frac{1}{2}e^{0.5t}\right]_{-1}^x \\
+        &= \frac{1}{2} e^{0.5x} - \frac{1}{2\sqrt{e}}
+    \end{align*}
+\end{boxx}
+
+\subsection{Bestimmen von Stammfunktionen}
+
+Seien $G$ und $H$ Stammfunktion von $g$ und $h$.
+\\\\
+\textbf{Potenzregel:}
+\begin{align*}
+    &&&&&& f(x) &= x^n & F(x) &= \frac{x^{n+1}}{n+1} &&&&&&
+\end{align*}
+für $n=-1$:
+\begin{align*}
+    &&&&&& f(x) &= \frac{1}{x} = x^{-1}& F(x) &= \ln |x| &&&&&&
+\end{align*}
+
+\textbf{Faktorregel:}
+\begin{align*}
+    &&&&&& f(x) &= c \cdot g(x) & F(x) &= c \cdot G(x) &&&&&&
+\end{align*}
+
+\textbf{Summenregel:}
+\begin{align*}
+    &&&&&& f(x) &= g(x) + h(x) & F(x) &= G(x) + H(x) &&&&&&
+\end{align*}
+
+\textbf{Lineare Verkettung/Substitution:}
+\begin{align*}
+    &&&&&& f(x) &= g(ax + b) & F(x) &=\frac{1}{a}G(ax+b) &&&&&&
+\end{align*}
+
+\textbf{Faktor und Summenregel für Integrale:}
+
+\[\int_a^b c \cdot f(x) \, dx = c \cdot \int_a^b f(x) \, dx \\\]
+
+\[\int_a^b g(x) + h(x) \, dx = \int_a^b g(x) \, dx + \int_a^b h(x) \, dx\]
+
+Beweise: HDI
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} Bestimme eine Stammfunktion von $\displaystyle f(x) = 3e^{2x}-2 \sin(\pi x)$
+
+    \begin{align*}
+        F(x) &= \frac{3}{2} e^{2x} + \frac{2}{\pi} \cos(\pi x)
+    \end{align*}
+
+    $b)$\hspace{3mm} Berechne das Integral $\displaystyle \int_{-4}^{-1} \frac{5}{x} \, dx$
+
+    \begin{align*}
+        \int_{-4}^{-1} \frac{5}{x} \, dx &= \left[5 \ln |x|\right]_{-4}^{-1} 
+        = 5 \ln 1 - 5\ln 4 = -5\ln 4 \approx -6.93
+    \end{align*}
+\end{boxx}
+\newpage
+
+\subsection{Graphen von Stammfunktionen}
+Nach dem Schema:
+
+\begin{align*}
+    &&N \;\; E \;\; &W && F &&\\
+    &&N \;\; &E \;\; W && f &&\\
+    &&&N \;\; E \;\; W && f' &&
+\end{align*}
+
+gilt für die Graphen von $F$ und $f$ folgendes:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+         \textbf{Nullstelle von \emph{f}} & mit VZW von + nach - & mit VZW mit - nach + & ohne VZW  \\
+         \hline
+         \textbf{(innere) Extremstelle von \emph{F}} & Maximumstellen & Minimumstelle & Sattelstelle von $F$  \\
+         \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+         \textbf{Funktion \emph{f}} & (innere) Extremstelle  \\
+         \hline
+         \textbf{Stammfunktion \emph{F}} & Wendestelle \\
+         \hline
+    \end{tabular}
+\end{table}
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    Gegeben ist $G_f$. Skizziere $G_F$. 
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            ymin = -7.5,
+            ymax = 7.5,
+            xmax = 3,
+            xmin = -3,
+        ]
+            \addplot[
+                thick,
+                color = Blue,
+                domain = -3:3,
+                samples = 100,
+            ]
+            {x*(x-2)*(x+2)} node[anchor = north west, pos = 0.6] {\(G_f\)};
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            ymin = -7.5,
+            ymax = 7.5,
+            xmax = 3,
+            xmin = -3,
+        ]
+            \addplot[
+                thick,
+                color = DarkPurple,
+                domain = -3:3,
+                samples = 100,
+            ]
+            {0.25*x^4-2*x^2+5} node[anchor = south west, pos = 0.1] {\(G_F\)};
+            \addplot[
+                dashed,
+                thick,
+                color = DarkPurple,
+                domain = -3:3,
+                samples = 100,
+            ]
+            {0.25*x^4-2*x^2-1};
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+\end{boxx}
+\newpage
+\subsection{Integral und Flächeninhalt}
+
+Ein Integral kann einen negativen Wert haben,
+ein Flächeninhalt nicht.
+
+Das bedeutet, dass man beim Berechnen des Flächeninhalts
+zwischen eines Graphen und der $x$-Achse wie folgt vorgehen
+sollte:
+\begin{enumerate}
+    \item Bestimme die Nullstellen von $f$
+    \item Berechne die Integrale der Teilintervalle
+    \item Berechne die Teilflächen für $f(x)<0$ über 
+    $\displaystyle \left|\int_{a}^{x_0} f(x) \, dx\right|$
+    oder $\displaystyle - \int_{a}^{x_0} f(x) \, dx$
+\end{enumerate}
+
+Für den Flächeninhalt $A$ zwischen zwei Graphen gilt:
+
+\[A = \int_a^b f(x) - g(x) \; dx\]
+
+Salopp: ''Das Obere minus das Untere.''
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    $\displaystyle f(x) = x^3;\;g(x) = x;\; I = [-2;5]$
+
+    Berechne den Flächeninhalt zwischen den beiden Funktionsgraphen für $I$.
+
+    \textbf{Skizze:}
+    \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        xlabel = {\(x\)},
+        ylabel = {\(y\)},
+        ymin = -3,
+        ymax = 8.5
+    ]
+    \addplot[
+        thick,
+        color = LightRed,
+        samples = 100,
+        domain = -2:3,
+    ]{x^3} node[anchor = east, pos = 0.45] {\(G_f\)};
+    \addplot[
+        name path = F,
+        thick,
+        color = LightRed,
+        samples = 100,
+        domain = -2:5,
+    ]{x^3};
+    \addplot[
+        thick,
+        color = LightBlue,
+        samples = 100,
+        domain = -3:6,
+    ]{x}node[anchor = north west, pos = 0.8] {\(G_g\)};
+    \addplot[
+        name path = G,
+        thick,
+        color = LightBlue,
+        samples = 100,
+        domain = -2:5,
+    ]{x};
+    \addplot[LightYellow!30, domain = -2:5] fill between[of=G and F];
+    \end{axis}
+    \end{tikzpicture}    
+    \end{figure}
+    \begin{align*}
+        f(x) &= g(x) \\
+        x^3 &= x \\
+        x^3 - x &= 0 \\
+        x(x^2-1) &= 0 \\
+        \Rightarrow x_1 = 0;\; x_2 &= 1;\; x_3 = -1
+    \end{align*}
+    \begin{align*}
+        A &=  \int_{-2}^{-1} g(x) - f(x) \; dx + 
+        \int_{-1}^{0} f(x) - g(x) \; dx + 
+        \int_{0}^{1} g(x) - f(x) \; dx + 
+        \int_{1}^{5} f(x) - g(x) \; dx \\
+        &= \left[\frac{1}{2} x^2- \frac{1}{4} x^4\right]_{-2}^{-1} +
+        \left[\frac{1}{4} x^4 - \frac{1}{2} x^2\right]_{-1}^{0} + 
+        \left[\frac{1}{2} x^2- \frac{1}{4} x^4\right]_{0}^{1} + 
+        \left[\frac{1}{4} x^4 - \frac{1}{2} x^2\right]_{1}^{5} \\
+        &= \frac{9}{4} + \frac{1}{4} + \frac{1}{4} + 144 \\
+        &= 146.75
+    \end{align*}
+\end{boxx}
+\newpage
+
+\subsection{Volumen von Rotationskörpern}
+Sei $f$ eine auf $[a;b]$ integrierbare Funktion.
+Lässt man die Fläche, die der Graph von $f$ mit der
+$x$-Achse einschließt um die $x$-Achse rotiert,
+so entsteht ein 3-dimensionaler Rotationskörper,
+dessen Volumen man wie folgt berechnet:
+
+\[V_{\text{Rot}} = \pi \int_a^b f(x)^2 \; dx\]
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    Der rotierende Graph von $f$ mit $\displaystyle f(x) = \frac{3}{4}\sqrt{x}$ 
+    erzeugt einen Rotationskörper in Form eines Sektglases.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = left,
+            % axis line style = {black!80},
+            colormap/cool,
+            grid = major,
+            xlabel = {\(x\)},
+            zlabel = {\(y\)},
+            zlabel style={rotate=-90},
+            xtick={2,4,6,8,10},
+            xmin = 0, xmax = 10,
+            ytick={-2.5,0,2.5},
+            ymin = -2.5, ymax = 2.5,
+            ztick={-2.5,0,2.5},
+            zmin = -2.5, zmax = 2.5,
+            view = {15}{30},
+        ]
+        \addplot3 [
+            surf, 
+            domain=0:10,
+            domain y = -5:5,
+            samples = 20,
+            samples y = 30,
+            fill = LightYellow!60,
+            faceted color = Black!70,
+        ] (x, {0.75*x^(0.5)*cos(deg(y))}, {0.75*x^(0.5)*sin(deg(y))});
+        \addplot3[
+            ultra thick,
+            color = Red,
+            domain=0:10,
+            domain y = 0:0,
+            samples = 50,
+        ] {0.75*x^(0.5)}  node[anchor = south east, pos = 0.4] {\(G_f\)};
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+
+    $a)$\hspace{3mm} Wie viel Sekt passt in das $\qty{10}{\centi\meter}$ Hohe Sektglas?
+    \begin{align*}
+        V &= \pi \int_0^{10} f(x)^2 \, dx \\
+        &= \pi \int_0^{10} \frac{16}{9} x \, dx \\
+        &= \pi \cdot \left[\frac{8}{9} x^2\right]_0^{10} \\
+        &= \pi \cdot \frac{800}{9} \approx 279.25
+    \end{align*}
+    $b)$\hspace{3mm} An welcher Stelle muss man den \qty{100}{\milli\liter} Eichstrich anbringen?
+    \begin{align*}
+        V &= 100 \\
+        \pi \int_0^a f(x)^2 \, dx &= 100 \\
+        \pi \cdot \left[\frac{8}{9}x^2\right]_0^a &= 100 \\
+        \pi \cdot \frac{8}{9} a^2 &= 100 \\
+        a^2 &= \frac{900}{8 \pi } \\
+        a &= \sqrt{\frac{900}{8 \pi}} \approx 5.98
+    \end{align*}
+\end{boxx}
+
+\newpage
+
+\subsection{Uneigentliche Integrale}
+\textbf{Problem:} \\
+Sind die Flächen, die ein Graph mit z.B. der $x$-Achse einschließt endlich, wenn
+\begin{itemize}
+    \item eine Polstelle (senkrechte Asymptote) vorliegt,
+    \item die Funktion für $x \to \pm \infty$ läuft und der
+    Graph dabei eine waagerechte Asymptote besitzt?
+\end{itemize}
+Dabei sind die betrachteten Flächen \textbf{unbegrenzt}.
+Das heißt aber nicht, dass automatisch der Flächeninhalt endlich
+oder unendlich sein muss.
+\\\\
+Untersucht man den Flächeninhalt an seiner Polstelle $z$, berechnet man das Integral
+\[\int_z^b f(x) \, dx\]
+Nach dem Bilden der Stammfunktion setzt man $z$ ein und entscheidet, 
+ob der Grenzwert des Rechenausdrucks einen endlichen Flächeninhalt
+ergibt oder nicht.
+
+Bei waagerechten Asymptoten verfährt man analog nur mit dem Grenzwert für $x \to \pm \infty$.
+\\\\
+Erhält man für den Grenzwert einen endlichen Wert, spricht man
+von einem \textbf{uneigentlichen Integral}.
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    Berechne! \\\\
+    $a)$\hspace{3mm} $\displaystyle \int_1^\infty \frac{3}{x} \, dx$ \\
+    \begin{align*}
+        \int_1^z \frac{3}{x} \, dx = \left[3 \ln|x|\right]_1^z 
+        &= \ln|z| \\
+        \lim_{z \to \infty} \ln|z|  &= \infty 
+    \end{align*}
+    $b)$\hspace{3mm} $\displaystyle \int_{-\infty}^0 \frac{1}{2} e^{\frac{1}{2}x} \, dx$
+    \begin{align*}
+        \int_z^0 \frac{1}{2} e^{\frac{1}{2}x} \, dx = \left[e^{\frac{1}{2}x}\right]_z^0
+        &= -e^{\frac{1}{2}z} + 1 \\
+        \lim_{z \to -\infty} -e^{\frac{1}{2}z} + 1 &= 1 \\
+        \Rightarrow \int_{-\infty}^0 \frac{1}{2} e^{\frac{1}{2}x} \, dx &= 1
+    \end{align*}
+\end{boxx}
+
+\newpage
+
+\subsection{Mittelwerte von Funktionen}
+\begin{boxx}[Red]{Definition: Mittelwert}
+    Die Zahl 
+    \[\overline{m} = \frac{1}{b-a}\int_a^b f(x) \, dx\]
+    heißt \textbf{Mittelwert} der Funktion $f$ über $[a;b]$.
+\end{boxx}
+
+Graphisch lässt sich der Mittelwert bestimmen, indem man die Fläche,
+die der Graph von $f$ mit der $x$-Achse einschließt mit der 
+Rechtecksfläsche, die durch die konstante Funktion $g(x) = m$
+entsteht, vergleicht. Beide Flächen müssen gleich groß sein.
+
+Alternativ müssen die beiden Teilflächen $A_1$ und $A_2$ ober-
+bzw. unterhalb der Mittelwertslinie gleich groß sein. \\\\
+\textbf{Anschaulich:}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        clip = false,
+        ticks = none,
+        height = 7cm,
+        width = 10cm,
+        axis lines = middle,
+        xmin=-1,
+        xmax=2.5,
+        ymin=0,
+        ymax=2.5,
+        xlabel = {\(x\)},
+        ylabel = {\(y\)},
+    ]
+    \addplot[
+        thick,
+        color=DarkBlue,
+        domain = -1:2.5,
+        samples = 50,
+    ]{0.012*(x+2.5)^3 + 0.5};
+    \addplot[] coordinates {
+        (0.4,0) (0.4,2)
+    } node[anchor = north, pos = 0] {\(a\)};
+    \addplot[] coordinates {
+        (2.2,0) (2.2,2)
+    } node[anchor = north, pos = 0] {\(b\)};
+    \addplot[
+        thick,
+        color=DarkPurple,
+        domain=0.3:2.3,
+    ]{1.19} node[anchor = west, pos = 1] {\(\overline{m}\)};
+    \addplot[
+        name path = M,
+        thick,
+        color=DarkPurple,
+        domain=0.4:2.2,
+    ]{1.19};
+    \addplot[
+        name path = F,
+        thick,
+        color=DarkBlue,
+        domain=0.4:2.2,
+        samples = 50,
+    ]{0.012*(x+2.5)^3 + 0.5};
+    \addplot[LightYellow!30] fill between[of=F and M];
+    \node[DarkYellow] at (axis cs:0.7,1.05) {\(A_1\)};
+    \node[DarkYellow] at (axis cs:2,1.37) {\(A_2\)};
+    \end{axis}
+    \end{tikzpicture}
+\end{figure}
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} $\displaystyle f(x)=-x^2+4;\;a=-3;\;b=4$. 
+    Bestimme $\overline{m}$!
+    \begin{align*}
+        \overline{m} &= \frac{1}{4-(-3)}\int_{-3}^4 -x^2+4 \, dx \\
+        &= \frac{1}{7} \left[-\frac{1}{3}x^3+4x\right]_{-3}^4 \\
+        &= \frac{1}{7} \left(-\frac{4^3}{3}+16-\left(-\frac{(-3)^3}{3}-12\right)\right) \\
+        &= -\frac{1}{3}
+    \end{align*}
+
+    $b)$\hspace{3mm} Bestimme graphisch den Mittelwert von $g$.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            height = 6cm,
+            width = 11cm,
+            axis lines = middle,
+            xtick = {\empty},
+            ytick = {1,2,3,4,5},
+        ]
+        \addplot[
+            thick,
+            color=DarkBlue,
+            domain=-1.2:7.2,
+            samples=100,
+        ]{0.4*(((x^3)/(3))- 3*x^2+5*x)+3.7}
+        node[anchor=south east,pos=0.92] {\(G_g\)};
+        \addplot[] coordinates {
+            (1,0) (1,5)
+        } node[anchor = north, pos = 0] {\(a\)};
+        \addplot[] coordinates {
+            (5,0) (5,5)
+        } node[anchor = north, pos = 0] {\(b\)};
+        \addplot[thick, DarkPurple, domain = 1:5]{2.5}
+        node[anchor = west, pos = 1] {\(\overline{m}\approx 2.5\)};
+        \addplot[thick,dashed, DarkPurple] coordinates {
+            (0,2.5) (1,2.5)
+        };
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+\end{boxx}
+\end{document}
