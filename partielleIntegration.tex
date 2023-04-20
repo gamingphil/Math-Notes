@@ -1,0 +1,341 @@
+\documentclass{article}
+\usepackage[ngerman]{babel} % |
+\usepackage[utf8]{inputenc} % | Language and special characters
+\usepackage[T1]{fontenc} %    |
+\usepackage{amsmath} % |
+\usepackage{amssymb} % | Math symbols and environments
+\usepackage{amsthm} %  |
+\usepackage{siunitx} %  Typesetting (SI) units
+\DeclareSIUnit\litre{l}
+%\usepackage{physics} % Advanced Mathematics of Physics, conflicts with siunitx
+\usepackage{multirow} % Tables with cells that span more than one row
+\usepackage{fancyhdr} % Custom page layout
+\usepackage{graphicx} % Insert images
+\usepackage{gensymb} % Generic units of measurement in math and text typeface
+\usepackage{xfrac} % Split-level fractions
+\usepackage{xcolor} % Handling colors
+\usepackage{float} % Improved floating objects such as figures and tables
+\usepackage{tikz} % Graphics and figures
+\usetikzlibrary{arrows} % -> customizable arrow tips
+\usetikzlibrary{tikzmark}
+\usepackage{pgfplots} % Plotting functions and data 
+\usepgfplotslibrary{fillbetween} % -> filling areas in pgfplots
+\pgfplotsset{compat=newest}
+\usepackage{systeme} % Systems of equations
+\usepackage{romanbar} % Roman numbers with bars
+\usepackage{titlepic} % Putting picture on the title page
+\usepackage{ragged2e} % Commands and environments for setting ragged text
+\usepackage{multicol} % Multicolumn formating
+\usepackage[a4paper, ignoreheadfoot, left=2.5cm, right=2.5cm, top=2cm, bottom=3.5cm, headsep=1cm]{geometry} % Margins etc.
+\usepackage{cancel} % Cancel terms in equations
+\usepackage[version=4]{mhchem} % Write chemical equations
+\usepackage{wrapfig} % Figures with text wrapped around them
+\usepackage{hyperref} % Extensive support for hypertext
+\usepackage{sidecap} % Typeset captions sideways
+\sidecaptionvpos{figure}{c} % -> Vertical alignment of caption
+\usepackage{pdfpages} % Include PDF documents
+\usepackage{setspace} % Set space between lines 
+% (\singlespacing, \onehalfspacing, \doublespacing)
+\usepackage{subcaption}
+\usepackage[scale=0.96]{XCharter} % Use the XCharter text font
+% \usepackage[xcharter]{newtxmath} % Set the math font
+
+% Hyperref setup:
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+    citecolor=black
+}
+
+
+\definecolor{page}{HTML}{FFFFFF} % white
+\definecolor{text}{HTML}{000000} % black
+\definecolor{primary}{HTML}{019875}
+\definecolor{contrastColour}{HTML}{E8F1F2} % white
+\definecolor{tertiary}{HTML}{C47238} % yellow
+\definecolor{secondary}{HTML}{C6B53C} % orange
+\definecolor{quaternary}{HTML}{BD3E4C} % red
+\definecolor{alternativePrimary}{HTML}{13293D} % blue
+\colorlet{infoBulleBackground}{page!98!text}
+% Shades
+\definecolor{LightGrey}{HTML}{a5b1c2}
+\definecolor{Grey}{HTML}{778ca3}
+\definecolor{DarkGrey}{HTML}{4b6584}
+\definecolor{Black}{HTML}{231F20}
+% Primary Colours
+\definecolor{Red}{HTML}{eb3b47}
+\definecolor{LightRed}{HTML}{fc5c65}
+\definecolor{DarkRed}{HTML}{d91c38}
+
+\definecolor{Yellow}{HTML}{f7b731}
+\definecolor{LightYellow}{HTML}{fed330}
+\definecolor{DarkYellow}{HTML}{f0a132}
+
+\definecolor{Blue}{HTML}{3867d6}
+\definecolor{LightBlue}{HTML}{4b7bec}
+\definecolor{DarkBlue}{HTML}{2654bf}
+% tertiary Colours
+\definecolor{Green}{HTML}{20bf6b}
+\definecolor{LightGreen}{HTML}{26de81}
+\definecolor{DarkGreen}{HTML}{1ba155}
+
+\definecolor{Orange}{HTML}{fa8231}
+\definecolor{LightOrange}{HTML}{fd9644}
+\definecolor{DarkOrange}{HTML}{f76b20}
+
+\definecolor{Purple}{HTML}{8854d0}
+\definecolor{LightPurple}{HTML}{a55eea}
+\definecolor{DarkPurple}{HTML}{6e49b8}
+% secondary+ Colours
+% \definecolor{Brown}{HTML}{}
+\definecolor{Cyan}{HTML}{0fb9b1}
+\definecolor{LightCyan}{HTML}{2bcbba}
+\definecolor{DarkCyan}{HTML}{00a8a8}
+
+
+\usetikzlibrary{calc}
+
+\usepackage[many]{tcolorbox}
+
+\newtcolorbox{boxx}[2][]{
+    enhanced,
+    fonttitle=\fontsize{11}{13.2}\selectfont\bfseries,
+    coltitle=text,
+    colback=infoBulleBackground,
+    colbacktitle=infoBulleBackground,
+    colframe=infoBulleBackground,
+    toprule=4pt,titlerule=0pt,bottomrule=0pt,rightrule=0pt,leftrule=0pt,
+    segmentation hidden,
+    sharpish corners,
+    overlay={\draw[line width=2.5pt,#1] (frame.north west)--(frame.south west);},
+    % margins & padding
+    before skip=\baselineskip,
+    after skip=\baselineskip,
+    boxsep=2pt,
+    top=6pt,
+    bottom=4pt,
+    left=8pt,
+    right=6pt,
+    breakable,
+    title=#2,
+    extras middle and last={%
+        %top=20pt,
+        overlay={%
+            \draw[line width=2.5pt,#1] (frame.north west)--(frame.south west);
+            % \draw[line width=0.5pt,dashed,#1] (frame.north west)--(frame.north east);
+            % \draw[] {([yshift=-12pt,xshift=4.5pt]frame.north west)} node[anchor=west] {#2};
+            % \draw[] {([yshift=-12pt,xshift=-4.5pt]frame.north east)} node[anchor=east] {eg};
+        }
+    },
+}
+
+\definecolor{codegreen}{HTML}{369432}
+\definecolor{codegray}{HTML}{3a3d41}
+\definecolor{codepurple}{HTML}{c586c0}
+\definecolor{backcolour}{HTML}{1e1e1e}
+\definecolor{standartcolor}{HTML}{cccccc}
+\definecolor{codeorange}{HTML}{f48771}
+
+\setlength{\parindent}{0pt}
+\definecolor{bg}{rgb}{0.13, 0.13, 0.13}
+%\pagecolor{bg}
+%\color{white}
+\begin{document}
+%---COLORS---
+\definecolor{pRed}{RGB}{255, 55, 55}
+\definecolor{pOrange}{RGB}{219, 132, 36}
+
+%\pagestyle{fancy}
+%\fancyhf{}
+%\lhead{Moathekuchenaufgabe}
+%\rhead{Lösung}
+%\cfoot{\thepage}
+
+\thispagestyle{empty}
+
+\section*{Partielle Integration}
+
+\begin{boxx}[Red]{Definition}
+    Um das Produkt zweier Funktionen $u$ und $v'$ zu integrieren,
+    kann man dazu partielle Integration verwenden.
+
+    \begin{align} \label{ibp_eq}
+        \int uv' \, dx = uv - \int u'v\, dx
+    \end{align}
+
+    Dabei müssen $u$ und $v'$ so gewählt werden, dass das Integral von $u'v$
+    einfacher zu lösen ist.
+    \\\\
+    Mit Integrationsgrenzen lautet die Formel:
+    \begin{align*}
+        \int_a^b uv' \, dx = \left[uv\right]_a^b - \int_a^b u'v\, dx
+    \end{align*}
+\end{boxx}
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    $\displaystyle \int x \cos(x) \, dx$ \\
+
+    Wählt man $u(x) = x$ und $v'(x) = \cos(x)$, 
+    so erhält man für $u'$ und $v$:
+    \begin{align*}
+        u'(x) &= 1 & v(x) &= \sin(x)
+    \end{align*}
+    Mit der Formel \eqref{ibp_eq} folgt:
+    \begin{flalign*}
+        \int x \cos(x) \, dx &= x \sin(x) - \int \sin(x) \cdot 1 \, dx &\\
+        &= x \sin(x) + \cos(x) + c&
+    \end{flalign*}
+\end{boxx}
+\subsubsection*{Wiederholte partielle Integration}
+Für Integrale wie $\displaystyle \int x^2 e^x \, dx$  
+erhält man nach Anwendung der Formel $\displaystyle x^2 e^x - \int 2x e^x \, dx$.
+
+Um das entstandene Integral $\displaystyle\int 2x e^x \, dx$ zu lösen, 
+muss man partielle Integration erneut anwenden.
+
+\subsubsection*{Phoenix-Integration}
+Bei Integralen wie $\displaystyle \int \sin(x) \cos(x) \, dx$
+erhält man nach Anwenden der Formel wieder dasselbe Integral.
+Dieses kann dann mittels einer Äquivalenzumformung auf die andere Seite gebracht werden:
+\begin{flalign*}
+    \int \sin(x) \cos(x) \, dx &= \sin^2(x) - \int \sin(x) \cos(x) \, dx & &|\; +\int \sin(x) \cos(x) \, dx &\\
+    2 \int \sin(x) \cos(x) \, dx &= \sin^2(x) & &|\; :2 &\\
+    \int \sin(x) \cos(x) \, dx &= \frac{\sin^2(x)}{2} + c
+\end{flalign*}
+Es kann auch vorkommen, dass partielle Integration zweimal durchgeführt 
+werden muss, bevor man zum ursprünglichen Integral zurückkommt.
+Ebenso so ist zu beachten, dass ein konstanter Faktor vor das 
+Integral gezogen werden kann: 
+$\displaystyle \int c \cdot f(x) \, dx = c \int f(x) \, dx$
+
+\newpage
+\thispagestyle{empty}
+\subsection*{DI-Methode}
+
+\begin{wraptable}{r}{0.2\textwidth}
+    \centering
+    \begin{tabular}{ccc}
+        ~ & $D$ & $I$ \\ 
+        $+$ & $u$ & $v'$ \\ 
+        $-$ & $u'$ & $v$ \\ 
+        $+$ & $\vdots$ & $\vdots$ \\ 
+    \end{tabular}
+\end{wraptable}
+Um partielle Integration etwas übersichtlicher und unkomplizierter 
+zu gestalten, insbesondere bei wiederholter Anwendung, 
+können wir die DI-Methode verwenden.
+\\\\
+Bei der DI-Methode erstellt man eine Tabelle mit zwei Spalten;
+eine \textit{D}-Spalte, in der man die zu differenzierende Funktion wählt, 
+und eine \textit{I}-Spalte, in der man die zu integrierende Funktion wählt.
+Links daneben schreibt man abwechselnde $+$ und $-$ Zeichen.
+
+Jetzt differenziert man die Funktion in der \textit{D}-Spalte und integriert Funktion in der \textit{I}-Spalte.
+Man hört auf, wenn einer der folgenden 3 Haltepunkte aufkommt:
+\\\\
+\textbf{1. Eine 0 in der \textit{D}-Spalte}
+
+Erreicht man eine 0 in der \textit{D}-Spalte, hört man auf.
+Das Ergebnis erhält man nun durch das multiplizieren der Diagonalen
+vom  Eintrag in der \textit{D}-Spalte (mit Vorzeichen) zum darunterliegenden Eintrag in der 
+\textit{I}-Spalte für jede Zeile.
+\begin{multicols}{2}
+
+    \begin{flalign*}
+        & \int x^2 \sin(3x) \,dx &\\
+        & = \color{Purple} -\frac{1}{3} x^2 \cos(3x) \color{Orange}+ \frac{2}{9}x\sin(3x) \color{Green}+ \frac{2}{27}\cos(3x) \color{black} + c &
+    \end{flalign*}
+    \\\\
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{ccc}
+            ~ & $D$ & $I$ \\ 
+            \\[-.8em]
+            $\color{Purple}+$ & $\color{Purple} x^2$\tikzmark{11a} & $\displaystyle\sin(3x)$ \\ 
+            \\[-.8em]
+            $\color{Orange}-$ & $\color{Orange}2x$\tikzmark{12a} & \tikzmark{11b}$\color{Purple}\displaystyle-\frac{1}{3}\cos(3x)$ \\ 
+            \\[-.8em]
+            $\color{Green}+$ & $\color{Green}2$\tikzmark{13a} & \tikzmark{12b}$\color{Orange}\displaystyle-\frac{1}{9}\sin(3x)$ \\ 
+            \\[-.8em]
+            $-$ & $0$ & \tikzmark{13b}$\color{Green}\displaystyle \frac{1}{27}\sin(3x)$ \\ 
+        \end{tabular}
+    \end{table}
+
+\end{multicols}
+
+
+\begin{tikzpicture}[overlay, remember picture, shorten >=7pt, shorten <=7pt, transform canvas={yshift=.25\baselineskip}]
+    \color{Purple} \draw [->] ([xshift=-3pt]{pic cs:11a}) -- ([xshift=5pt]{pic cs:11b});
+    \color{Orange} \draw [->] ([xshift=-2pt]{pic cs:12a}) -- ([xshift=5pt]{pic cs:12b});
+    \color{Green}\draw [->] ([xshift=-1pt]{pic cs:13a}) -- ([xshift=5pt]{pic cs:13b});
+\end{tikzpicture}
+
+
+\textbf{2. Man kann das Produkt einer Zeile integrieren}
+
+Kann man das Produkt einer Zeile integrieren, hört man auf.
+Für das Ergebnis multipliziert man die Diagonalen wie beim ersten Haltepunkte
+und addiert bzw. subtrahiert dann (je nach Vorzeichen) das Integral des Produkts der letzten Zeile.
+
+\begin{multicols}{2}
+    \begin{flalign*}
+        & \int x^4 \ln(x) \,dx &\\
+        & = \frac{1}{5}x^5 \ln(x) \color{Yellow} - \int \frac{1}{x} \cdot \frac{1}{5}x^5 \, dx & \\
+        & = \frac{1}{5}x^5 \ln(x) - \int \frac{1}{5} x^4 \, dx \\
+        & = \frac{1}{5}x^5 \ln(x) - \frac{1}{25} x^5 + c
+    \end{flalign*}
+    \\
+    
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{ccc}
+            ~ & $D$ & $I$ \\
+            \\[-.8em]
+            $+$ & $\displaystyle\ln(x)$\tikzmark{21a} & $\displaystyle x^4$ \\ 
+            \\[-.8em]
+            $\color{Yellow}-$ & $\color{Yellow}\displaystyle\frac{1}{x}$ & \tikzmark{21b}$\color{Yellow}\displaystyle \frac{1}{5}x^5$ \\ 
+            \\[-.8em]
+        \end{tabular}
+    \end{table}
+\end{multicols}
+
+\begin{tikzpicture}[overlay, remember picture, shorten >=7pt, shorten <=7pt, transform canvas={yshift=.25\baselineskip}]
+    \draw [->] ([xshift=-3pt]{pic cs:21a}) -- ([xshift=1pt]{pic cs:21b});
+\end{tikzpicture}
+
+
+\textbf{3. Eine Zeile wiederholt sich}
+
+Wiederholt sich eine Zeile (abgesehen von Konstanten), hört man auf. 
+Man verfährt nun so wie beim 2. Haltepunkt.
+Dieser Fall entspricht dann der Phoenix-Integration und ist dementsprechend zu lösen.
+
+\begin{multicols}{2}
+
+    \begin{flalign*}
+        \int e^x \sin(x) \,dx &= - e^x \cos(x) + e^x \sin(x) \color{Yellow} - \int e^x \sin(x)\,dx &\\
+        2\int e^x \sin(x) \,dx &= - e^x \cos(x) + e^x \sin(x) &\\
+        \int e^x \sin(x) \,dx &= - \frac{1}{2}e^x \cos(x) + \frac{1}{2}e^x \sin(x) + c&\\
+    \end{flalign*}
+    \\
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{ccc}
+            ~ & $D$ & $I$ \\ 
+            \\[-.8em]
+            $+$ & $\displaystyle e^x$\tikzmark{31a} & $\displaystyle \sin(x)$ \\ 
+            \\[-.8em]
+            $-$ & $\displaystyle e^x$\tikzmark{32a} & \tikzmark{31b}$\displaystyle -\cos(x)$ \\ 
+            \\[-.8em]
+            $\color{Yellow}+$ & $\color{Yellow}\displaystyle e^x$ & \tikzmark{32b}$\color{Yellow}\displaystyle -\sin(x)$ \\ 
+        \end{tabular}
+        \begin{tikzpicture}[overlay, remember picture, shorten >=7pt, shorten <=7pt, transform canvas={yshift=.25\baselineskip}]
+            \draw [->] ([xshift=-3pt]{pic cs:31a}) -- ([xshift=4pt]{pic cs:31b});
+            \draw [->] ([xshift=-3pt]{pic cs:32a}) -- ([xshift=4pt]{pic cs:32b});
+        \end{tikzpicture}
+    \end{table}
+\end{multicols}
+
+\end{document}

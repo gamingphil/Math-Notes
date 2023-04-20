@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.3.19)  30 MAR 2023 23:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.3.19)  20 APR 2023 08:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"f:/School/Jahrgangsstufe/M51 Mathe/Mathe Aufschriebe/test.tex"
-(f:/School/Jahrgangsstufe/M51 Mathe/Mathe Aufschriebe/test.tex
+**"f:/School/Jahrgangsstufe/M51 Mathe/Mathe Aufschriebe/partielleIntegration.tex"
+(f:/School/Jahrgangsstufe/M51 Mathe/Mathe Aufschriebe/partielleIntegration.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22> (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
@@ -464,13 +464,19 @@ File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \arrowsize=\dimen273
-)) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/pgfplots\pgfplots.sty (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.revision.tex)
+)) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tikzmark\tikzlibrarytikzmark.code.tex
+File: tikzlibrarytikzmark.code.tex 2022/08/24 v1.15 TikZ library for marking positions in a document
+\l__sn_x_dim=\dimen274
+\l__sn_y_dim=\dimen275
+\l__sn_xa_dim=\dimen276
+\l__sn_ya_dim=\dimen277
+) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/pgfplots\pgfplots.sty (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.revision.tex)
 Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.code.tex (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotscore.code.tex
 \t@pgfplots@toka=\toks45
 \t@pgfplots@tokb=\toks46
 \t@pgfplots@tokc=\toks47
-\pgfplots@tmpa=\dimen274
+\pgfplots@tmpa=\dimen278
 \c@pgfplots@coordindex=\count312
 \c@pgfplots@scanlineindex=\count313
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/sys\pgfplotssysgeneric.code.tex)) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\pgfplotslibrary.code.tex) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/oldpgfcompatib\pgfplotsoldpgfsupp_loader.code.tex (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryfpu.code.tex)
@@ -486,24 +492,24 @@ Package pgfplots: loading complementary utilities for your pgf version...
 ) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsdeque.code.tex) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotsbinary.code.tex (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotsbinary.data.code.tex)) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotsutil.verb.code.tex) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\pgflibrarypgfplots.surfshading.code.tex
 \c@pgfplotslibrarysurf@no=\count316
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/sys\pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotscolormap.code.tex (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotscolor.code.tex)) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsstackedplots.code.tex) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsplothandlers.code.tex (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsmeshplothandler.code.tex (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsmeshplotimage.code.tex))) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.scaling.code.tex) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotscoordprocessing.code.tex) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.errorbars.code.tex) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.markers.code.tex) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsticks.code.tex) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.paths.code.tex) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.code.tex (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen275
-\pgfdecoratedremainingdistance=\dimen276
-\pgfdecoratedinputsegmentcompleteddistance=\dimen277
-\pgfdecoratedinputsegmentremainingdistance=\dimen278
-\pgf@decorate@distancetomove=\dimen279
+\pgfdecoratedcompleteddistance=\dimen279
+\pgfdecoratedremainingdistance=\dimen280
+\pgfdecoratedinputsegmentcompleteddistance=\dimen281
+\pgfdecoratedinputsegmentremainingdistance=\dimen282
+\pgf@decorate@distancetomove=\dimen283
 \pgf@decorate@repeatstate=\count317
-\pgfdecorationsegmentamplitude=\dimen280
-\pgfdecorationsegmentlength=\dimen281
+\pgfdecorationsegmentamplitude=\dimen284
+\pgfdecorationsegmentlength=\dimen285
 )
 \tikz@lib@dec@box=\box79
 ) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathmorphing.code.tex (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathmorphing.code.tex)) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathreplacing.code.tex (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathreplacing.code.tex)) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\tikzlibrarypgfplots.contourlua.code.tex)
 \pgfplots@numplots=\count318
-\pgfplots@xmin@reg=\dimen282
-\pgfplots@xmax@reg=\dimen283
-\pgfplots@ymin@reg=\dimen284
-\pgfplots@ymax@reg=\dimen285
-\pgfplots@zmin@reg=\dimen286
-\pgfplots@zmax@reg=\dimen287
+\pgfplots@xmin@reg=\dimen286
+\pgfplots@xmax@reg=\dimen287
+\pgfplots@ymin@reg=\dimen288
+\pgfplots@ymax@reg=\dimen289
+\pgfplots@zmin@reg=\dimen290
+\pgfplots@zmax@reg=\dimen291
 ) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryplotmarks.code.tex
 File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplotmarks.code.tex
@@ -545,21 +551,21 @@ Package: ragged2e 2023/02/25 v3.4 ragged2e Package
 Package: multicol 2021/11/30 v1.9d multicolumn formatting (FMi)
 \c@tracingmulticols=\count323
 \mult@box=\box80
-\multicol@leftmargin=\dimen288
+\multicol@leftmargin=\dimen292
 \c@unbalance=\count324
 \c@collectmore=\count325
 \doublecol@number=\count326
 \multicoltolerance=\count327
 \multicolpretolerance=\count328
-\full@width=\dimen289
-\page@free=\dimen290
-\premulticols=\dimen291
-\postmulticols=\dimen292
+\full@width=\dimen293
+\page@free=\dimen294
+\premulticols=\dimen295
+\postmulticols=\dimen296
 \multicolsep=\skip84
 \multicolbaselineskip=\skip85
 \partial@page=\box81
 \last@line=\box82
-\maxbalancingoverflow=\dimen293
+\maxbalancingoverflow=\dimen297
 \mult@rightbox=\box83
 \mult@grightbox=\box84
 \mult@firstbox=\box85
@@ -603,9 +609,9 @@ Package: multicol 2021/11/30 v1.9d multicolumn formatting (FMi)
 \c@minrows=\count329
 \c@columnbadness=\count330
 \c@finalcolumnbadness=\count331
-\last@try=\dimen294
-\multicolovershoot=\dimen295
-\multicolundershoot=\dimen296
+\last@try=\dimen298
+\multicolovershoot=\dimen299
+\multicolundershoot=\dimen300
 \mult@nat@firstbox=\box123
 \colbreak@box=\box124
 \mc@col@check@num=\count332
@@ -617,14 +623,14 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@cnth=\count333
 \Gm@cntv=\count334
 \c@Gm@tempcnt=\count335
-\Gm@bindingoffset=\dimen297
-\Gm@wd@mp=\dimen298
-\Gm@odd@mp=\dimen299
-\Gm@even@mp=\dimen300
-\Gm@layoutwidth=\dimen301
-\Gm@layoutheight=\dimen302
-\Gm@layouthoffset=\dimen303
-\Gm@layoutvoffset=\dimen304
+\Gm@bindingoffset=\dimen301
+\Gm@wd@mp=\dimen302
+\Gm@odd@mp=\dimen303
+\Gm@even@mp=\dimen304
+\Gm@layoutwidth=\dimen305
+\Gm@layoutheight=\dimen306
+\Gm@layouthoffset=\dimen307
+\Gm@layoutvoffset=\dimen308
 \Gm@dimlist=\toks54
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/cancel\cancel.sty
 Package: cancel 2013/04/12 v2.2 Cancel math terms
@@ -634,8 +640,8 @@ Package: mhchem 2021/12/31 v4.09 for typesetting chemical formulae
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count336
 \calc@Bcount=\count337
-\calc@Adimen=\dimen305
-\calc@Bdimen=\dimen306
+\calc@Adimen=\dimen309
+\calc@Bdimen=\dimen310
 \calc@Askip=\skip86
 \calc@Bskip=\skip87
 LaTeX Info: Redefining \setlength on input line 80.
@@ -659,13 +665,13 @@ Package: chemgreek 2020/01/16 v1.1a interface for upright Greek letters for use 
 \mhchem@bondtmp@minussidebearingleft=\skip97
 \mhchem@bondtmp@minussidebearingright=\skip98
 \l__mhchem_option_version_int=\count342
-\mhchem@option@minusmathsidebearingleft=\dimen307
-\mhchem@option@minusmathsidebearingright=\dimen308
-\mhchem@option@minustextsidebearingleft=\dimen309
-\mhchem@option@minustextsidebearingright=\dimen310
+\mhchem@option@minusmathsidebearingleft=\dimen311
+\mhchem@option@minusmathsidebearingright=\dimen312
+\mhchem@option@minustextsidebearingleft=\dimen313
+\mhchem@option@minustextsidebearingright=\dimen314
 ) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/wrapfig\wrapfig.sty
-\wrapoverhang=\dimen311
-\WF@size=\dimen312
+\wrapoverhang=\dimen315
+\WF@size=\dimen316
 \c@WF@wrappedlines=\count343
 \WF@box=\box125
 \WF@everypar=\toks55
@@ -695,7 +701,7 @@ Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
 \c@section@level=\count344
 )
-\@linkdim=\dimen313
+\@linkdim=\dimen317
 \Hy@linkcounter=\count345
 \Hy@pagecounter=\count346
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
@@ -726,15 +732,15 @@ Package hyperref Info: Bookmarks ON on input line 4425.
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4763.
-\XeTeXLinkMargin=\dimen314
+\XeTeXLinkMargin=\dimen318
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
 \Fld@menulength=\count349
-\Field@Width=\dimen315
-\Fld@charsize=\dimen316
+\Field@Width=\dimen319
+\Fld@charsize=\dimen320
 Package hyperref Info: Hyper figures OFF on input line 6042.
 Package hyperref Info: Link nesting OFF on input line 6047.
 Package hyperref Info: Hyper index ON on input line 6050.
@@ -772,22 +778,22 @@ Package: sidecap 2023/01/24 v1.7a SideCap Package (RN/HjG)
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
-\SC@BOXWD=\dimen317
-\SC@CAPWD=\dimen318
-\SC@tempdima=\dimen319
-\SC@tempdimb=\dimen320
+\SC@BOXWD=\dimen321
+\SC@CAPWD=\dimen322
+\SC@tempdima=\dimen323
+\SC@tempdimb=\dimen324
 \c@SC@C=\count355
 \SC@BOX=\box126
 ) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pdfpages.sty
 Package: pdfpages 2022/12/19 v0.5x Insert pages of external PDF documents (AM)
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
 Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
-\ESO@tempdima=\dimen321
-\ESO@tempdimb=\dimen322
+\ESO@tempdima=\dimen325
+\ESO@tempdimb=\dimen326
 )
-\AM@pagewidth=\dimen323
-\AM@pageheight=\dimen324
-\AM@fboxrule=\dimen325
+\AM@pagewidth=\dimen327
+\AM@pageheight=\dimen328
+\AM@fboxrule=\dimen329
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pppdftex.def
 File: pppdftex.def 2022/12/19 v0.5x Pdfpages driver for pdfTeX (AM)
 )
@@ -807,14 +813,14 @@ Package: subcaption 2023/02/19 v1.6 Sub-captions (AR)
 Package: caption 2023/03/12 v3.6j Customizing captions (AR)
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
 Package: caption3 2023/03/12 v2.4 caption3 kernel (AR)
-\caption@tempdima=\dimen326
-\captionmargin=\dimen327
-\caption@leftmargin=\dimen328
-\caption@rightmargin=\dimen329
-\caption@width=\dimen330
-\caption@indent=\dimen331
-\caption@parindent=\dimen332
-\caption@hangindent=\dimen333
+\caption@tempdima=\dimen330
+\captionmargin=\dimen331
+\caption@leftmargin=\dimen332
+\caption@rightmargin=\dimen333
+\caption@width=\dimen334
+\caption@indent=\dimen335
+\caption@parindent=\dimen336
+\caption@hangindent=\dimen337
 Package caption Info: Standard document class detected.
 )
 \c@caption@flags=\count359
@@ -863,7 +869,7 @@ LaTeX Info: Redefining \textsu on input line 712.
 LaTeX Info: Redefining \textde on input line 714.
 LaTeX Info: Redefining \textinf on input line 716.
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 49.
+Package hyperref Info: Option `colorlinks' set `true' on input line 50.
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcolorbox.sty
@@ -921,53 +927,53 @@ Library (tcolorbox): 'tcbhooks.code.tex' version '6.0.1'
 Library (tcolorbox): 'tcbtheorems.code.tex' version '6.0.1'
 ) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbfitting.code.tex
 Library (tcolorbox): 'tcbfitting.code.tex' version '6.0.1'
-\tcbfitdim=\dimen334
-\tcb@lowerfitdim=\dimen335
-\tcb@upperfitdim=\dimen336
+\tcbfitdim=\dimen338
+\tcb@lowerfitdim=\dimen339
+\tcb@upperfitdim=\dimen340
 \tcb@cur@hbadness=\count372
 ))
-LaTeX Info: Redefining \oldstylenums on input line 144.
-LaTeX Font Info:    Trying to load font information for T1+XCharter-TLF on input line 144.
+LaTeX Info: Redefining \oldstylenums on input line 145.
+LaTeX Font Info:    Trying to load font information for T1+XCharter-TLF on input line 145.
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/xcharter\t1xcharter-tlf.fd
 File: T1XCharter-TLF.fd 2017/06/25 (autoinst) Font definitions for T1/XCharter-TLF.
 )
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 9.60007pt on input line 144.
- (test.aux)
-\openout1 = `test.aux'.
+(Font)              scaled to size 9.60007pt on input line 145.
+ (partielleIntegration.aux)
+\openout1 = `partielleIntegration.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\translations-basic-dictionary-german.trsl
 File: translations-basic-dictionary-german.trsl (german translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `german'. on input line 144.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `german'. on input line 145.
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count373
-\scratchdimen=\dimen337
+\scratchdimen=\dimen341
 \scratchbox=\box141
 \nofMPsegments=\count374
 \nofMParguments=\count375
 \everyMPshowfont=\toks63
 \MPscratchCnt=\count376
-\MPscratchDim=\dimen338
+\MPscratchDim=\dimen342
 \MPnumerator=\count377
 \makeMPintoPDFobject=\count378
 \everyMPtoPDFconversion=\toks64
@@ -979,15 +985,15 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 \symgns@font=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
-(Font)                  TS1/XCharter-TLF/m/n --> TS1/XCharter-TLF/b/n on input line 144.
-Package gensymb Info: Math companion symbols declared on input line 144.
-LaTeX Info: Redefining \degree on input line 144.
-LaTeX Info: Redefining \celsius on input line 144.
-Package gensymb Info: Using text companion symbols for \degree, \celsius and \perthousand on input line 144.
-LaTeX Info: Redefining \ohm on input line 144.
-Package gensymb Info: Using \textohm for \ohm on input line 144.
-LaTeX Info: Redefining \micro on input line 144.
-Package gensymb Info: Using \textmu for \micro on input line 144.
+(Font)                  TS1/XCharter-TLF/m/n --> TS1/XCharter-TLF/b/n on input line 145.
+Package gensymb Info: Math companion symbols declared on input line 145.
+LaTeX Info: Redefining \degree on input line 145.
+LaTeX Info: Redefining \celsius on input line 145.
+Package gensymb Info: Using text companion symbols for \degree, \celsius and \perthousand on input line 145.
+LaTeX Info: Redefining \ohm on input line 145.
+Package gensymb Info: Using \textohm for \ohm on input line 145.
+LaTeX Info: Redefining \micro on input line 145.
+Package gensymb Info: Using \textmu for \micro on input line 145.
 
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
@@ -1026,12 +1032,12 @@ Package pgfplots notification 'compat/show suggested version=true': document has
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Package chemgreek Info: Activating mapping `default' on line 144.
+Package chemgreek Info: Activating mapping `default' on line 145.
 
-Package hyperref Info: Link coloring ON on input line 144.
-(test.out) (test.out)
+Package hyperref Info: Link coloring ON on input line 145.
+(partielleIntegration.out) (partielleIntegration.out)
 \@outlinefile=\write4
-\openout4 = `test.out'.
+\openout4 = `partielleIntegration.out'.
 
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
@@ -1047,60 +1053,108 @@ Package caption Info: End \AtBeginDocument code.
 \c@mv@tabular=\count379
 \c@mv@boldtabular=\count380
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 11.52008pt on input line 155.
+(Font)              scaled to size 13.82408pt on input line 158.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
-(Font)              scaled to size 11.52008pt on input line 155.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 157.
+(Font)              scaled to size 13.82408pt on input line 158.
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 10.56007pt on input line 160.
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
+(Font)              scaled to size 10.56007pt on input line 160.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 161.
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 157.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 161.
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for TS1+XCharter-TLF on input line 157.
+LaTeX Font Info:    Trying to load font information for TS1+XCharter-TLF on input line 161.
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/xcharter\ts1xcharter-tlf.fd
 File: TS1XCharter-TLF.fd 2020/05/25 (msharpe) Font definitions for TS1/XCharter-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 9.60007pt on input line 157.
+(Font)              scaled to size 9.60007pt on input line 161.
 LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 6.72005pt on input line 157.
+(Font)              scaled to size 6.72005pt on input line 161.
 LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 4.80003pt on input line 157.
-LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 10.56007pt on input line 161.
+(Font)              scaled to size 4.80003pt on input line 161.
+
+Underfull \hbox (badness 10000) in paragraph at lines 168--172
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--179
+
+ []
+
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
-(Font)              scaled to size 10.56007pt on input line 161.
-LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
-(Font)              scaled to size 9.60007pt on input line 221.
- [1
+(Font)              scaled to size 9.60007pt on input line 191.
+[1
 
 {C:/Users/Phil/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 6.72005pt on input line 232.
-LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 4.80003pt on input line 232.
- [2] (test.aux)
+(Font)              scaled to size 11.52008pt on input line 215.
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
+(Font)              scaled to size 11.52008pt on input line 215.
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/it' will be
+(Font)              scaled to size 9.60007pt on input line 231.
 
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 3.25pt have occurred.
+Underfull \hbox (badness 10000) in paragraph at lines 226--234
 
-Package rerunfilecheck Info: File `test.out' has not changed.
-(rerunfilecheck)             Checksum: F033B1E40B8734B8AB3F517F85422C37;40.
+ []
+
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/it' will be
+(Font)              scaled to size 9.60007pt on input line 238.
+
+Underfull \hbox (badness 10000) in paragraph at lines 235--239
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 249--264
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 249--264
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 288--290
+
+ []
+
+
+Overfull \hbox (37.73177pt too wide) detected at line 321
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--338
+
+ []
+
+
+Overfull \vbox (6.43707pt too high) has occurred while \output is active []
+
+ [2] (partielleIntegration.aux)
+Package rerunfilecheck Info: File `partielleIntegration.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 47152 strings out of 476334
- 1147760 string characters out of 5788443
- 1888382 words of memory out of 5000000
- 66824 multiletter control sequences out of 15000+600000
- 585095 words of font info for 82 fonts, out of 8000000 for 9000
+ 46900 strings out of 476334
+ 1140247 string characters out of 5788443
+ 1881382 words of memory out of 5000000
+ 66559 multiletter control sequences out of 15000+600000
+ 579474 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,11n,85p,818b,2315s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/xcharter/xch_rydp4l.enc}<C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/xcharter/XCharter-Bold.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/xcharter/XCharter-Roman.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on test.pdf (2 pages, 187360 bytes).
+ 84i,12n,85p,834b,1004s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/xcharter/xch_rydp4l.enc}<C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/xcharter/XCharter-Bold.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/xcharter/XCharter-BoldItalic.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/xcharter/XCharter-Italic.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/xcharter/XCharter-Roman.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on partielleIntegration.pdf (2 pages, 271584 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
- 8 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 86 PDF objects out of 1000 (max. 8388607)
+ 12 named destinations out of 1000 (max. 500000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
