@@ -1,4 +1,4 @@
-# Math-Notes
+# Math Notes
 
 This is a repository for my personal math notes, written in LaTeX. The notes are organized into several files:
 - **notes.tex**: This file contains older chapters of my notes. I keep them separate to reduce compilation times.
@@ -12,6 +12,8 @@ I use this repository to version control my notes and to make them easily access
 
 The notes cover topics in mathematics that are taught in a high school advanced math course in Germany, specifically in the state of Baden-Württemberg.
 They are taught in preparation for the Abitur exam, which is the standardized test that high school students take in Germany.
+
+Please note that the notes are written in German and may not be practical for English speakers.
 
 So far the notes feature the following topics:
 1. Differential Calculus
