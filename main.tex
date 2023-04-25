@@ -225,4 +225,47 @@ Bei den Spiegelungen von $f$ gilt:
     \end{align*}
     \qed
 \end{boxx}
+\subsection{Linearfaktordarstellung - mehrfache Nullstellen}
+\begin{boxx}[LightGreen]{Satz 1}
+    Hat eine ganzrationale Funktion vom Grad $n$ eine Nullstelle
+    $x_0$, so gilt:
+    \begin{align*}
+        f(x) &= (x - x_0)\cdot g(x) & &\text{wobei } g \text{ vom Grad } n-1 \text{ ist.}
+    \end{align*}
+    $(x- x_0)$ nennt man \textbf{Linearfaktor}.
+\end{boxx}
+\begin{boxx}[LightGreen]{Satz 2}
+    Eine ganzrationale Funktion $n$-ten Grades besitzt höchstens $n$ Nullstellen.
+\end{boxx}
+\begin{boxx}[LightGreen]{Satz 3}
+    Sei $\displaystyle f(x) = (x-a)^k \cdot g(x)$.
+    \begin{itemize}
+        \item Für $k = 1:$ Schnittstelle von $f$ mit der $x$-Achse.
+        \item Für $k = 2:$ Berührstelle von $f$ an der $x$-Achse.
+        \item Für $k = 3:$ Sattelstelle von $f$ an der $x$-Achse.
+    \end{itemize}
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Skizziere den Graph von $f$ mit $\displaystyle f(x) = x^3(x-2)^2(x+1)$.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            width = 10cm,
+            height = 7cm,
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            restrict y to domain=-8:8,
+            xmax = 2.75,
+            xmin = -1.75,
+            ymax = 5,
+            ymin = -1,
+            ytick = {\empty},
+        ]
+            \addplot[thick, DarkBlue, samples = 100, domain = -1.75:2.75]{x^3*(x-2)^2*(x+1)} node[anchor = east, pos = 0.85] {\(G_f\)};
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+\end{boxx}
 \end{document}
