@@ -246,7 +246,7 @@ Bei den Spiegelungen von $f$ gilt:
     \end{itemize}
 \end{boxx}
 \begin{boxx}[DarkBlue]{Beispiel}
-    Skizziere den Graph von $f$ mit $\displaystyle f(x) = x^3(x-2)^2(x+1)$.
+    $a)$\hspace{3mm} Skizziere den Graph von $f$ mit $\displaystyle f(x) = x^3(x-2)^2(x+1)$.
     \begin{figure}[H]
         \centering
         \begin{tikzpicture}
@@ -267,5 +267,30 @@ Bei den Spiegelungen von $f$ gilt:
         \end{axis}
         \end{tikzpicture}
     \end{figure}
+    \newpage
+    $b)$\hspace{3mm} Bestimme die Funktionsgleichung des folgenden Graphen.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            width = 10cm,
+            height = 7cm,
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            restrict y to domain = -3:3,
+            ymin = -2.5,
+            ymax = 3.2,
+            xtick = {-1,1,2}
+        ]
+            \addplot[thick, DarkBlue, domain = -2:3, samples = 100]{0.5*(x+1)^3*(x-1)*(x-2)^2} node[anchor = south west, pos = 0.1] {\(G_g\)};
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+    \begin{align*}
+        g(x) &= a(x+1)^3 (x-1) (x-2)^2 \\
+        \text{mit } a &= 1: \;g(0) = -4 \Rightarrow a = \frac{1}{2} \\
+        g(x) &= \frac{1}{2} (x+1)^3 (x-1) (x-2)^2
+    \end{align*}
 \end{boxx}
 \end{document}
