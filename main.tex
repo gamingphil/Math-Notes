@@ -293,4 +293,91 @@ Bei den Spiegelungen von $f$ gilt:
         g(x) &= \frac{1}{2} (x+1)^3 (x-1) (x-2)^2
     \end{align*}
 \end{boxx}
+
+\subsection{Lösen von Gleichungen}
+Folgende Strategien zum Lösen von diversen Gleichungen sind
+zielführend:
+\subsubsection*{Betragsgleichungen}
+Führe eine Fallunterscheidung durch:
+\begin{itemize}
+    \item für positive Beträge kann man den Betrag weglassen und
+    die Gleichung wie gewohnt lösen.
+    \item für negative Beträge wird eine Seite der Gleichung mit
+    $-1$ multipliziert.
+\end{itemize}
+\begin{boxx}[DarkBlue]{Beispiel}
+    \begin{align*}
+        && \left|\frac{10}{e^x-1}\right| &= 2 \\
+        &\text{Fall 1:} & \frac{10}{e^x-1} &= 2 & &|\; \cdot e^x - 1 \\ 
+        && 10 &= 2e^x - 2 & &|\; + 2 ;\; \cdot \frac{1}{2} \\
+        && 6 &= e^x  & &|\; \ln\\
+        && x &= \ln 6 \\
+        &\text{Fall 2:} & -\frac{10}{e^x-1} &= 2 & &|\; \cdot e^x - 1 \\
+        && -10 &= 2e^x - 2 & &|\; + 2 ;\; \cdot \frac{1}{2} \\
+        && -4 &= e^x \Rightarrow \text{keine Lösung} \\
+        &\text{Probe:} & \left|\frac{10}{e^{\ln 6}-1}\right| &= \left|\frac{10}{5}\right| = 2 \\
+        && &\Rightarrow \mathbb{L} = \{\ln 6\}
+    \end{align*}
+\end{boxx}
+\subsubsection*{Wurzelgleichungen}
+\begin{itemize}
+    \item isoliere die Wurzel
+    \item quadriere beide Seiten der Gleichung
+\end{itemize}
+\begin{boxx}[DarkBlue]{Beispiel}
+    \begin{align*}
+        \sqrt{20 - 2x} + 6 &= x & &|\; -6 \\
+        \sqrt{20 - 2x} &= x-6 & &|\; ()^2 \\
+        20 - 2x &= (x-6)^2 \\
+        20 - 2x &= x^2 - 12x + 36 & &|\; -20 + 2x \\
+        x^2 - 10x + 16 &= 0 \\
+        (x-2)(x-8) &= 0 \\
+        x_1 = 2;\; x_2 &= 8
+    \end{align*}
+    \begin{align*}
+        &\text{Probe:} &  \sqrt{20 - 2\cdot 2} + 6 &= 2 \Leftrightarrow 4 + 6 \not = 2 &&\\
+        & &  \sqrt{20 - 2\cdot 8} + 6 &= 8 \Leftrightarrow 2 + 6  = 8 &&\\
+        & & \Rightarrow \mathbb{L} &= \{8\}
+    \end{align*}
+\end{boxx}
+\subsubsection*{Bruchgleichungen}
+\begin{itemize}
+    \item Bestimme den Hauptnenner
+    \item Beide Seiten mit dem Hauptnenner durchmultiplizieren
+\end{itemize}
+\begin{boxx}[DarkBlue]{Beispiel}
+    \begin{align*}
+        \frac{6}{x^4} - \frac{5}{x^2} &= -1 & &|\; \cdot x^4 \\
+        6 - 5x^2 &= -x^4 & &|\; + x^4 \\
+        x^4 - 5x^2 + 6 &= 0  & &|\; u = x^2 \\
+        u^2 - 5u +6 &= 0 \\
+        (u-2)(u-3) &= 0 \\
+        u_1 = 2;\; u_2 &= 3 & &|\; x^2 = u
+    \end{align*}
+    \begin{align*}
+        x^2 &= 2 & x^2 &= 3\\
+        x_1 &= \pm \sqrt{2} &  x_2 &= \pm \sqrt{3}
+    \end{align*}
+    \begin{center}
+        $x^4 \not = 0$ und $x^2 \not = 0$ für $x = \pm \sqrt{2}$ oder $x = \pm \sqrt{3}$
+    \end{center}
+    \[\Rightarrow \mathbb{L} = \{\sqrt{2};\,-\sqrt{2};\,\sqrt{3};\,-\sqrt{3}\}\]
+\end{boxx}
+\newpage
+\subsubsection*{Ungleichungen}
+Entweder: Mit Vergleichszeichen auflösen und aufpassen bei
+Mulitplikation oder Division mit negativen Zahlen.
+\\\\
+Oder: Eine Gleichung lösen und Werte größer und kleiner als
+die Lösung testen.
+\begin{boxx}[DarkBlue]{Beispiel}
+    \begin{align*}
+        1 - \left(\frac{1}{2}\right)^x &< 0.05 & &|\; - 1 \\
+        - \left(\frac{1}{2}\right)^x &< -0.95 & &|\; \cdot (-1) \\
+        \left(\frac{1}{2}\right)^x &> 0.95 & &|\; \log \\
+        x \log 0.5 &> \log 0.95 & &|\; \cdot \frac{1}{\log 0.5} \\
+        x &< \frac{\log 0.95}{\log 0.5} \approx 0.074
+    \end{align*}
+\end{boxx}
+
 \end{document}
