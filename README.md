@@ -10,7 +10,7 @@ I use this repository to version control my notes and to make them easily access
 
 ## Topics and Language
 
-The notes cover topics in mathematics that are taught in a high school advanced math course in Germany, specifically in the state of Baden-Württemberg.
+The notes cover topics in mathematics that are taught in an advanced high school math course in Germany, specifically in the state of Baden-Württemberg.
 They are taught in preparation for the Abitur exam, which is the standardized test that high school students take in Germany.
 
 Please note that the notes are written in German and may not be practical for English speakers.
