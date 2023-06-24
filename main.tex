@@ -444,16 +444,81 @@ gespiegelt.
         \begin{tikzpicture}
         \begin{axis}[
             height=6cm,
-            width=11cm,
+            width=12cm,
             axis lines = middle,
             xlabel = {\(x\)},
             ylabel = {\(y\)},
+            ytick = {1, -1, -2, -3},
             xmin=-3.5,
             xmax=3.5,
-            ymin=-3.2,
-            ymax=1.4
+            ymin=-3.5,
+            ymax=1.6,
+            grid = major,
+            clip = false
         ]
-        \addplot[thick, DarkBlue, domain=-3.14:3.14, samples=200, smooth]{2*sin(deg(2*pi*(x-1)))-1};
+        \addplot[thick, DarkBlue, domain=-3.2:3.2, samples=200, smooth]{2*sin(deg(2*pi*(x-1)))-1} node[pos=0.01, anchor = east] {\(G_f\)};
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+\end{boxx}
+
+\subsection{Senkrechte und waagerechte Asymptoten}
+
+Gegeben sind die ganzrationalen Funktionen $g(x)$ und
+$h(x)$. Die Funktion $f$ mit $\displaystyle f(x) = \frac{g(x)}{h(x)}\;\;\;(h(x)\not= 0)$
+nennt man \textbf{gebrochenrationale Funktion}.
+
+Wenn $g\left(x_0\right) \not= 0$ und $h\left(x_0\right) = 0$ gilt,
+dann ist $x_0$ eine \textbf{Polstelle} von $f$ und die Gerade mit
+$x=x_0$ ist eine \textbf{senkrechte Asymptote} des Graphen von $f$.
+
+Gilt $g\left(x_0\right) = 0$ und $h\left(x_0\right) = 0$,
+dann liegt keine senkrechte Asymptote, sondern eine \textbf{hebbare Definitionslücke} vor.
+
+Für die waagerechte Asymptote gilt:
+\begin{enumerate}
+    \item Zählergrad > Nennergrad: keine waagerechte Asymptote
+    \item Zählergrad = Nennergrad: höchste Potenz von $x$ ausklammern und 
+    $\displaystyle \lim_{x\to\pm\infty} f(x)$ bilden. $\displaystyle \left(y = \frac{a}{b}\right)$
+    \item Zählergrad < Nennergrad: waagerechte Asymptote bei $y = 0$.
+\end{enumerate}
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} Bestimme die senkrechte und waagerechte Asymptote.\\\\
+    $\displaystyle f(x) = \frac{6x^2+3}{5x^2- \sfrac{1}{2}}$ 
+    \begin{align*}
+        5x^2 - \frac{1}{2} = 0 \Leftrightarrow x &= \pm\frac{1}{\sqrt{10}} & &\rightarrow \text{Senk. Asymp. bei } x = \pm\frac{1}{\sqrt{10}}\\
+        \lim_{x\to\pm\infty} \frac{\cancel{x^2}\left(6 + \frac{3}{x^2}\right)}{\cancel{x^2}\left(5 - \frac{\sfrac{1}{2}}{x^2}\right)} &= \frac{6}{5}
+        & &\rightarrow \text{Wag. Asymp. bei } y = \frac{6}{5}
+    \end{align*}
+    $\displaystyle g(x) = \frac{7x}{x^2 - 1}$
+    \begin{align*}
+        x^2 - 1 = 0 \Leftrightarrow x &= \pm 1 & &\rightarrow \text{Senk. Asymp. bei } x = \pm 1\\
+        & & &\rightarrow \text{Wag. Asymp. bei } y = 0
+    \end{align*}
+    $\displaystyle h(x) = \frac{3x^2 + 2}{7x - 2}$ \\
+    \begin{align*}
+        7x - 2 = 0 \Leftrightarrow x &= \frac{2}{7} & &\rightarrow \text{Senk. Asymp. bei } x = \frac{2}{7} \\
+        & & &\rightarrow \text{keine wag. Asymp.}
+    \end{align*}
+    \newpage
+    $b)$\hspace{3mm} Skizziere den Graphen von $t$ mit 
+    $\displaystyle t(x) = \frac{3x^2 + 1}{x^2 + 4x + 4}$.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            height=7cm,
+            width=10cm,
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            xmax= 15,
+            xmin = -15,
+            restrict y to domain = -20:20
+        ]
+        \addplot[thick, DarkBlue, domain=-20:20, samples = 500]{(3*x^2+1)/(x^2 +4*x + 4)} node[pos=0.1, anchor = south] {\(G_f\)};
+        \addplot[thick,dashed, LightPurple, domain=-15:15]{3} node[pos=0.57, anchor=south]{\(y = 3\)};
+        \addplot[thick,dashed, LightPurple, domain=-15:15] coordinates {(-2,20) (-2, 0)} node[pos=0.92,anchor=east] {\(x=-2\)};
         \end{axis}
         \end{tikzpicture}
     \end{figure}
