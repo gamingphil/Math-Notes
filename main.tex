@@ -523,4 +523,88 @@ Für die waagerechte Asymptote gilt:
         \end{tikzpicture}
     \end{figure}
 \end{boxx}
+\subsection{Vollständige Kurvendiskussion}
+Strategie zum "`Zeichnen"' eines Graphen:
+\begin{enumerate}
+    \item Nullstellen bestimmen $\displaystyle \left(f(x) = 0\right)$,
+    \item senkrechte und waagerechte Asymptoten bestimmen,
+    \item Symmetrie zur $y$-Achse und zum Ursprung,
+    \item Hoch-, Tief- und Wendepunkte,
+    \item Verhalten für $\displaystyle x \to \pm \infty$, bzw. Vorzeichenwechsel an einer Polstelle,
+    \item Verhalten für $x \to 0$ (kleinste Potenz von $x$ betrachten).
+\end{enumerate}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Skizziere den Graphen von $f$ mit $\displaystyle f(x) = \frac{(x+1)^2}{2x^2}$
+
+    \begin{wrapfigure}{R}{0pt}
+        \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            width = 9cm,
+            height = 8cm,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            restrict y to domain = 0:8,
+            ymax = 6
+        ]
+            \addplot[DarkBlue, thick, domain=-6:6, samples=500]{((x+1)^2)/(2*x^2)};
+            \addplot[LightPurple, dashed, domain = -6:6]{0.5};
+        \end{axis}
+        \end{tikzpicture}
+    \end{wrapfigure}
+    \begin{align*}
+        \\
+        \\
+        f(x) &= 0 \\
+        \frac{(x+1)^2}{2x^2} &= 0 \Leftrightarrow x = -1 \\\\
+        \text{Senk. Asymp.}&\text{ bei }  x = 0\\
+        \text{Wag. Asymp.}&\text{ bei }  y = \frac{1}{2}
+    \end{align*}
+    \vspace{3cm}
+\end{boxx}
+\newpage
+\subsection{Funktionenscharen -- Ortskurven}
+Eine Funktion mit Parameter nennt man \textbf{Funktionenschar}.
+Die Menge aller Punkte, die alle eine gemeinsame Eigenschaft teilen, z. B.
+gemeinsame Hochpunkte, bilden eine \textbf{Ortskurve}.
+Um die Gleichung der Ortskurve zu bestimmen geht man wie folgt vor:
+\begin{enumerate}
+    \item Die notwendige Bedingung aufstellen und nach $x$ auflösen.
+    \item $x$ in $f_t(x)$ einsetzen $\rightarrow$ $y$-Koordinate
+    \item Gleichung aus 1. nach $t$ auflösen und in die $y$-Koordinate aus 2. einsetzen.
+\end{enumerate}
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} Bestimme die Ortskurve aller Tiefpunkte von $\displaystyle f_t(x) = (x-t)e^x + 1$
+    \begin{align*}
+        f'_t(x) = e^x + (x-t)e^x
+    \end{align*}
+    \begin{align*}
+        f'_t(x) &= 0 \\
+        e^x + (x-t)e^x &= 0 \\
+        e^x\left(1 + (x-t)\right) &= 0 & &|\; e^x \not = 0 \;\;\forall x\\
+        1 + (x-t) &= 0 \\
+        x &= t-1
+    \end{align*}
+    \begin{align*}
+        f(t-1) &= \left((t-1)-t\right)e^{t-1} + 1 \\
+        &= -e^{t-1} + 1 & &|\; t = x+1 \\
+        \Rightarrow y &= -e^x + 1
+    \end{align*}
+
+    $b)$\hspace{3mm} Untersuche $\displaystyle f_t(x) = 2(x+5)e^{tx}$ auf gemeinsame Punkte.
+    \begin{align*}
+        f_0(x) &= f_1(x) \\
+        2(x+5) &= 2(x+5)e^{x} \\
+        2(x+5) - 2(x+5)e^{x} &= 0 \\
+        2(x+5)(1 - e^x) &= 0 \\
+        \Rightarrow x_1 = -5;\; x_2 &= 0
+    \end{align*}
+    \begin{align*}
+        f_t(-5) &= 2(-5+5)e^{-5t} = 0 \\
+        f_t(0) &= 2(0+5)e^{0} = 10
+    \end{align*}
+    \begin{align*}
+        \Rightarrow P_1(-5,0);\; P_2(0,10)
+    \end{align*}
+\end{boxx}
 \end{document}
