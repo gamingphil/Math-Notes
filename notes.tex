@@ -1594,4 +1594,458 @@ bzw. unterhalb der Mittelwertslinie gleich groß sein. \\\\
         \end{tikzpicture}
     \end{figure}
 \end{boxx}
+\section{Funktionen und ihre Graphen}
+\subsection{Strecken, verschieben, spiegeln}
+Gegeben sei der Graph der Funktion $f$. 
+Der in \color{Green}$x$-Richtung verschobene\color{black}, in \color{Yellow}$y$-Richtung verschobene \color{black}
+und in \color{Purple}$y$-Richtung \color{black} gestreckte Graph der Funktion $g$ 
+besitzt den Funktionsterm:
+\begin{align*}
+    g(x) = \color{Purple} a \color{black}\cdot f(x \color{Green}- c\color{black}) \color{Yellow} + d
+\end{align*}
+Bei den Spiegelungen von $f$ gilt:
+\begin{itemize}
+    \item $g(x) = f(-x)\;\;\;$ Spiegelung an der \textbf{\emph{y}-Achse}
+    \item $g(x) = -f(x)\;\;\;$ Spiegelung an der \textbf{\emph{x}-Achse}
+    \item $g(x) = -f(-x)\;\;\;$ Spiegelung am \textbf{Ursprung}
+\end{itemize}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Skizziere die Graphen von $f$ und $g$.\\
+
+    $a)$\hspace{3mm} $\displaystyle f(x) = - \sqrt{x+2} - 3;\;\;\;\; x\geq -2$ \\
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            width = 12cm,
+            height = 7cm,
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            xmin = -3,
+            xmax = 8,
+            ymin = -7,
+            ymax= 3,
+        ]
+        \addplot[dashed, thick, Blue, domain=-0:6,samples=100] {x^0.5} node[anchor = north west, pos = 1] {\(y = \sqrt{x}\)};
+        \addplot[dashed, thick, Green, domain=-2:3,samples=100] {(x+2)^0.5} node[anchor = south east, pos = 0.3] {\(y = \sqrt{x+2}\)};
+        \addplot[dashed, thick, Purple, domain=-2:3,samples=100] {-(x+2)^0.5} node[anchor = west, pos = 1] {\(y = -\sqrt{x+2}\)};
+        \addplot[thick, smooth, Yellow, domain=-2:7.5,samples=100] {-(x+2)^0.5-3} node[anchor = south west, pos = 0.7] {\(y = -\sqrt{x+2}-3\)};
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+    $b)$\hspace{3mm} $\displaystyle g(x) = \frac{2}{x+1}- \frac{1}{2};\;\;\;\; x \not = -1$
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            width = 11cm,
+            height = 9cm,
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            xmin = -7,
+            xmax = 7,
+            ymin = -7,
+            ymax= 7,
+            restrict y to domain=-12:12
+        ]
+        \addplot[dashed, thick, Blue, domain=-7:7,samples=200] {1/x} node[anchor = west, pos = 0.7] {\(\displaystyle y = \frac{1}{x}\)};
+        \addplot[dashed, thick, Green, domain=-7:7,samples=200] {1/(x+1)} node[anchor = east, pos = 0.67] {\(\displaystyle y = \frac{1}{x+1}\)};
+        \addplot[dashed, thick, Purple, domain=-7:7,samples=200] {2/(x+1)}node[anchor = south, pos = 0.92] {\(\displaystyle y = \frac{2}{x+1}\)};
+        \addplot[thick, Yellow, domain=-7:7,samples=200] {2/(x+1)-0.5} node[anchor = north east, pos = 0.15] {\(\displaystyle y = \frac{2}{x+1} - \frac{1}{2}\)};
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+    Zeige, dass die Graphen von $f_k$ mit $\displaystyle f_k(x) = k x e^{x^2};\; k \in \mathbb{R}$
+    punktsymmetrisch zum Ursprung sind.
+    \begin{align*}
+        f(-x) &= k \cdot (-x) \cdot e^{(-x)^2} \\
+        &= - k x e^{x^2} \\
+        &= -f(x) 
+    \end{align*}
+    \qed
+\end{boxx}
+\subsection{Linearfaktordarstellung - mehrfache Nullstellen}
+\begin{boxx}[LightGreen]{Satz 1}
+    Hat eine ganzrationale Funktion vom Grad $n$ eine Nullstelle
+    $x_0$, so gilt:
+    \begin{align*}
+        f(x) &= (x - x_0)\cdot g(x) & &\text{wobei } g \text{ vom Grad } n-1 \text{ ist.}
+    \end{align*}
+    $(x- x_0)$ nennt man \textbf{Linearfaktor}.
+\end{boxx}
+\begin{boxx}[LightGreen]{Satz 2}
+    Eine ganzrationale Funktion $n$-ten Grades besitzt höchstens $n$ Nullstellen.
+\end{boxx}
+\begin{boxx}[LightGreen]{Satz 3}
+    Sei $\displaystyle f(x) = (x-a)^k \cdot g(x)$.
+    \begin{itemize}
+        \item Für $k = 1:$ Schnittstelle von $f$ mit der $x$-Achse.
+        \item Für $k = 2:$ Berührstelle von $f$ an der $x$-Achse.
+        \item Für $k = 3:$ Sattelstelle von $f$ an der $x$-Achse.
+    \end{itemize}
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} Skizziere den Graph von $f$ mit $\displaystyle f(x) = x^3(x-2)^2(x+1)$.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            width = 10cm,
+            height = 7cm,
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            restrict y to domain=-8:8,
+            xmax = 2.75,
+            xmin = -1.75,
+            ymax = 5,
+            ymin = -1,
+            ytick = {\empty},
+        ]
+            \addplot[thick, DarkBlue, samples = 100, domain = -1.75:2.75]{x^3*(x-2)^2*(x+1)} node[anchor = east, pos = 0.85] {\(G_f\)};
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+    \newpage
+    $b)$\hspace{3mm} Bestimme die Funktionsgleichung des folgenden Graphen.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            width = 10cm,
+            height = 7cm,
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            restrict y to domain = -3:3,
+            ymin = -2.5,
+            ymax = 3.2,
+            xtick = {-1,1,2}
+        ]
+            \addplot[thick, DarkBlue, domain = -2:3, samples = 100]{0.5*(x+1)^3*(x-1)*(x-2)^2} node[anchor = south west, pos = 0.1] {\(G_g\)};
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+    \begin{align*}
+        g(x) &= a(x+1)^3 (x-1) (x-2)^2 \\
+        \text{mit } a &= 1: \;g(0) = -4 \Rightarrow a = \frac{1}{2} \\
+        g(x) &= \frac{1}{2} (x+1)^3 (x-1) (x-2)^2
+    \end{align*}
+\end{boxx}
+
+\subsection{Lösen von Gleichungen}
+Folgende Strategien zum Lösen von diversen Gleichungen sind
+zielführend:
+\subsubsection*{Betragsgleichungen}
+Führe eine Fallunterscheidung durch:
+\begin{itemize}
+    \item für positive Beträge kann man den Betrag weglassen und
+    die Gleichung wie gewohnt lösen.
+    \item für negative Beträge wird eine Seite der Gleichung mit
+    $-1$ multipliziert.
+\end{itemize}
+\begin{boxx}[DarkBlue]{Beispiel}
+    \begin{align*}
+        && \left|\frac{10}{e^x-1}\right| &= 2 \\
+        &\text{Fall 1:} & \frac{10}{e^x-1} &= 2 & &|\; \cdot e^x - 1 \\ 
+        && 10 &= 2e^x - 2 & &|\; + 2 ;\; \cdot \frac{1}{2} \\
+        && 6 &= e^x  & &|\; \ln\\
+        && x &= \ln 6 \\
+        &\text{Fall 2:} & -\frac{10}{e^x-1} &= 2 & &|\; \cdot e^x - 1 \\
+        && -10 &= 2e^x - 2 & &|\; + 2 ;\; \cdot \frac{1}{2} \\
+        && -4 &= e^x \Rightarrow \text{keine Lösung} \\
+        &\text{Probe:} & \left|\frac{10}{e^{\ln 6}-1}\right| &= \left|\frac{10}{5}\right| = 2 \\
+        && &\Rightarrow \mathbb{L} = \{\ln 6\}
+    \end{align*}
+\end{boxx}
+\subsubsection*{Wurzelgleichungen}
+\begin{itemize}
+    \item isoliere die Wurzel
+    \item quadriere beide Seiten der Gleichung
+\end{itemize}
+\begin{boxx}[DarkBlue]{Beispiel}
+    \begin{align*}
+        \sqrt{20 - 2x} + 6 &= x & &|\; -6 \\
+        \sqrt{20 - 2x} &= x-6 & &|\; ()^2 \\
+        20 - 2x &= (x-6)^2 \\
+        20 - 2x &= x^2 - 12x + 36 & &|\; -20 + 2x \\
+        x^2 - 10x + 16 &= 0 \\
+        (x-2)(x-8) &= 0 \\
+        x_1 = 2;\; x_2 &= 8
+    \end{align*}
+    \begin{align*}
+        &\text{Probe:} &  \sqrt{20 - 2\cdot 2} + 6 &= 2 \Leftrightarrow 4 + 6 \not = 2 &&\\
+        & &  \sqrt{20 - 2\cdot 8} + 6 &= 8 \Leftrightarrow 2 + 6  = 8 &&\\
+        & & \Rightarrow \mathbb{L} &= \{8\}
+    \end{align*}
+\end{boxx}
+\subsubsection*{Bruchgleichungen}
+\begin{itemize}
+    \item Bestimme den Hauptnenner
+    \item Beide Seiten mit dem Hauptnenner durchmultiplizieren
+\end{itemize}
+\begin{boxx}[DarkBlue]{Beispiel}
+    \begin{align*}
+        \frac{6}{x^4} - \frac{5}{x^2} &= -1 & &|\; \cdot x^4 \\
+        6 - 5x^2 &= -x^4 & &|\; + x^4 \\
+        x^4 - 5x^2 + 6 &= 0  & &|\; u = x^2 \\
+        u^2 - 5u +6 &= 0 \\
+        (u-2)(u-3) &= 0 \\
+        u_1 = 2;\; u_2 &= 3 & &|\; x^2 = u
+    \end{align*}
+    \begin{align*}
+        x^2 &= 2 & x^2 &= 3\\
+        x_1 &= \pm \sqrt{2} &  x_2 &= \pm \sqrt{3}
+    \end{align*}
+    \begin{center}
+        $x^4 \not = 0$ und $x^2 \not = 0$ für $x = \pm \sqrt{2}$ oder $x = \pm \sqrt{3}$
+    \end{center}
+    \[\Rightarrow \mathbb{L} = \{\sqrt{2};\,-\sqrt{2};\,\sqrt{3};\,-\sqrt{3}\}\]
+\end{boxx}
+\newpage
+\subsubsection*{Ungleichungen}
+Entweder: Mit Vergleichszeichen auflösen und aufpassen bei
+Mulitplikation oder Division mit negativen Zahlen.
+\\\\
+Oder: Eine Gleichung lösen und Werte größer und kleiner als
+die Lösung testen.
+\begin{boxx}[DarkBlue]{Beispiel}
+    \begin{align*}
+        1 - \left(\frac{1}{2}\right)^x &< 0.05 & &|\; - 1 \\
+        - \left(\frac{1}{2}\right)^x &< -0.95 & &|\; \cdot (-1) \\
+        \left(\frac{1}{2}\right)^x &> 0.95 & &|\; \log \\
+        x \log 0.5 &> \log 0.95 & &|\; \cdot \frac{1}{\log 0.5} \\
+        x &< \frac{\log 0.95}{\log 0.5} \approx 0.074
+    \end{align*}
+\end{boxx}
+
+\subsection{Trigonometrische Funktionen}
+
+Gegeben sei die Funktion $f$ mit $f(x) = \sin x$.
+Der Graph von der Funktion $g$ mit
+\begin{align*}
+    g(x) = a \sin\left(b(x-c)\right) + d
+\end{align*}
+ist gegenüber dem Graph von $f$
+\begin{itemize}
+    \item um $|a|$ Einheiten in $y$-Richtung gestreckt,
+    \item um $d$ Einheiten in y-Richtung verschoben,
+    \item besitzt die Periode 
+    $\displaystyle p = \frac{2 \pi}{b}$ 
+    (Streckung in $x$-Richtung) und
+    \item um $c$ Einheiten in $x$-Richtung verschoben.
+\end{itemize}
+
+Für $a<0$ wird der Graph zusätzlich an der $x$-Achse
+gespiegelt.
+
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} Gib im Intervall $I=[0;2\pi]$
+    zwei Lösungen der Gleichung $\sin x = -0.6$ an.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            clip = false,
+            height=5cm,
+            width=11cm,
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            xtick={-6.28318, -4.7123889, -3.14159, -1.5708, 1.5708, 3.14159, 4.7123889, 6.28318},
+            xticklabels={$-2\pi$, $-\frac{3\pi}{2}$,$-\pi$, $-\frac{\pi}{2}$, 
+             $\frac{\pi}{2}$,$\pi$, $\frac{3\pi}{2}$, $2\pi$},
+            xmin=-4.5,
+            xmax=8,
+            ymin=-1.2,
+            ymax=1.2, 
+        ]
+        \addplot[thick, DarkBlue, domain=-3.14159:6.28318, samples =100]{sin(deg(x))};
+        \addplot[LightRed, thick, domain=-4:7]{-0.6} node[anchor=west, pos = 1] {\(y=-0.6\)};
+        \node[label={315:{\(x_2\)}},circle,fill,inner sep=1.5pt] at (axis cs:5.64,-0.6) {};
+        \node[label={225:{\(x_1\)}},circle,fill,inner sep=1.5pt] at (axis cs:3.78,-0.6) {};
+        \addplot[] coordinates {
+            (-0.64,0) (-0.64,-0.6)
+        } node[anchor = south, pos = 0] {\(-0.64\)};
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+    \begin{align*}
+        \sin^{-1} (-0.6) &\approx -0.64 \\
+        x_2 &= -0.64 + 2\pi \approx 5.64 \\ 
+        x_1 &= \pi + 0.64 \approx 3.78
+    \end{align*}
+
+    $b)$\hspace{3mm} Skizziere den Graphen von
+    $f(x) = 2\sin\left(2\pi(x - 1)\right) - 1$.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            height=6cm,
+            width=12cm,
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            ytick = {1, -1, -2, -3},
+            xmin=-3.5,
+            xmax=3.5,
+            ymin=-3.5,
+            ymax=1.6,
+            grid = major,
+            clip = false
+        ]
+        \addplot[thick, DarkBlue, domain=-3.2:3.2, samples=200, smooth]{2*sin(deg(2*pi*(x-1)))-1} node[pos=0.01, anchor = east] {\(G_f\)};
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+\end{boxx}
+
+\subsection{Senkrechte und waagerechte Asymptoten}
+
+Gegeben sind die ganzrationalen Funktionen $g(x)$ und
+$h(x)$. Die Funktion $f$ mit $\displaystyle f(x) = \frac{g(x)}{h(x)}\;\;\;(h(x)\not= 0)$
+nennt man \textbf{gebrochenrationale Funktion}.
+
+Wenn $g\left(x_0\right) \not= 0$ und $h\left(x_0\right) = 0$ gilt,
+dann ist $x_0$ eine \textbf{Polstelle} von $f$ und die Gerade mit
+$x=x_0$ ist eine \textbf{senkrechte Asymptote} des Graphen von $f$.
+
+Gilt $g\left(x_0\right) = 0$ und $h\left(x_0\right) = 0$,
+dann liegt keine senkrechte Asymptote, sondern eine \textbf{hebbare Definitionslücke} vor.
+
+Für die waagerechte Asymptote gilt:
+\begin{enumerate}
+    \item Zählergrad > Nennergrad: keine waagerechte Asymptote
+    \item Zählergrad = Nennergrad: höchste Potenz von $x$ ausklammern und 
+    $\displaystyle \lim_{x\to\pm\infty} f(x)$ bilden. $\displaystyle \left(y = \frac{a}{b}\right)$
+    \item Zählergrad < Nennergrad: waagerechte Asymptote bei $y = 0$.
+\end{enumerate}
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} Bestimme die senkrechte und waagerechte Asymptote.\\\\
+    $\displaystyle f(x) = \frac{6x^2+3}{5x^2- \sfrac{1}{2}}$ 
+    \begin{align*}
+        5x^2 - \frac{1}{2} = 0 \Leftrightarrow x &= \pm\frac{1}{\sqrt{10}} & &\rightarrow \text{Senk. Asymp. bei } x = \pm\frac{1}{\sqrt{10}}\\
+        \lim_{x\to\pm\infty} \frac{\cancel{x^2}\left(6 + \frac{3}{x^2}\right)}{\cancel{x^2}\left(5 - \frac{\sfrac{1}{2}}{x^2}\right)} &= \frac{6}{5}
+        & &\rightarrow \text{Wag. Asymp. bei } y = \frac{6}{5}
+    \end{align*}
+    $\displaystyle g(x) = \frac{7x}{x^2 - 1}$
+    \begin{align*}
+        x^2 - 1 = 0 \Leftrightarrow x &= \pm 1 & &\rightarrow \text{Senk. Asymp. bei } x = \pm 1\\
+        & & &\rightarrow \text{Wag. Asymp. bei } y = 0
+    \end{align*}
+    $\displaystyle h(x) = \frac{3x^2 + 2}{7x - 2}$ \\
+    \begin{align*}
+        7x - 2 = 0 \Leftrightarrow x &= \frac{2}{7} & &\rightarrow \text{Senk. Asymp. bei } x = \frac{2}{7} \\
+        & & &\rightarrow \text{keine wag. Asymp.}
+    \end{align*}
+    \newpage
+    $b)$\hspace{3mm} Skizziere den Graphen von $t$ mit 
+    $\displaystyle t(x) = \frac{3x^2 + 1}{x^2 + 4x + 4}$.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+        \begin{axis}[
+            height=7cm,
+            width=10cm,
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            xmax= 15,
+            xmin = -15,
+            restrict y to domain = -20:20
+        ]
+        \addplot[thick, DarkBlue, domain=-20:20, samples = 500]{(3*x^2+1)/(x^2 +4*x + 4)} node[pos=0.1, anchor = south] {\(G_f\)};
+        \addplot[thick,dashed, LightPurple, domain=-15:15]{3} node[pos=0.57, anchor=south]{\(y = 3\)};
+        \addplot[thick,dashed, LightPurple, domain=-15:15] coordinates {(-2,20) (-2, 0)} node[pos=0.92,anchor=east] {\(x=-2\)};
+        \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+\end{boxx}
+\subsection{Vollständige Kurvendiskussion}
+Strategie zum "`Zeichnen"' eines Graphen:
+\begin{enumerate}
+    \item Nullstellen bestimmen $\displaystyle \left(f(x) = 0\right)$,
+    \item senkrechte und waagerechte Asymptoten bestimmen,
+    \item Symmetrie zur $y$-Achse und zum Ursprung,
+    \item Hoch-, Tief- und Wendepunkte,
+    \item Verhalten für $\displaystyle x \to \pm \infty$, bzw. Vorzeichenwechsel an einer Polstelle,
+    \item Verhalten für $x \to 0$ (kleinste Potenz von $x$ betrachten).
+\end{enumerate}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Skizziere den Graphen von $f$ mit $\displaystyle f(x) = \frac{(x+1)^2}{2x^2}$
+
+    \begin{wrapfigure}{R}{0pt}
+        \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            width = 9cm,
+            height = 8cm,
+            xlabel = {\(x\)},
+            ylabel = {\(y\)},
+            restrict y to domain = 0:8,
+            ymax = 6
+        ]
+            \addplot[DarkBlue, thick, domain=-6:6, samples=500]{((x+1)^2)/(2*x^2)};
+            \addplot[LightPurple, dashed, domain = -6:6]{0.5};
+        \end{axis}
+        \end{tikzpicture}
+    \end{wrapfigure}
+    \begin{align*}
+        \\
+        \\
+        f(x) &= 0 \\
+        \frac{(x+1)^2}{2x^2} &= 0 \Leftrightarrow x = -1 \\\\
+        \text{Senk. Asymp.}&\text{ bei }  x = 0\\
+        \text{Wag. Asymp.}&\text{ bei }  y = \frac{1}{2}
+    \end{align*}
+    \vspace{3cm}
+\end{boxx}
+\newpage
+\subsection{Funktionenscharen -- Ortskurven}
+Eine Funktion mit Parameter nennt man \textbf{Funktionenschar}.
+Die Menge aller Punkte, die alle eine gemeinsame Eigenschaft teilen, z. B.
+gemeinsame Hochpunkte, bilden eine \textbf{Ortskurve}.
+Um die Gleichung der Ortskurve zu bestimmen geht man wie folgt vor:
+\begin{enumerate}
+    \item Die notwendige Bedingung aufstellen und nach $x$ auflösen.
+    \item $x$ in $f_t(x)$ einsetzen $\rightarrow$ $y$-Koordinate
+    \item Gleichung aus 1. nach $t$ auflösen und in die $y$-Koordinate aus 2. einsetzen.
+\end{enumerate}
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} Bestimme die Ortskurve aller Tiefpunkte von $\displaystyle f_t(x) = (x-t)e^x + 1$
+    \begin{align*}
+        f'_t(x) = e^x + (x-t)e^x
+    \end{align*}
+    \begin{align*}
+        f'_t(x) &= 0 \\
+        e^x + (x-t)e^x &= 0 \\
+        e^x\left(1 + (x-t)\right) &= 0 & &|\; e^x \not = 0 \;\;\forall x\\
+        1 + (x-t) &= 0 \\
+        x &= t-1
+    \end{align*}
+    \begin{align*}
+        f(t-1) &= \left((t-1)-t\right)e^{t-1} + 1 \\
+        &= -e^{t-1} + 1 & &|\; t = x+1 \\
+        \Rightarrow y &= -e^x + 1
+    \end{align*}
+
+    $b)$\hspace{3mm} Untersuche $\displaystyle f_t(x) = 2(x+5)e^{tx}$ auf gemeinsame Punkte.
+    \begin{align*}
+        f_0(x) &= f_1(x) \\
+        2(x+5) &= 2(x+5)e^{x} \\
+        2(x+5) - 2(x+5)e^{x} &= 0 \\
+        2(x+5)(1 - e^x) &= 0 \\
+        \Rightarrow x_1 = -5;\; x_2 &= 0
+    \end{align*}
+    \begin{align*}
+        f_t(-5) &= 2(-5+5)e^{-5t} = 0 \\
+        f_t(0) &= 2(0+5)e^{0} = 10
+    \end{align*}
+    \begin{align*}
+        \Rightarrow P_1(-5,0);\; P_2(0,10)
+    \end{align*}
+\end{boxx}
 \end{document}
