@@ -261,4 +261,52 @@ Dann wählt man für $x_3$ einen beliebigen Parameter und gibt die anderen Varia
         \end{array} \\
     \end{align*}
 \end{boxx}
+\newpage
+\subsection{Bestimmen ganzrationaler Funktionen}
+Zum Bestimmen eines Funktionsterms einer ganzrationalen
+Funktion bietet sich folgende Strategie:
+\begin{enumerate}
+    \item Aufstellen eines allgemeinen Funktionsterms und ggf. dessen Ableitungen.
+    \item Bedingungen für $f$, $f'$, $f''$, ... formulieren.
+    \item LGS aufstellen und lösen.
+    \item Überprüfung ob ein Hochpunkt wirklich ein Hockpunkt ist, etc.
+\end{enumerate}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme die ganzrationale Funktion vom Grad 4, 
+    dessen Graph symmetrisch zur $y$-Achse ist,
+    den Punkt $A(2, 0)$ enthält und den Tiefpunkt $T(1, 0)$ hat.
+    \begin{enumerate}
+        \item \begin{align*}
+            f(x) &= ax^4+ bx^3 + cx^2 + dx + e \\
+            f'(x) &= 4ax^3 + 3bx^2 +2cx + d \\
+            f''(x) &= 12x^2 + 6bx + 2c
+        \end{align*}
+        \item \hspace*{1mm}
+        \begin{figure}[H]
+            \centering
+            \begin{tabular}{rl}
+                Symmetrie zur $y$-Achse: & $b=0;\;d=0$ \\
+                $A(2, 0)$: & $f(0) = e = 2$ \\
+                $T(1, 0)$: & $f'(1) = 4a + 2c = 0$ \\
+                & $f(1) = a + c + 2 = 0$
+            \end{tabular}
+        \end{figure}
+        \item 
+        \begin{align*}
+            &\left( \begin{array}{cc|c} 4 & 2 & 0 \\ 1 & 1 & -2 \end{array} \right) \begin{array}{ll}
+                |\cdot 1 & \\
+                |\cdot -(4)&
+            \end{array} \\
+            \sim&\left( \begin{array}{cc|c} 4 & 2 & 0 \\ 0 & -2 & 8 \end{array} \right) \begin{array}{ll}
+                & \\
+                \Rightarrow c = -4&
+            \end{array}\\
+            &\hspace*{4mm}4a -8 = 0 \hspace*{6mm}\Rightarrow a = 2
+        \end{align*}
+        \[\Rightarrow f(x) = 2x^4 - 4x^2 + 2\]
+        \item \begin{align*}
+            f''(1) &= 24-8 = 16 > 0 \hspace*{3mm}\Rightarrow T(1, 0)
+        \end{align*}
+    \end{enumerate}
+\end{boxx}
 \end{document}
