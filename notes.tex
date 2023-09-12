@@ -17,6 +17,7 @@
 \usepackage{float} % Improved floating objects such as figures and tables
 \usepackage{tikz} % Graphics and figures
 \usetikzlibrary{arrows} % -> customizable arrow tips
+\usetikzlibrary{tikzmark}
 \usepackage{pgfplots} % Plotting functions and data 
 \usepgfplotslibrary{fillbetween} % -> filling areas in pgfplots
 \pgfplotsset{compat=newest}
@@ -2047,5 +2048,161 @@ Um die Gleichung der Ortskurve zu bestimmen geht man wie folgt vor:
     \begin{align*}
         \Rightarrow P_1(-5,0);\; P_2(0,10)
     \end{align*}
+\end{boxx}
+\newpage
+\section{Lineare Gleichungssysteme}
+\subsection{Der Gauß-Algorithmus}
+Mehrere Gleichungen mit gemeinsamen (linearen) Variablen bilden ein
+\textbf{lineares Gleichungssystem (LGS).}
+
+Ein LGS mit 3 oder mehr Variablen löst man meistens mit dem 
+\textbf{Gauß-Algorithmus} am sinnvollsten. Dabei werden durch
+\begin{enumerate}
+    \item vertauschen von Gleichungen,
+    \item Multiplikation von einer oder mehrerer Gleichungen mit einer Zahl $\not= 0$,
+    \item Addition mehrerer Gleichungen und
+    \item Einsetzen einer Variablen in eine andere Gleichung
+\end{enumerate}
+so lange Variablen eliminiert und dadurch bestimmt bis eine sogenannte
+\textbf{Stufenform} vorliegt.
+\[\left( \begin{array}{ccc|c} x & x & x & x \\ \tikzmark{d1}0 & x & x  & x \\ \tikzmark{d2}0 & 0\tikzmark{d3} & x & x \end{array} \right) \begin{array}{cc}
+    &\\
+    \longleftarrow \text{Matrix-Schreibweise} &\\
+    &
+\end{array}\]
+\begin{tikzpicture}[overlay, remember picture]
+    \draw ([xshift=-1pt,yshift=11pt]{pic cs:d1}) -- ([xshift=-1pt,yshift=-1pt]{pic cs:d2});
+    \draw ([xshift=-1pt,yshift=-1pt]{pic cs:d2}) -- ([xshift=6pt,yshift=-1pt]{pic cs:d3});
+    \draw ([xshift=6pt,yshift=-1pt]{pic cs:d3}) -- ([xshift=-1pt,yshift=11pt]{pic cs:d1});
+\end{tikzpicture}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Löse das LGS.
+    \begin{align*}
+        &&&&2x_1 - 4x_2 + 5x_3 &= 3 &&&&|\; \cdot (-3) &&|\; \cdot (-2) &&&&\\
+        &&&&3x_1 + 3x_2 + 7x_3 &= 13 &&&&|\; \cdot 2 &&&&\\
+        &&&&4x_1 - 2x_2 - 3x_3 &= -1 &&&&&&|\; \cdot 1&&&&
+    \end{align*}
+    \begin{align*}
+        &\sim \left( \begin{array}{ccc|c} 2 & -4 & 5 & 3 \\ 0 & 18 & -1  & 17 \\ 0 & 6 & -13 & -7 \end{array} \right) \begin{array}{ll}
+             &  \\
+             |\cdot 1& \\
+             |\cdot (-3)&
+        \end{array} \\
+        &\sim \left( \begin{array}{ccc|c} 2 & -4 & 5 & 3 \\ 0 & 18 & -1  & 17 \\ 0 & 0 & 38 & 38 \end{array} \right) \begin{array}{ll}
+             &  \\
+             & \\
+             \Rightarrow x_3 = 1&
+        \end{array} 
+    \end{align*}
+    \begin{align*}
+        18x_2 - 1 &= 17 \\
+        x_2 &= 1
+    \end{align*}
+    \begin{align*}
+        2x_1 - 4 + 5 &= 3 \\
+        2x_1 &= 2 \\
+        x_1 &= 1
+    \end{align*}
+    \[\Rightarrow \mathbb{L} = \lbrace(1;\;1;\;1)\rbrace\]
+\end{boxx}
+\newpage
+\subsection{Lösungsmengen von LGS}
+Man bringt ein LGS wie gewohnt un Stufenform und
+erkennt dann schnell, dass ein LGS entweder
+\begin{itemize}
+    \item \textbf{keine}
+    \item \textbf{eine} oder
+    \item \textbf{unendlich} viele Lösungen haben kann.
+\end{itemize}
+Bei keiner Lösung erhält man eine Zeile der Form
+$\displaystyle 0 \cdot x_3 = 1$, bei unendlich vielen
+Lösungen erhält man bspw. $0 \cdot x_3 = 0$.
+Dann wählt man für $x_3$ einen beliebigen Parameter und gibt die anderen Variablen in Abhängigkeit von diesem an.
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme die Lösungsmenge des LGS. \\
+    $a)$\hspace{3mm}
+    \begin{align*}
+        &\left( \begin{array}{ccc|c} 1 & 2 & 2 & 3 \\ 2 & 4 & 4  & 6 \\ -1 & 1 & 5 & 9 \end{array} \right) \begin{array}{ll}
+             |\cdot (-2) & |\cdot 1 \\
+             |\cdot 1& \\
+             &|\cdot 1
+        \end{array} \\
+        \sim&\left( \begin{array}{ccc|c} 1 & 2 & 2 & 3 \\ 0 & 0 & 0 & 0 \\ 0 & 3 & 7 & 12 \end{array} \right) \begin{array}{ll}
+             & \\
+             \Rightarrow x_3 = t& \\
+             &
+        \end{array} \\
+    \end{align*}
+    \begin{align*}
+        3 x_2 + 7t &= 12 \\
+        x_2 &= - \frac{7}{3}t + 4
+    \end{align*}
+    \begin{align*}
+        x_1 + 2\left(-\frac{7}{3}t + 4\right) + 2t &= 3 \\
+        x_1 - \frac{14}{3}t + 8 + 2t &= 3
+        x_1 &= \frac{8}{3}t - 5
+    \end{align*}
+    \[\mathbb{L} = \biggl\{\left(\frac{8}{3}t - 5;\; -\frac{7}{3}t + 4;\; t\right)\biggl\}\]
+    $b)$\hspace{3mm}
+    \begin{align*}
+        &\left( \begin{array}{ccc|c} -2 & 1 & 4 & 3 \\ -4 & 2 & 8  & 8 \\ -3 & 2 & 5 & 9 \end{array} \right) \begin{array}{ll}
+             |\cdot (-2) & \\
+             |\cdot 1& \\
+             &
+        \end{array} \\
+        \sim&\left( \begin{array}{ccc|c} -2 & 1 & 4 & 3 \\ 0 & 0 & 0 & 2 \\ -3 & 2 & 5 & 9 \end{array} \right) \begin{array}{ll}
+             & \\
+             \Rightarrow \mathbb{L} = \{\}& \\
+             &
+        \end{array} \\
+    \end{align*}
+\end{boxx}
+\newpage
+\subsection{Bestimmen ganzrationaler Funktionen}
+Zum Bestimmen eines Funktionsterms einer ganzrationalen
+Funktion bietet sich folgende Strategie:
+\begin{enumerate}
+    \item Aufstellen eines allgemeinen Funktionsterms und ggf. dessen Ableitungen.
+    \item Bedingungen für $f$, $f'$, $f''$, ... formulieren.
+    \item LGS aufstellen und lösen.
+    \item Überprüfung ob ein Hochpunkt wirklich ein Hockpunkt ist, etc.
+\end{enumerate}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme die ganzrationale Funktion vom Grad 4, 
+    dessen Graph symmetrisch zur $y$-Achse ist,
+    den Punkt $A(2, 0)$ enthält und den Tiefpunkt $T(1, 0)$ hat.
+    \begin{enumerate}
+        \item \begin{align*}
+            f(x) &= ax^4+ bx^3 + cx^2 + dx + e \\
+            f'(x) &= 4ax^3 + 3bx^2 +2cx + d \\
+            f''(x) &= 12x^2 + 6bx + 2c
+        \end{align*}
+        \item \hspace*{1mm}
+        \begin{figure}[H]
+            \centering
+            \begin{tabular}{rl}
+                Symmetrie zur $y$-Achse: & $b=0;\;d=0$ \\
+                $A(2, 0)$: & $f(0) = e = 2$ \\
+                $T(1, 0)$: & $f'(1) = 4a + 2c = 0$ \\
+                & $f(1) = a + c + 2 = 0$
+            \end{tabular}
+        \end{figure}
+        \item 
+        \begin{align*}
+            &\left( \begin{array}{cc|c} 4 & 2 & 0 \\ 1 & 1 & -2 \end{array} \right) \begin{array}{ll}
+                |\cdot 1 & \\
+                |\cdot -(4)&
+            \end{array} \\
+            \sim&\left( \begin{array}{cc|c} 4 & 2 & 0 \\ 0 & -2 & 8 \end{array} \right) \begin{array}{ll}
+                & \\
+                \Rightarrow c = -4&
+            \end{array}\\
+            &\hspace*{4mm}4a -8 = 0 \hspace*{6mm}\Rightarrow a = 2
+        \end{align*}
+        \[\Rightarrow f(x) = 2x^4 - 4x^2 + 2\]
+        \item \begin{align*}
+            f''(1) &= 24-8 = 16 > 0 \hspace*{3mm}\Rightarrow T(1, 0)
+        \end{align*}
+    \end{enumerate}
 \end{boxx}
 \end{document}
