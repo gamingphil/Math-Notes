@@ -21,6 +21,7 @@
 \usepackage{pgfplots} % Plotting functions and data 
 \usepgfplotslibrary{fillbetween} % -> filling areas in pgfplots
 \pgfplotsset{compat=newest}
+\usepackage{tkz-base,tkz-euclide}
 \usepackage{systeme} % Systems of equations
 \usepackage{romanbar} % Roman numbers with bars
 \usepackage{titlepic} % Putting picture on the title page
@@ -39,7 +40,7 @@
 \usepackage{subcaption}
 \usepackage[scale=0.96]{XCharter} % Use the XCharter text font
 % \usepackage[xcharter]{newtxmath} % Set the math font
-
+\usepackage{esvect} % Nicer vectors (\vv{})
 % Hyperref setup:
 \hypersetup{
     colorlinks=true,
@@ -153,6 +154,113 @@
 %\rhead{Lösung}
 %\cfoot{\thepage}
 
-\setcounter{section}{4}
+\setcounter{section}{5}
+\section{Geraden und Ebenen}
+\subsection{Vektoren im Raum}
+Vektoren kommen hauptsächlich auf folgende 3 Arten und Weisen vor:
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \tkzInit[xmax=4,ymax=3]
+            \tkzDrawX
+            \tkzDrawY
+            \tkzDefPoint(1,1){A}
+            \tkzDefPoint(2,2){B}
+            \tkzDefPoint(3,1){C}
+            \tkzDefPoint(4,2){D}
+            \tkzDrawSegment[-Triangle](A,B)
+            \tkzDrawSegment[-Triangle](C,D)
+            \tkzLabelPoint[below](1,0){$1$}
+            \tkzLabelPoint[left](0,1){$1$}
+            \tkzLabelSegment[right=1ex,pos=.4](A,B){$\vec{a}$}
+            \tkzLabelSegment[right=1ex,pos=.4](C,D){$\vec{a}$}
+        \end{tikzpicture}
+        \caption{Als Pfeil (mit beliebigem Anfang)}
+    \end{subfigure}%
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \tkzInit[xmax=4,ymax=3]
+            \tkzDrawX
+            \tkzDrawY
+            \tkzDefPoint(1.5,1){A}
+            \tkzDefPoint(4,3){B}
+            \tkzDrawPoints[size=3,shape=cross out](A, B)
+            \tkzDrawSegment[-Triangle](A,B)
+            \tkzLabelPoint[below](1,0){$1$}
+            \tkzLabelPoint[left](0,1){$1$}
+            \tkzLabelPoint[below](A){$A(1.5,1)$}
+            \tkzLabelPoint[left=1ex](B){$B(4,3)$}
+            \tkzLabelSegment[right=2ex,pos=.35](A,B){$\vv{AB}$}
+        \end{tikzpicture}
+        \caption{Als Pfeil (zwischen 2 Punkten)}
+    \end{subfigure}%
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \tkzInit[xmax=4,ymax=3]
+            \tkzDrawX
+            \tkzDrawY
+            \tkzDefPoint(0,0){A}
+            \tkzDefPoint(3,1){B}
+            \tkzDrawPoint[size=3,shape=cross out](B)
+            \tkzDrawSegment[-Triangle](A,B)
+            \tkzLabelPoint[below](1,0){$1$}
+            \tkzLabelPoint[left](0,1){$1$}
+            \tkzLabelPoint[right=1ex](B){$A(3,1)$}
+            \tkzText(2.5,2.8){\small$\displaystyle \vv{OA}=\begin{pmatrix}3\\1\end{pmatrix}$}
+            \tkzText(2.5,2.2){\small\color{Red}$\text{Ortsvektor von }A$}
+        \end{tikzpicture}
+        \caption{Als Punkt}
+    \end{subfigure}%
+\end{figure}
 
+\begin{boxx}[Red]{Gegenvektor}
+    Gegenvektor eines Vektors $\vec{a}$ ist der Vektor $-\vec{a}$.
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme den Gegenvektor zum Vektor $\displaystyle \vv{AB} = \begin{pmatrix}3 \\ 1 \\ -2 \end{pmatrix}$.
+    \[\vv{BA} = -\vv{AB} = \begin{pmatrix}-3 \\ -1 \\ 2\end{pmatrix}\]
+\end{boxx}
+\begin{boxx}[Red]{Mittelpunkt}
+    Der Mittelpunkt $M$ zweier Punkte $A(a_1,a_2,a_3)$ und $B(b_1,b_2,b_3)$ ergibt sich wiefolt:
+    \[M\left(\frac{a_1+b_2}{2}, \frac{a_2+b_2}{2}, \frac{a_3 + b_3}{2}\right)\]
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme den Mittelpunkt $M$ der Punkte $A(2,3,3)$ und $B(4,1,2)$.
+    \[\Rightarrow M(3,2,2.5)\]
+\end{boxx}
+\begin{boxx}[Red]{Betrag}
+    Der Betrag eines Vektors $\vec{a}$ ist geometrisch die Länge des zugehörigen Pfeils.
+    Er lässt sich mit dem Satz des Pythagoras berechnen:
+    \[|\vec{a}| = \left|\begin{pmatrix}
+        a_1 \\ a_2 \\ a_3
+    \end{pmatrix}\right| = \sqrt{a_1^2 + a_2^2 + a_3^2}\]
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Berechne den Betrag des Vektors $\displaystyle \vec{a} = \begin{pmatrix}3 \\ 2 \\ 6\end{pmatrix}$.
+    \[|\vec{a}| = \sqrt{9 + 4 + 36} = \sqrt{49} = 7\]
+\end{boxx}
+\begin{boxx}[Red]{Einheitsvektor}
+    Der Einheitsvektor $\vec{a}_0$ ist der Vektor, der in dieselbe Richtung wie $\vec{a}$ zeigt, und den Betrag 1 hat.
+    
+    Er errechnet sich mit:
+    \[\vec{a}_0 = \frac{1}{|\vec{a}|} \cdot \vec{a}\]
+\end{boxx} 
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme den Einheitsvektor $\vec{a}_0$ des Vektors $\vec{a} = \begin{pmatrix}3 \\ 2 \\ 4\end{pmatrix}$.
+    \[\vec{a}_0 = \frac{1}{7} \cdot \begin{pmatrix}3\\2\\4\end{pmatrix} \\\]
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Gegeben ist der Vektor $\displaystyle \vv{AB} = \begin{pmatrix}3\\3\\3\end{pmatrix}$.
+    Bestimme jeweils den fehlenden Punkt. \\
+    $a)$\hspace{3mm} $A(0,-1,2)$
+    \[\vv{OB} = \vv{OA} + \vv{AB} = \begin{pmatrix}0\\-1\\2\end{pmatrix} + \begin{pmatrix}3\\3\\3\end{pmatrix} = \begin{pmatrix}3\\2\\5\end{pmatrix}\]
+    \[\Rightarrow B(3,2,5)\]
+    $b)$\hspace{3mm} $B(2,0,3)$
+    \[\vv{OA} = \vv{OB} - \vv{AB} = \begin{pmatrix}2\\0\\3\end{pmatrix} - \begin{pmatrix}3\\3\\3\end{pmatrix} = \begin{pmatrix}-1\\-3\\0\end{pmatrix}\]
+    \[\Rightarrow A(-1,-3,0)\]
+\end{boxx}
 \end{document}

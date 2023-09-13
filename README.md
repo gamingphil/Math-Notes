@@ -21,6 +21,7 @@ So far the notes feature the following topics:
 3. Integral Calculus
 4. Functions and their Graphs
 5. System of Linear Equations
+6. Lines and Planes
 
 ## Compiling the Notes
 
