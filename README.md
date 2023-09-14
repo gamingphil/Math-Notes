@@ -20,7 +20,7 @@ So far the notes feature the following topics:
 2. Exponential Functions
 3. Integral Calculus
 4. Functions and their Graphs
-5. System of Linear Equations
+5. Systems of Linear Equations
 6. Lines and Planes
 
 ## Compiling the Notes
