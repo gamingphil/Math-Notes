@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.6.26)  14 SEP 2023 00:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.6.26)  14 SEP 2023 18:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1071,37 +1071,139 @@ LaTeX Info: Redefining \textinf on input line 716.
 ) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/esvect\esvect.sty
 Package: esvect 
 \symesvector=\mathgroup6
-)
-Package hyperref Info: Option `colorlinks' set `true' on input line 51.
- (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcolorbox.sty
-Package: tcolorbox 2023/06/19 version 6.0.4 text color boxes
- (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
-Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks65
-\verbatim@line=\toks66
-\verbatim@in@stream=\read4
+) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/forest\forest.sty
+Package: forest 2017/07/14 v2.1.5 Drawing (linguistic) trees
+ (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.code.tex
+File: tikzlibraryshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.symbols.code.tex
+File: tikzlibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.symbols.code.tex
+File: pgflibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.arrows.code.tex
+File: tikzlibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.arrows.code.tex
+File: pgflibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.callouts.code.tex (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.callouts.code.tex)) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.multipart.code.tex
+File: tikzlibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.multipart.code.tex
+File: pgflibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodepartlowerbox=\box134
+\pgfnodeparttwobox=\box135
+\pgfnodepartthreebox=\box136
+\pgfnodepartfourbox=\box137
+\pgfnodeparttwentybox=\box138
+\pgfnodepartnineteenbox=\box139
+\pgfnodeparteighteenbox=\box140
+\pgfnodepartseventeenbox=\box141
+\pgfnodepartsixteenbox=\box142
+\pgfnodepartfifteenbox=\box143
+\pgfnodepartfourteenbox=\box144
+\pgfnodepartthirteenbox=\box145
+\pgfnodeparttwelvebox=\box146
+\pgfnodepartelevenbox=\box147
+\pgfnodeparttenbox=\box148
+\pgfnodepartninebox=\box149
+\pgfnodeparteightbox=\box150
+\pgfnodepartsevenbox=\box151
+\pgfnodepartsixbox=\box152
+\pgfnodepartfivebox=\box153
+))) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryfit.code.tex
+File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/pgfopts\pgfopts.sty
+Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
+\pgfopts@list@add@a@toks=\toks65
+\pgfopts@list@add@b@toks=\toks66
+) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/elocalloc\elocalloc.sty
+Package: elocalloc 2016/12/15 v0.03 local allocation for LaTeX 2015+ (DPC)
 ) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/environ\environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/trimspaces\trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-))
-\tcb@titlebox=\box134
-\tcb@upperbox=\box135
-\tcb@lowerbox=\box136
-\tcb@phantombox=\box137
-\c@tcbbreakpart=\count387
-\c@tcblayer=\count388
-\c@tcolorbox@number=\count389
-\tcb@temp=\box138
-\tcb@temp=\box139
-\tcb@temp=\box140
-\tcb@temp=\box141
+)) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/inlinedef\inlinedef.sty
+Package: inlinedef 2008/07/10 v1.0 Inlined expansions within definitions
+\ID@toks=\toks67
+\ID@count=\count387
+)
+\ID@usercommands=\toks68
+\safeloop@depth=\count388
+\safeRKloop@depth=\count389
+\forest@temp@dimen=\dimen361
+\forest@temp@count=\count390
+\forest@n=\count391
+\forest@temp@global@count=\count392
+\forest@temp@toks=\toks69
+\forest@temparray@M=\count393
+\forest@temparray@N=\count394
+\forest@global@temparray@M=\count395
+\forest@global@temparray@N=\count396
+\forest@isnum@count=\count397
+\forest@isdim@nonintpart=\count398
+\forest@isdim@dimen=\dimen362
+\forest@sort@m=\count399
+\forest@sort@k=\count400
+\forest@sort@p=\count401
+\bracket@content=\toks70
+\bracket@afterthought=\toks71
+\forest@node@maxid=\count402
+\forest@process@left@M=\count403
+\forest@process@left@N=\count404
+\forest@process@right@M=\count405
+\forest@process@right@N=\count406
+\forest@process@saved@M=\count407
+\forest@process@saved@N=\count408
+\forest@process@result@M=\count409
+\forest@process@result@N=\count410
+\forest@process@n=\count411
+\forest@nodewalk@branch@toks=\toks72
+\forest@nodewalk@shortsteps@resolution=\toks73
+\forest@do@dynamics=\toks74
+\forest@box=\box154
+\forest@xg=\dimen363
+\forest@yg=\dimen364
+\forest@xs=\dimen365
+\forest@ys=\dimen366
+\forest@pi@toks=\toks75
+\forest@segment@toks=\toks76
+\forest@PIi@toks=\toks77
+\forest@PIii@toks=\toks78
+\forest@copy@in=\read4
+\forest@copy@out=\write4
+\forest@externalize@max@outer@n=\count412
+\forest@externalize@inner@n=\count413
+) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/forest\forest-lib-linguistics.sty
+Package: forest-lib-linguistics 2017/07/14 v0.1.2
+\standardnodestrutbox=\box155
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 52.
+ (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcolorbox.sty
+Package: tcolorbox 2023/06/19 version 6.0.4 text color boxes
+ (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
+Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks79
+\verbatim@line=\toks80
+\verbatim@in@stream=\read5
+)
+\tcb@titlebox=\box156
+\tcb@upperbox=\box157
+\tcb@lowerbox=\box158
+\tcb@phantombox=\box159
+\c@tcbbreakpart=\count414
+\c@tcblayer=\count415
+\c@tcolorbox@number=\count416
+\tcb@temp=\box160
+\tcb@temp=\box161
+\tcb@temp=\box162
+\tcb@temp=\box163
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbraster.code.tex
 Library (tcolorbox): 'tcbraster.code.tex' version '6.0.4'
-\c@tcbrastercolumn=\count390
-\c@tcbrasterrow=\count391
-\c@tcbrasternum=\count392
-\c@tcbraster=\count393
+\c@tcbrastercolumn=\count417
+\c@tcbrasterrow=\count418
+\c@tcbrasternum=\count419
+\c@tcbraster=\count420
 ) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbskins.code.tex
 Library (tcolorbox): 'tcbskins.code.tex' version '6.0.4'
 (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tikzfill\tikzfill.image.sty
@@ -1110,7 +1212,7 @@ Package: tikzfill.image 2022/07/20 v1.0.0 Image filling library for TikZ
 Package: tikzfill-common 2022/07/20 v1.0.0 Auxiliary code for tikzfill
 ) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tikzfill\tikzlibraryfill.image.code.tex
 File: tikzlibraryfill.image.code.tex 2022/07/20 v1.0.0 Image filling library
-\l__tikzfill_img_box=\box142
+\l__tikzfill_img_box=\box164
 )) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbskinsjigsaw.code.tex
 Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.0.4'
 )) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbbreakable.code.tex
@@ -1119,65 +1221,65 @@ Library (tcolorbox): 'tcbbreakable.code.tex' version '6.0.4'
 Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
 )
 Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
-\tcb@testbox=\box143
-\tcb@totalupperbox=\box144
-\tcb@totallowerbox=\box145
+\tcb@testbox=\box165
+\tcb@totalupperbox=\box166
+\tcb@totallowerbox=\box167
 ) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbhooks.code.tex
 Library (tcolorbox): 'tcbhooks.code.tex' version '6.0.4'
 ) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbtheorems.code.tex
 Library (tcolorbox): 'tcbtheorems.code.tex' version '6.0.4'
 ) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbfitting.code.tex
 Library (tcolorbox): 'tcbfitting.code.tex' version '6.0.4'
-\tcbfitdim=\dimen361
-\tcb@lowerfitdim=\dimen362
-\tcb@upperfitdim=\dimen363
-\tcb@cur@hbadness=\count394
+\tcbfitdim=\dimen367
+\tcb@lowerfitdim=\dimen368
+\tcb@upperfitdim=\dimen369
+\tcb@cur@hbadness=\count421
 ))
-LaTeX Info: Redefining \oldstylenums on input line 146.
-LaTeX Font Info:    Trying to load font information for T1+XCharter-TLF on input line 146.
+LaTeX Info: Redefining \oldstylenums on input line 147.
+LaTeX Font Info:    Trying to load font information for T1+XCharter-TLF on input line 147.
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/xcharter\t1xcharter-tlf.fd
 File: T1XCharter-TLF.fd 2017/06/25 (autoinst) Font definitions for T1/XCharter-TLF.
 )
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 9.60007pt on input line 146.
+(Font)              scaled to size 9.60007pt on input line 147.
  (main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\translations-basic-dictionary-german.trsl
 File: translations-basic-dictionary-german.trsl (german translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `german'. on input line 146.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `german'. on input line 147.
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count395
-\scratchdimen=\dimen364
-\scratchbox=\box146
-\nofMPsegments=\count396
-\nofMParguments=\count397
-\everyMPshowfont=\toks67
-\MPscratchCnt=\count398
-\MPscratchDim=\dimen365
-\MPnumerator=\count399
-\makeMPintoPDFobject=\count400
-\everyMPtoPDFconversion=\toks68
+\scratchcounter=\count422
+\scratchdimen=\dimen370
+\scratchbox=\box168
+\nofMPsegments=\count423
+\nofMParguments=\count424
+\everyMPshowfont=\toks81
+\MPscratchCnt=\count425
+\MPscratchDim=\dimen371
+\MPnumerator=\count426
+\makeMPintoPDFobject=\count427
+\everyMPtoPDFconversion=\toks82
 ) (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -1186,15 +1288,15 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 \symgns@font=\mathgroup7
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
-(Font)                  TS1/XCharter-TLF/m/n --> TS1/XCharter-TLF/b/n on input line 146.
-Package gensymb Info: Math companion symbols declared on input line 146.
-LaTeX Info: Redefining \degree on input line 146.
-LaTeX Info: Redefining \celsius on input line 146.
-Package gensymb Info: Using text companion symbols for \degree, \celsius and \perthousand on input line 146.
-LaTeX Info: Redefining \ohm on input line 146.
-Package gensymb Info: Using \textohm for \ohm on input line 146.
-LaTeX Info: Redefining \micro on input line 146.
-Package gensymb Info: Using \textmu for \micro on input line 146.
+(Font)                  TS1/XCharter-TLF/m/n --> TS1/XCharter-TLF/b/n on input line 147.
+Package gensymb Info: Math companion symbols declared on input line 147.
+LaTeX Info: Redefining \degree on input line 147.
+LaTeX Info: Redefining \celsius on input line 147.
+Package gensymb Info: Using text companion symbols for \degree, \celsius and \perthousand on input line 147.
+LaTeX Info: Redefining \ohm on input line 147.
+Package gensymb Info: Using \textohm for \ohm on input line 147.
+LaTeX Info: Redefining \micro on input line 147.
+Package gensymb Info: Using \textmu for \micro on input line 147.
 
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
@@ -1233,12 +1335,12 @@ Package pgfplots notification 'compat/show suggested version=true': document has
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Package chemgreek Info: Activating mapping `default' on line 146.
+Package chemgreek Info: Activating mapping `default' on line 147.
 
-Package hyperref Info: Link coloring ON on input line 146.
+Package hyperref Info: Link coloring ON on input line 147.
 (main.out) (main.out)
-\@outlinefile=\write4
-\openout4 = `main.out'.
+\@outlinefile=\write5
+\openout5 = `main.out'.
 
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
@@ -1251,74 +1353,89 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-\c@mv@tabular=\count401
-\c@mv@boldtabular=\count402
+\c@mv@tabular=\count428
+\c@mv@boldtabular=\count429
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 13.82408pt on input line 158.
+(Font)              scaled to size 13.82408pt on input line 159.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
-(Font)              scaled to size 13.82408pt on input line 158.
+(Font)              scaled to size 13.82408pt on input line 159.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 11.52008pt on input line 159.
+(Font)              scaled to size 11.52008pt on input line 160.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
-(Font)              scaled to size 11.52008pt on input line 159.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 168.
+(Font)              scaled to size 11.52008pt on input line 160.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 169.
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 168.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 169.
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+esvect on input line 168.
+LaTeX Font Info:    Trying to load font information for U+esvect on input line 169.
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/esvect\uesvect.fd
 File: uesvect.fd 
 )
-LaTeX Font Info:    Trying to load font information for TS1+XCharter-TLF on input line 168.
+LaTeX Font Info:    Trying to load font information for TS1+XCharter-TLF on input line 169.
  (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/xcharter\ts1xcharter-tlf.fd
 File: TS1XCharter-TLF.fd 2020/05/25 (msharpe) Font definitions for TS1/XCharter-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 9.60007pt on input line 168.
+(Font)              scaled to size 9.60007pt on input line 169.
 LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 6.72005pt on input line 168.
+(Font)              scaled to size 6.72005pt on input line 169.
 LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 4.80003pt on input line 168.
+(Font)              scaled to size 4.80003pt on input line 169.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 8.64006pt on input line 180.
+(Font)              scaled to size 8.64006pt on input line 181.
 LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 8.64006pt on input line 213.
+(Font)              scaled to size 8.64006pt on input line 214.
 LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 5.76004pt on input line 213.
-LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
 (Font)              scaled to size 5.76004pt on input line 214.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 4.80003pt on input line 214.
+(Font)              scaled to size 5.76004pt on input line 215.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 10.56007pt on input line 220.
+(Font)              scaled to size 4.80003pt on input line 215.
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 10.56007pt on input line 221.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
-(Font)              scaled to size 10.56007pt on input line 220.
+(Font)              scaled to size 10.56007pt on input line 221.
  [1
 
-{C:/Users/Phil/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/xcharter/xch_rydp4l.enc}] [2] (main.aux)
+{C:/Users/Phil/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/xcharter/xch_rydp4l.enc}] [2]
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
+(Font)              scaled to size 9.60007pt on input line 319.
+
+Underfull \hbox (badness 10000) in paragraph at lines 323--326
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 323--326
+
+ []
+
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 6.72005pt on input line 345.
+[3{C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/xcharter/xch1_co4ru4.enc}] [4] (main.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-16>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 9338E1C64358C6A37C8E4924AD887339;282.
+(rerunfilecheck)             Checksum: F4C93AB492202BDDBA3FA64E235AA1AF;420.
  ) 
 Here is how much of TeX's memory you used:
- 51610 strings out of 476036
- 1248698 string characters out of 5780296
- 1904763 words of memory out of 5000000
- 71344 multiletter control sequences out of 15000+600000
- 584790 words of font info for 80 fonts, out of 8000000 for 9000
+ 61949 strings out of 476036
+ 1541827 string characters out of 5780296
+ 2085319 words of memory out of 5000000
+ 81617 multiletter control sequences out of 15000+600000
+ 597787 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,21n,97p,818b,1235s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 122i,21n,117p,1647b,1870s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/xcharter/XCharter-Bold.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/xcharter/XCharter-Roman.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/esvect/vect10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/esvect/vect9.pfb>
-Output written on main.pdf (2 pages, 210751 bytes).
+Output written on main.pdf (4 pages, 228224 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 6 named destinations out of 1000 (max. 500000)
- 125 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 169 PDF objects out of 1000 (max. 8388607)
+ 14 named destinations out of 1000 (max. 500000)
+ 133 words of extra memory for PDF output out of 10000 (max. 10000000)
 
