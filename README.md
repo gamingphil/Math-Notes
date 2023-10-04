@@ -29,6 +29,8 @@ To compile the notes, you'll need a LaTeX distribution installed on your system.
 
 To compile the notes, simply run `latexmk main.tex`. This will automatically handle all the necessary compilations and generate a PDF output.
 
+However, please note that this step is only required if you wish to generate the PDF output yourself. If you're just looking to view the notes, you can find all the compiled PDFs in the GitHub repository under the same name as the LaTeX source file.
+
 ## License
 
 These notes are licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/). 
