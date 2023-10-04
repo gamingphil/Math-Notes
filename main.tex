@@ -16,6 +16,7 @@
 \usepackage{xcolor} % Handling colors
 \usepackage{float} % Improved floating objects such as figures and tables
 \usepackage{tikz} % Graphics and figures
+\usepackage{tikz-3dplot}
 \usetikzlibrary{arrows} % -> customizable arrow tips
 \usetikzlibrary{tikzmark}
 \usepackage{pgfplots} % Plotting functions and data 
@@ -42,6 +43,8 @@
 % \usepackage[xcharter]{newtxmath} % Set the math font
 \usepackage{esvect} % Nicer vectors (\vv{})
 \usepackage[linguistics]{forest}
+\usepackage{etoolbox}
+\AtBeginEnvironment{align}{\setcounter{equation}{0}}
 % Hyperref setup:
 \hypersetup{
     colorlinks=true,
@@ -344,6 +347,216 @@ Vektoren kommen hauptsächlich auf folgende 3 Arten und Weisen vor:
         &&&&& r = \frac{1}{6};\; s = 1.5\text{ in (\ref{geraden_eq1})}:& \frac{1}{3} - 1.5 &\not= 0 \rightarrow \text{keine Schnittpunkte}
     \end{align*}
     \[\Rightarrow \text{windschief}\]
-
 \end{boxx}
+\subsection{Ebenen im Raum}
+\begin{figure}[H]
+    \centering
+    \tdplotsetmaincoords{60}{9}
+    \begin{tikzpicture}[tdplot_main_coords]
+        \filldraw[
+        draw=Yellow,%
+        fill=Yellow!20,%
+    ]          (-4,-3,4)
+            -- (4,-3,4)
+            -- (4,3,4)
+            -- (-4,3,4)
+            -- cycle;
+        \draw[->] (0,0,0) -- (-2,-1,4) node[anchor=north east,pos=0.5]{$\vec{a}$};
+        \draw[->] (0,0,0) -- (-1,1,4) node[anchor=south west,pos=0.5]{$\vec{b}$};
+        \draw[->] (0,0,0) -- (2.5,-1.5,4) node[anchor=north west,pos=0.5]{$\vec{c}$};
+        \filldraw[black] (-2,-1,4) circle (1.5pt) node[anchor=south east]{$A$};
+        \filldraw[black] (-1,1,4) circle (1.5pt) node[anchor=south east]{$B$};
+        \filldraw[black] (2.5,-1.5,4) circle (1.5pt) node[anchor=south west]{$C$};
+        \draw[Green,thick,->] (-2,-1,4) -- (-1,1,4) node[anchor=south east,pos=0.5]{$\vec{v}$};
+        \draw[Red,thick,->] (-2,-1,4) -- (2.5,-1.5,4) node[anchor=south west,pos=0.5]{$\vec{u}$};
+        \draw[->] (0,0,0) -- (2.2,1.5,4) node[anchor=south west,pos=1]{$x$};
+        \node[Yellow] at (-3.5,-2,4) {$E$};
+        \node[anchor=north east] at (0,0,0) {$O$};
+    \end{tikzpicture}
+\end{figure}
+\begin{align*}
+    E:\; \vec{x} &= \vv{OA} + r\cdot \vv{AC} + s \cdot \vv{AB} \hspace*{10mm} r,s \in \mathbb{R} \\
+    E:\; \vec{x} &= \vv{OA} + r\cdot \color{Red} \vec{u} \color{black} + s\cdot \color{Green} \vec{v}
+\end{align*}
+\begin{boxx}[Red]{Parametergleichung einer Ebene}
+    Jede Ebene lässt sich durch eine Parametergleichung der Form 
+    \[\vec{x} = \vec{p} + r \cdot \vec{u} + s \cdot \vec{v}\]
+    beschreiben. 
+    
+    $\vec{u}$ und $\vec{v}$ sind die Spannvektoren. 
+    Sie dürfen keine Veilfachen voneinader sein.
+    $\vec{p}$ ist der Stützvektor.
+\end{boxx}
+\newpage
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} Bestimme die Parametergleichung der Ebene, die durch die Punkte
+    $A$, $B$ und $C$ verläuft.
+
+    \[A(1,0,1);\; B(1,1,0);\; C(0,0,1)\]
+    \begin{align*}
+        E:\; \vec{x} &= \vv{OA} + r \cdot \vv{AC} + s \cdot \vv{AB} \\
+        E:\; \vec{x} &= \begin{pmatrix}1\\0\\1\end{pmatrix} + r \cdot \begin{pmatrix}-1\\1\\0\end{pmatrix} + s \cdot \begin{pmatrix}0\\1\\-1\end{pmatrix} \\
+    \end{align*}
+    $b)$\hspace{3mm} Gegeben ist die Ebene $E$ mit der Gleichung 
+    $\displaystyle \vec{x} = \begin{pmatrix}2\\0\\1\end{pmatrix} + r \cdot \begin{pmatrix}1\\3\\5\end{pmatrix} + s \cdot \begin{pmatrix}2\\-1\\1\end{pmatrix}$.\\
+
+    \hspace{6mm} Bestimme, ob die Punkte $A(7,5,4)$ und $B(7,1,8)$ auf der Ebene $E$ liegen.\\
+    \begin{align*}
+        &&&A(7,5,4):    & \begin{pmatrix}7\\5\\4\end{pmatrix} &= \begin{pmatrix}2\\0\\1\end{pmatrix} + r \cdot \begin{pmatrix}1\\3\\5\end{pmatrix} + s \cdot \begin{pmatrix}2\\-1\\1\end{pmatrix} &&&&\\
+        &&&&\begin{pmatrix}5\\5\\3\end{pmatrix} &= r \cdot \begin{pmatrix}1\\3\\5\end{pmatrix} + s \cdot \begin{pmatrix}2\\-1\\1\end{pmatrix}
+    \end{align*}
+    \begin{align}
+        5 &= r + 2s \label{ebenen_eq1}\\
+        5 &= 3r - s \label{ebenen_eq2}\\
+        3 &= 5r + s \label{ebenen_eq3}
+    \end{align}
+    \begin{align*}
+        &&&&&&&\text{(\ref{ebenen_eq2})} + \text{(\ref{ebenen_eq3})}:& 8 &= 8r &&&&&&&&\\
+        &&&&&&&& \rightarrow r &= 1 \\
+        &&&&&&& r = 1 \text{ in (\ref{ebenen_eq1})}:& 5 &= 1 + 2s \\
+        &&&&&&&& \rightarrow s &= 2 \\
+        &&&&&&& r = 1;\; s = 2\text{ in (\ref{ebenen_eq2})}:& 5 &\not= 3 - 2 \Rightarrow A \not\in E
+    \end{align*}
+
+    \begin{align*}
+        &&&B(7,1,8):    & \begin{pmatrix}7\\1\\8\end{pmatrix} &= \begin{pmatrix}2\\0\\1\end{pmatrix} + r \cdot \begin{pmatrix}1\\3\\5\end{pmatrix} + s \cdot \begin{pmatrix}2\\-1\\1\end{pmatrix} &&&&\\
+        &&&&\begin{pmatrix}5\\1\\7\end{pmatrix} &= r \cdot \begin{pmatrix}1\\3\\5\end{pmatrix} + s \cdot \begin{pmatrix}2\\-1\\1\end{pmatrix}
+    \end{align*}
+    \begin{align}
+        5 &= r + 2s \label{ebenen2_eq1}\\
+        1 &= 3r - s \label{ebenen2_eq2}\\
+        7 &= 5r + s \label{ebenen2_eq3}
+    \end{align}
+    \begin{align*}
+        &&&&&&&\text{(\ref{ebenen2_eq2})} + \text{(\ref{ebenen2_eq3})}:& 8 &= 8r &&&&&&&&\\
+        &&&&&&&& \rightarrow r &= 1 \\
+        &&&&&&& r = 1 \text{ in (\ref{ebenen2_eq1})}:& 5 &= 1 + 2s \\
+        &&&&&&&& \rightarrow s &= 2 \\
+        &&&&&&& r = 1;\; s = 2\text{ in (\ref{ebenen2_eq2})}:& 1 &= 3 - 2 \Rightarrow B\in E
+    \end{align*}
+    \newpage
+    $c)$\hspace{3mm} Überprüfe ob die Punkte $A$, $B$, $C$ und $D$ in einer Ebene liegen.
+    \[A(0,1,-1);\; B(2,3,5);\; C(-1,3,-1);\; D(2,2,2)\]
+    \[E:\; \vec{x} = \begin{pmatrix}0\\1\\-1\end{pmatrix} + r \cdot \begin{pmatrix}2\\2\\6\end{pmatrix} + s \cdot \begin{pmatrix}-1\\2\\0\end{pmatrix}\hspace*{5mm} \text{(Durch }A,B,C\text{)}\]
+    \begin{align*}
+        \begin{pmatrix}2\\2\\2\end{pmatrix} &= \begin{pmatrix}0\\1\\-1\end{pmatrix} + r \cdot \begin{pmatrix}2\\2\\6\end{pmatrix} + s \cdot \begin{pmatrix}-1\\2\\0\end{pmatrix} \\
+        \begin{pmatrix}2\\1\\3\end{pmatrix} &= r \cdot \begin{pmatrix}2\\2\\6\end{pmatrix} + s \cdot \begin{pmatrix}-1\\2\\0\end{pmatrix}
+    \end{align*}
+    \begin{align}
+        2 &= 2r - s \label{ebenen3_eq1}\\
+        1 &= 2r + 2s \label{ebenen3_eq2}\\
+        3 &= 6r \label{ebenen3_eq3}
+    \end{align}
+    \begin{align*}
+        &&&&&&&\text{(\ref{ebenen3_eq3})}:& 3 &= 6r &&&&&&&&\\
+        &&&&&&&& \rightarrow r &= \frac{1}{2} \\
+        &&&&&&& r = \frac{1}{2} \text{ in (\ref{ebenen3_eq1})}:& 2 &= 1 - s \\
+        &&&&&&&& \rightarrow s &= -1 \\
+        &&&&&&& r = \frac{1}{2};\; s = -1\text{ in (\ref{ebenen3_eq2})}:& 1 &\not= 1 - 2 \Rightarrow D\not\in E
+    \end{align*}
+    \begin{center}
+        $\Rightarrow$ $A$, $B$, $C$ und $D$ liegen nicht in einer Ebene.
+    \end{center}
+\end{boxx}
+\subsection{Zueinander orthogonale Vektoren -- Skalarprodukt}
+\begin{boxx}[Red]{Skalarprodukt}
+    Gegeben sind zwei Vektoren $\displaystyle \vec{a} = \begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix}$
+    und $\displaystyle \vec{b} = \begin{pmatrix}b_1\\b_2\\b_3\end{pmatrix}$.
+
+    Der Term 
+    \[\vec{a}\cdot \vec{b} = a_1b_1 + a_2b_2 + a_3b_3\]
+    heißt \textbf{Skalarprodukt} der Vektoren $\vec{a}$ und $\vec{b}$.\\
+
+    Zwei Vektoren sind genau dann orthogonal Zueinander, wenn ihr Skalarprodukt $0$ ist.
+    \[\vec{a} \cdot \vec{b} = 0\]
+\end{boxx}
+\begin{boxx}[Purple]{Beweis}
+    \begin{align*}
+        \vec{a} \cdot \vec{a} &= a_1^2 + a_2^2 + a_3^2 
+        = \left(\sqrt{a_1^2 + a_2^2 + a_3^2 }\right)^2 
+        = \left|\vec{a}\right|^2
+    \end{align*}
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme, ob sich die Geraden $g$ und $h$ orthogonal schneiden.
+    \[g:\;\vec{x} = \begin{pmatrix}8\\-9\\7\end{pmatrix} + s \cdot \begin{pmatrix}2\\13\\1\end{pmatrix};\hspace*{3mm}h:\;\vec{x} = \begin{pmatrix}8\\-9\\7\end{pmatrix} + s \cdot \begin{pmatrix}1\\-2\\1\end{pmatrix}\]
+    \[g \cap h: P(8,-9,7)\]
+    \[\begin{pmatrix}2\\13\\1\end{pmatrix} \cdot \begin{pmatrix}1\\-2\\1\end{pmatrix} = 2 - 26 +1 \not= 0\]
+    \begin{center}
+        $\Rightarrow$ Sie schneiden sich nicht orthogonal.
+    \end{center}
+\end{boxx}
+\subsection{Normalen- und Koordinatengleichung einer Ebene}
+Der Punkt $P$ ist ein beliebiger Punkt in der  Ebene $E$.
+
+Der Vektor $\vec{n}$ steht orthogonal auf der Ebene $E$ und wird
+\textbf{Normalvektor} der Ebene $E$ genannt.
+\begin{figure}[H]
+    \centering
+    \tdplotsetmaincoords{60}{9}
+    \begin{tikzpicture}[tdplot_main_coords]
+        \filldraw[
+        draw=Yellow,%
+        fill=Yellow!20,%
+    ]          (-2,-3,4)
+            -- (6,-3,4)
+            -- (6,3,4)
+            -- (-2,3,4)
+            -- cycle;
+        \draw[->] (0,0,0) -- (2,0,4) node[anchor=north west,pos=0.5]{$\vec{p}$};
+        \filldraw[black] (2,0,4) circle (1.5pt) node[anchor=north west]{$P$};
+        \draw[->] (2,0,4) -- (2,0,7) node[anchor=west,pos=0.45]{$\vec{n}$};
+        \draw[->] (0,0,0) -- (0.5,-1.5,4) node[anchor=east,pos=0.5]{$\vec{x}$};
+        \filldraw[black] (0.5,-1.5,4) circle (1.5pt) node[anchor=south east]{$X$};
+        \draw[->] (2,0,4) -- (0.5,-1.5,4) node[anchor=south east,pos=0.35]{$\vv{PX}$};
+        \node[Yellow] at (5.5,-2,4) {$E$};
+        \node[anchor=north east] at (0,0,0) {$O$};
+    \end{tikzpicture}
+\end{figure}
+Die Vektoren $\vec{n}$ und $\vec{x} - \vec{p}$ sind orthogonal,
+daher gilt $\displaystyle \left(\vec{x} - \vec{p}\right)\cdot \vec{n} = 0$.
+
+Auch umgekehrt gilt, dass ein Punkt $X$, der die Gleichung $\displaystyle \left(\vec{x} - \vec{p}\right)\cdot \vec{n} = 0$
+erfüllt, in der Ebene $E$ liegt.
+\begin{boxx}[Red]{Normalengleichung einer Ebene}
+    Eine Ebene $E$ mit dem Stützvektor $\vec{p}$ und dem Normalvektor $\vec{n}$ wird beschreiben durch die Gleichung:
+    \[E:\; \left(\vec{x} - \vec{p}\right)\cdot \vec{n} = 0\]
+    Alle Punkte $X$, die diese Gleichung erfüllen, liegen in $E$.
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Gib die Normalengleichung der Ebene mit dem Normalvektor $\displaystyle \vec{n} = \begin{pmatrix}4\\1\\-2\end{pmatrix}$,
+    die auf $P(1,2,3)$ liegt.
+    \[E:\; \left[\vec{x} - \begin{pmatrix}1\\2\\3\end{pmatrix}\right]\cdot \begin{pmatrix}4\\1\\-2\end{pmatrix} = 0\]
+\end{boxx}
+Durch Ausmultiplizieren der Normalengleichung erhält man eine weitere Gleichung, um die Ebene zu beschreiben.
+\begin{align*}
+    \left[\vec{x} - \begin{pmatrix}1\\2\\3\end{pmatrix}\right]\cdot \begin{pmatrix}\color{Orange}4\\ \color{Orange}1\\ \color{Orange}-2\end{pmatrix} &= 0 \\
+    \vec{x}\cdot \begin{pmatrix}4\\1\\-2\end{pmatrix} - \begin{pmatrix}1\\2\\3\end{pmatrix} \cdot \begin{pmatrix}4\\1\\-2\end{pmatrix} &= 0 \\
+    \begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix} \begin{pmatrix}4\\1\\-2\end{pmatrix} - \begin{pmatrix}1\\2\\3\end{pmatrix} \cdot \begin{pmatrix}4\\1\\-2\end{pmatrix} &= 0 \\
+    4x_1 + x_2 - 2x_3 - \left(4+2-6\right) &= 0 \\
+    \color{Orange}4\color{black}x_1 + \color{Orange}1\color{black}x_2 \color{Orange}- 2\color{black}x_3 &= 0 \\
+\end{align*}
+\begin{boxx}[Red]{Koordinatengleichung einer Ebene}
+    Jede Ebene $E$ lässt sich durch eine \textbf{Koordinatengleichung} der Form
+    \[ax_1 + bx_2 + cx_3 = d\]
+    beschreiben. Mindestens einer der Koeffizienten muss ungleich 0 sein. \\
+
+    Der Normalvektor $\vec{n}$ einer Ebene $E$ mit der Koordinatengleichung $ax_1 + bx_2 + cx_3 = d$
+    ist $\displaystyle \vec{n} = \begin{pmatrix}a\\b\\c\end{pmatrix}$.
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Begründe, dass die Ebenen $E_1$ und $E_2$ parallel sind.
+    \[E_1:\; 2x_1 + 3x_2 + 4x_3 = 5\]
+    \[E_2:\; 2x_1 + 3x_2 + 4x_3 = 9\]
+    \begin{center}
+        $E_1$ und $E_2$ haben den gleichen Normalvektor.\\
+        $\Rightarrow E_1 \parallel E_2$
+    \end{center}
+\end{boxx}
+Die Koordinatenebenen lassen sich mit folgenden Koordinatengleichungen beschreiben:
+\begin{itemize}
+    \item $x_1x_2$-Ebene: $x_3 = 0$
+    \item $x_1x_3$-Ebene: $x_2 = 0$
+    \item $x_2x_3$-Ebene: $x_1 = 0$
+\end{itemize}
 \end{document}
