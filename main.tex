@@ -559,4 +559,108 @@ Die Koordinatenebenen lassen sich mit folgenden Koordinatengleichungen beschreib
     \item $x_1x_3$-Ebene: $x_2 = 0$
     \item $x_2x_3$-Ebene: $x_1 = 0$
 \end{itemize}
+\subsection{Ebenengleichungen umformen -- das Kreuzprodukt}
+\[E:\; \vec{x} = \begin{pmatrix}1\\3\\2\end{pmatrix} + r \cdot \begin{pmatrix}-2\\-1\\-1\end{pmatrix} + s \cdot \begin{pmatrix}2\\-5\\3\end{pmatrix}\]
+Um die Ebene $E$ mit einer Normalen- oder Koordinatengleichung zu beschreiben, 
+
+braucht man $\vec{n}$ mit 
+$\displaystyle \vec{n} \cdot \begin{pmatrix}-2\\-1\\-1\end{pmatrix} = 0$ 
+und $\displaystyle \vec{n} \cdot \begin{pmatrix}2\\-5\\-3\end{pmatrix} = 0$.
+
+\begin{boxx}[Red]{Kreuzprodukt}
+    Unter dem Kreuzprodukt zweier Vektor $\vec{a}$ und $\vec{b}$ im $\mathbf{R^3}$
+    versteht man den Vektor $\vec{a} \times \vec{b}$ ("kreuz") mit:
+    \begin{align*}
+        \vec{a} \times \vec{b} = \begin{pmatrix}
+            a_2b_3 - a_3b_2 \\
+            a_3b_1 - a_1b_3 \\
+            a_1b_2 - a_2b_1
+        \end{pmatrix}
+    \end{align*}
+    $\vec{a} \times \vec{b}$ ist orthogonal zu $\vec{a}$ und $\vec{b}$, 
+    falls $\vec{a}$ und $\vec{b}$ keine Vielfachen sind.
+    $\vec{a} \times \vec{b} = \vec{0}$ genau dann, wenn $\vec{a}$ und $\vec{b}$ Vielfache voneinader sind.
+\end{boxx}
+\begin{boxx}[Green]{Rechenverfahren}
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{.2\textwidth}
+            \centering
+            \begin{align*}
+                \vec{a} \times \vec{b} &= \begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix} \times \begin{pmatrix}b_1\\b_2\\b_3\end{pmatrix}=
+            \end{align*}
+        \end{subfigure}%
+        \begin{subfigure}[b]{.15\textwidth}
+            \centering
+            \begin{tabular}{ccc}
+                \tikzmark{a1_1}$a_1$ && $b_1$\tikzmark{b1_1} \\ 
+                $a_2$\tikzmark{a2_1} && \tikzmark{b2_1}$b_2$ \\ 
+                $a_3$\tikzmark{a3_1} && \tikzmark{b3_1}$b_3$ \\ 
+                $a_1$\tikzmark{a1_2} && \tikzmark{b1_2}$b_1$ \\ 
+                $a_2$\tikzmark{a2_2} && \tikzmark{b2_2}$b_2$ \\ 
+                \tikzmark{a3_2}$a_3$ &&$b_3$\tikzmark{b3_2}
+            \end{tabular}
+            \begin{tikzpicture}[overlay, remember picture, shorten >=7pt, shorten <=7pt, transform canvas={yshift=.25\baselineskip}]
+                \draw [Red] ([xshift=-5pt]{pic cs:a2_1}) -- ([xshift=5pt]{pic cs:b3_1});
+                \draw [LightBlue] ([xshift=-5pt]{pic cs:a3_1}) -- ([xshift=5pt]{pic cs:b2_1});
+                \draw [Red] ([xshift=-5pt]{pic cs:a3_1}) -- ([xshift=5pt]{pic cs:b1_2});
+                \draw [LightBlue] ([xshift=-5pt]{pic cs:a1_2}) -- ([xshift=5pt]{pic cs:b3_1});
+                \draw [Red] ([xshift=-5pt]{pic cs:a1_2}) -- ([xshift=5pt]{pic cs:b2_2});
+                \draw [LightBlue] ([xshift=-5pt]{pic cs:a2_2}) -- ([xshift=5pt]{pic cs:b1_2});
+                \draw ([xshift=-7pt]{pic cs:a1_1}) -- ([xshift=7pt]{pic cs:b1_1});
+                \draw ([xshift=-7pt]{pic cs:a3_2}) -- ([xshift=7pt]{pic cs:b3_2});
+            \end{tikzpicture}
+        \end{subfigure}%\
+        \begin{subfigure}[b]{.2\textwidth}
+            \centering
+            \begin{align*}
+                = \begin{pmatrix}
+                    \color{Red}a_2b_3 \color{black}- \color{LightBlue}a_3b_2 \\
+                    \color{Red}a_3b_1 \color{black}- \color{LightBlue}a_1b_3 \\
+                    \color{Red}a_1b_2 \color{black}- \color{LightBlue}a_2b_1
+                \end{pmatrix}
+            \end{align*}
+        \end{subfigure}
+    \end{figure}
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Gib die Koordinatengleichung der Ebene $E$ mit $\displaystyle \vec{x} = \begin{pmatrix}1\\3\\2\end{pmatrix} + r \cdot \begin{pmatrix}-2\\-1\\-1\end{pmatrix} + s \cdot \begin{pmatrix}2\\-5\\3\end{pmatrix}$ an.
+    \begin{align*}
+        \vec{n}:\hspace*{5mm} \begin{pmatrix}-2\\-1\\-1\end{pmatrix} \times \begin{pmatrix}2\\-5\\-3\end{pmatrix} &=  \begin{pmatrix}3-5\\-2-6\\10+2\end{pmatrix} =  \begin{pmatrix}-2\\-8\\12\end{pmatrix} \\
+        \vec{n} &=  \begin{pmatrix}-1\\-4\\6\end{pmatrix}
+    \end{align*}
+    \[E:\; -x_1 - 4x_2 + 6x_3 = d\]
+    \begin{align*}
+        \text{mit }P(1,3,2):\hspace*{5mm} -1-4\cdot3+6\cdot2 = d = - 1
+    \end{align*}
+    \[\Rightarrow E:\; -x_1 - 4x_2 + 6x_3 = -1\]
+\end{boxx}
+\[E:\; 2x_1 - 3x_2 -x_3 = 8\]
+Um die Ebene $E$ mit einer Parametergleichung zu beschreiben, gibt es zwei Vorgehensweisen:
+\begin{enumerate}
+    \item 3 Punkte finden, die die Gleichung erfüllen, also in der Ebene liegen, die nicht auf einer Geraden liegen.
+    \begin{center}
+        Wir wählen
+    \end{center}
+    \[P_1(0,0,-8);\;P_2(4,0,0);\; P_3(5,0,2)\]
+    \begin{align*}
+        E:\; \vec{x} &= \vv{OP_1} + r \cdot \vv{P_1P_2} + s \cdot \vv{P_1P_3} \\
+        \vec{x} &= \begin{pmatrix}0\\0\\-8\end{pmatrix} + r \cdot \color{Red}\begin{pmatrix}4\\0\\8\end{pmatrix} \color{black}+ s \cdot \color{Red}\begin{pmatrix}5\\0\\10\end{pmatrix}
+    \end{align*}
+    \begin{center}
+        $\begin{pmatrix}4\\0\\8\end{pmatrix}$ und $\begin{pmatrix}5\\0\\10\end{pmatrix}$ sind Vielfache von $\begin{pmatrix}1\\0\\2\end{pmatrix}$.
+        Wir wählen einen weiteren Punkt $P_4(1,-2,0)$ statt $P_3$.
+    \end{center}
+    \[\Rightarrow E:\; \vec{x} = \begin{pmatrix}0\\0\\-8\end{pmatrix} + r \cdot \begin{pmatrix}1\\-2\\8\end{pmatrix} + s \cdot \begin{pmatrix}4\\0\\8\end{pmatrix}\]
+    \item Auflösen nach einer Variable und die anderen den Parametern $r$ und $s$ gleichsetzen.
+    Dann die Vektoren so wählen, dass die Zeilen mit den Gleichungen übereinstimmen.
+    \[E:\; 2x_1 - 3x_2 -x_3 = 8\]
+    \begin{align*}
+        x_1 &= r \\
+        x_2 &= s \\
+        x_3 &= 2x_1 - 3x_2 - 8 \\
+        &= 2r - 3s -8
+    \end{align*}
+    \[\Rightarrow E:\; \begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix} = \begin{pmatrix}0\\0\\-8\end{pmatrix} + r \cdot \begin{pmatrix}1\\0\\2\end{pmatrix} + s \cdot \begin{pmatrix}0\\1\\3\end{pmatrix}\]
+\end{enumerate}
 \end{document}
