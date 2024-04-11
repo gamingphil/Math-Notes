@@ -468,7 +468,7 @@ Vektoren kommen hauptsächlich auf folgende 3 Arten und Weisen vor:
     \[\vec{a}\cdot \vec{b} = a_1b_1 + a_2b_2 + a_3b_3\]
     heißt \textbf{Skalarprodukt} der Vektoren $\vec{a}$ und $\vec{b}$.\\
 
-    Zwei Vektoren sind genau dann orthogonal Zueinander, wenn ihr Skalarprodukt $0$ ist.
+    Zwei Vektoren sind genau dann orthogonal zueinander, wenn ihr Skalarprodukt $0$ ist.
     \[\vec{a} \cdot \vec{b} = 0\]
 \end{boxx}
 \begin{boxx}[Purple]{Beweis}
@@ -1292,5 +1292,39 @@ Spiegelung und Symmetrie im $\mathbb{R}^3$:
                 \vec{x} &= \begin{pmatrix}100\\100\\100\end{pmatrix} + 1.2 \cdot \begin{pmatrix}-30\\50\\-5\end{pmatrix} = \begin{pmatrix}64\\160\\94\end{pmatrix} \\
                 &\Rightarrow \text{Im Punkt } P(64,160,94)
             \end{align*}
+        Die Bahngleichungen der Flugzeuge 1 und 2 lauten:
+        \[F_1:\; \vec{x} = \begin{pmatrix}0\\0\\0\end{pmatrix} + t \cdot \begin{pmatrix}4\\4\\1\end{pmatrix};\; F_2:\; \vec{x} = \begin{pmatrix}-30\\-15\\8\end{pmatrix} + t \cdot \begin{pmatrix}12\\9\\0\end{pmatrix}\text{ ($t$ in $\unit{\minute}$, $x$ in $\unit{\kilo\meter}$)}\]
+        $a)$\hspace{3mm} Bestimme, ob es zu einem Zusammenstoß der beiden Flugzeuge kommt.
+        \begin{align*}
+            \begin{pmatrix}0\\0\\0\end{pmatrix} + t \cdot \begin{pmatrix}4\\4\\1\end{pmatrix} &=  \begin{pmatrix}-30\\-15\\8\end{pmatrix} + t \cdot \begin{pmatrix}12\\9\\0\end{pmatrix} \\
+            t \cdot \begin{pmatrix}-8\\-5\\1\end{pmatrix} &= \begin{pmatrix}-30\\-15\\8\end{pmatrix}
+        \end{align*}
+        \begin{center}
+            $t=3.75$ aus Zeile 1$;\;t=3$ aus Zeile 2
+
+            $\Rightarrow$ keine Lösung
+
+            $\Rightarrow$ Es kommt zu keinem Zusammenstoß
+        \end{center}
+        $b)$\hspace{3mm} Bestimme, ob sich die beiden Flugbahnen schneiden.
+        \begin{align*}
+            \begin{pmatrix}0\\0\\0\end{pmatrix} + s \cdot \begin{pmatrix}4\\4\\1\end{pmatrix} &=  \begin{pmatrix}-30\\-15\\8\end{pmatrix} + t \cdot \begin{pmatrix}12\\9\\0\end{pmatrix}
+        \end{align*}
+        \begin{align}
+            4s-12t &= -30 \label{model_eq1}\\
+            4s-9t &= -15 \label{model_eq2}\\
+            s &= 8 \label{model_eq3}
+        \end{align}
+        \begin{align*}
+            &&&&&&& s = 8 \text{ in (\ref{model_eq1})}:& 32-12t &= -30 &&&&&&&&\\
+            &&&&&&& & t &=\frac{31}{6} \\
+            &&&&&&& s = 8 \text{ in (\ref{model_eq2})}:& 32-9t &= -15 \\
+            &&&&&&& & t &=\frac{47}{9} 
+        \end{align*}
+        \begin{center}
+            $\Rightarrow$ keine Lösung
+            
+            $\Rightarrow$ Die Flugbahnen schneiden sich nicht
+        \end{center}
     \end{boxx}
 \end{document}
