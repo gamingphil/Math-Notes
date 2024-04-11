@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1712872627.16685 "f:/School/Jahrgangsstufe/M51 Mathe/Mathe Aufschriebe/main.tex" "main.pdf" "main" 1712872632.12194 0
+["pdflatex"] 1712874952.28741 "f:/School/Jahrgangsstufe/M51 Mathe/Mathe Aufschriebe/main.tex" "main.pdf" "main" 1712874956.8101 0
   "C:/Users/Phil/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1709848744 328665 32d7d5382d62905abeb97bad9e411349 ""
   "C:/Users/Phil/AppData/Local/MiKTeX/fonts/tfm/public/esvect/vect10.tfm" 1694551768 372 07da2e555f4c8dac959d0bb59cacb4dc ""
   "C:/Users/Phil/AppData/Local/MiKTeX/fonts/tfm/public/esvect/vect5.tfm" 1694551769 372 28e18d88a38be26cb20dc1302f0fdc04 ""
@@ -393,10 +393,10 @@
   "C:/Users/Phil/AppData/Local/Programs/MiKTeX/tex/latex/xfrac/xfrac.sty" 1708099996 14847 00e49ca86bcb9e60825f609034895f26 ""
   "C:/Users/Phil/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/Phil/AppData/Local/Programs/MiKTeX/tex/latex/xstring/xstring.sty" 1693735632 123 a302f2c651a95033260db60e51527ae8 ""
-  "f:/School/Jahrgangsstufe/M51 Mathe/Mathe Aufschriebe/main.tex" 1712872626 62863 efad2db799b99fe5c81a446c71c3daf8 ""
-  "main.aux" 1712872631 5236 5fc44c77e00000a86ed59d14f5ccb0e8 "pdflatex"
-  "main.out" 1712872631 3379 35d00d0579f7939ea5017f6f7a7dbc70 "pdflatex"
-  "main.tex" 1712872626 62863 efad2db799b99fe5c81a446c71c3daf8 ""
+  "f:/School/Jahrgangsstufe/M51 Mathe/Mathe Aufschriebe/main.tex" 1712874941 62850 e6919d947bb549fbfe88999798de1be9 ""
+  "main.aux" 1712874956 5236 5fc44c77e00000a86ed59d14f5ccb0e8 "pdflatex"
+  "main.out" 1712874956 3379 35d00d0579f7939ea5017f6f7a7dbc70 "pdflatex"
+  "main.tex" 1712874941 62850 e6919d947bb549fbfe88999798de1be9 ""
   (generated)
   "main.aux"
   "main.log"
