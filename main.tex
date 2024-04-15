@@ -20,6 +20,7 @@
 \usepackage{tikz-3dplot}
 \usetikzlibrary{arrows} % -> customizable arrow tips
 \usetikzlibrary{tikzmark}
+\usetikzlibrary{angles, quotes}
 \usepackage{pgfplots} % Plotting functions and data 
 \usepgfplotslibrary{fillbetween} % -> filling areas in pgfplots
 \pgfplotsset{compat=newest}
@@ -46,6 +47,7 @@
 \usepackage[linguistics]{forest}
 \usepackage{etoolbox}
 \AtBeginEnvironment{align}{\setcounter{equation}{0}}
+\AtBeginEnvironment{flalign}{\setcounter{equation}{0}}
 % Hyperref setup:
 \hypersetup{
     colorlinks=true,
@@ -103,8 +105,9 @@
 
 \usetikzlibrary{calc}
 
-\usepackage[many]{tcolorbox}
-
+\usepackage[many,skins,theorems]{tcolorbox}
+\tcbset{highlight math style={enhanced,
+  colframe=DarkCyan,colback=DarkCyan!5,arc=0pt,boxrule=1pt}}
 \newtcolorbox{boxx}[2][]{
     enhanced,
     fonttitle=\fontsize{11}{13.2}\selectfont\bfseries,
@@ -136,6 +139,8 @@
         }
     },
 }
+
+\newcommand*{\fakebreak}{\par\vspace{\textheight minus \textheight}\pagebreak}
 
 \definecolor{codegreen}{HTML}{369432}
 \definecolor{codegray}{HTML}{3a3d41}
@@ -625,7 +630,7 @@ und $\displaystyle \vec{n} \cdot \begin{pmatrix}2\\-5\\-3\end{pmatrix} = 0$.
     \end{figure}
 \end{boxx}
 \begin{boxx}[DarkBlue]{Beispiel}
-    Gib die Koordinatengleichung der Ebene $E$ mit $\displaystyle \vec{x} = \begin{pmatrix}1\\3\\2\end{pmatrix} + r \cdot \begin{pmatrix}-2\\-1\\-1\end{pmatrix} + s \cdot \begin{pmatrix}2\\-5\\3\end{pmatrix}$ an.
+    Gib die Koordinatengleichung der Ebene $E$ mit $\displaystyle \vec{x} = \begin{pmatrix}1\\3\\2\end{pmatrix} + r \cdot \begin{pmatrix}-2\\-1\\-1\end{pmatrix} + s \cdot \begin{pmatrix}2\\-5\\-3\end{pmatrix}$ an.
     \begin{align*}
         \vec{n}:\hspace*{5mm} \begin{pmatrix}-2\\-1\\-1\end{pmatrix} \times \begin{pmatrix}2\\-5\\-3\end{pmatrix} &=  \begin{pmatrix}3-5\\-2-6\\10+2\end{pmatrix} =  \begin{pmatrix}-2\\-8\\12\end{pmatrix} \\
         \vec{n} &=  \begin{pmatrix}-1\\-4\\6\end{pmatrix}
@@ -716,7 +721,7 @@ Um die Ebene $E$ mit einer Parametergleichung zu beschreiben, gibt es zwei Vorge
 \[S_1(6,0,0);\; S_2(0,2,0);\; S_3(0,0,4)\]
 
 \begin{center}
-    Die gemeinsame Punkte der Ebene mit den Koordinatenebenen heißen \textbf{Spurgeraden}.
+    Die gemeinsamen Punkte der Ebene mit den Koordinatenebenen heißen \textbf{Spurgeraden}.
 \end{center}
 \WFclear
 \newpage
@@ -914,7 +919,7 @@ Es gibt drei mögliche gegenseitige Lagen zweier Ebenen:
     \begin{align*}
         s = r - 1 \text{ in } E_2: \hspace*{5mm} \vec{x} &= \begin{pmatrix}8\\0\\2\end{pmatrix}+ r\cdot \begin{pmatrix}-4\\1\\1\end{pmatrix} + (r-1) \cdot \begin{pmatrix}5\\0\\-1\end{pmatrix} \\
         \vec{x} &= \begin{pmatrix}8\\0\\2\end{pmatrix}+ r\cdot \begin{pmatrix}-4\\1\\1\end{pmatrix} + r \cdot \begin{pmatrix}5\\0\\-1\end{pmatrix} - \begin{pmatrix}5\\0\\-1\end{pmatrix} \\
-        \Rightarrow g:\;\vec{x} &= \begin{pmatrix}3\\0\\36\end{pmatrix} + r \cdot \begin{pmatrix}1\\1\\0\end{pmatrix}
+        \Rightarrow g:\;\vec{x} &= \begin{pmatrix}3\\0\\3\end{pmatrix} + r \cdot \begin{pmatrix}1\\1\\0\end{pmatrix}
     \end{align*}
     $b)$\hspace{3mm} $F_1:\; 3x_1 - 4x_2 + x_3 = 1;\; F_2:\;5x_1 + 2x_2 - 3x_3 = 6$
     \begin{align}
@@ -922,13 +927,13 @@ Es gibt drei mögliche gegenseitige Lagen zweier Ebenen:
         5x_1 + 2x_2 - 3x_3 &= 6 \label{ebenen4_eq2}
     \end{align}
     \begin{align*}
-        &&&&&\text{(\ref{ebenen4_eq2})} - 2\cdot\text{(\ref{ebenen4_eq1})}: & 13x_1 - 5x_3 &= 13&&|\;x_3=t&&&& \\
+        &&&&&\text{(\ref{ebenen4_eq1})} + 2\cdot\text{(\ref{ebenen4_eq2})}: & 13x_1 - 5x_3 &= 13&&|\;x_3=t&&&& \\
         &&&&&& 13x_1 -5t &= 13 &&|\;+5t;\;\cdot \frac{1}{13}\\
         &&&&&& x_1 &= 1 + \frac{5}{13}t && \\
     \end{align*}
     \begin{align*}
         &&&&&x_1 = 1 + \frac{5}{13}t \text{ in (\ref{ebenen4_eq2})}: &5\left(1+\frac{5}{13}t\right)+2x_2 -3t &= 6&&&&&& \\
-        &&&&&&\frac{15}{25}t + 2x_2 -3t &= 1 \\
+        &&&&&&\frac{25}{13}t + 2x_2 -3t &= 1 \\
         &&&&&& x_2 &= \frac{1}{2} + \frac{7}{13}t
     \end{align*}
     \begin{align*}
@@ -1129,7 +1134,7 @@ Der Abstand zwischen zwei Geraden $g$ und $h$ lassen sich wiefolt bestimmen:
         \vec{n} &= \begin{pmatrix}0\\1\\2\end{pmatrix} \times \begin{pmatrix}4\\-1\\-1\end{pmatrix} = \begin{pmatrix}1\\8\\-4\end{pmatrix}; |\vec{n}| = 9
     \end{align*}
     \begin{align*}
-        d(g,h) &= \left|\left[\begin{pmatrix}1\\4\\-2\end{pmatrix}- \begin{pmatrix}2\\0\\1\end{pmatrix}\right] \cdot \frac{1}{9} \begin{pmatrix}1\\8\\-4\end{pmatrix}\right| \\
+        d(g,h) &= \left|\left[\begin{pmatrix}1\\4\\2\end{pmatrix}- \begin{pmatrix}2\\0\\1\end{pmatrix}\right] \cdot \frac{1}{9} \begin{pmatrix}1\\8\\-4\end{pmatrix}\right| \\
         &= \left|\begin{pmatrix}-1\\4\\1\end{pmatrix}\cdot \begin{pmatrix}1\\8\\-4\end{pmatrix} \cdot \frac{1}{9}\right| \\
         &= \left|27 \cdot \frac{1}{9}\right| = 3
     \end{align*}
@@ -1326,5 +1331,89 @@ Spiegelung und Symmetrie im $\mathbb{R}^3$:
 
             $\Rightarrow$ Die Flugbahnen schneiden sich nicht
         \end{center}
+    \end{boxx}
+    \newpage 
+    \subsection{Winkel zwischen Vektoren}
+    \begin{minipage}{0.45\textwidth}
+        \begin{flalign*}
+            \textcolor{LightBlue}{\vec{a}} \cdot \textcolor{LightGreen}{\vec{b}} &= \textcolor{LightBlue}{\vec{a}} \cdot \left(\textcolor{LightPurple}{\vv{OB}} + \textcolor{LightOrange}{\vv{B'B}}\right) &\\
+            &= \textcolor{LightBlue}{\vec{a}} \cdot \textcolor{LightPurple}{\vv{OB}} + \underbrace{\textcolor{LightBlue}{\vec{a}}\cdot\textcolor{LightOrange}{\vv{B'B}}}_{\text{\parbox{1.2cm}{\centering $=0$, da \\$\textcolor{LightBlue}{\vec{a}} \perp \textcolor{LightOrange}{\vv{B'B}}$}}} \\
+            &= \underbrace{\textcolor{LightBlue}{|\vec{a}|} \cdot \textcolor{Red}{\vec{a}_0}}_{\textcolor{LightBlue}{\vec{a}}} \cdot \underbrace{\textcolor{LightPurple}{|\vv{OB'}|} \cdot \textcolor{Red}{\vec{a}_0}}_{\textcolor{LightPurple}{\vv{OB'}}} \\
+            &= \textcolor{LightBlue}{|\vec{a}|} \cdot \textcolor{LightPurple}{|\vv{OB'}|} \cdot \underbrace{\textcolor{Red}{\vec{a}_0} \cdot \textcolor{Red}{\vec{a}_0}}_{=|\vec{a}_0|^2 = 1}
+        \end{flalign*}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+    \begin{figure}[H]
+        \begin{tikzpicture}[scale=1.5]
+            \draw[-latex,LightGreen] (0,0) -- (2.5,2) node[anchor=south east, pos=0.5] {\(\vec{b}\)};
+            \draw[-latex,LightPurple] (0,0) -- (2.5,0);
+            \draw[-latex,Red] (0,0) -- (1,0) node[anchor=north,pos=0.5] {\(\vec{a}_0\)};
+            \draw[-latex,LightBlue] (2.5,0) -- (4,0) node[anchor=north,pos=0.5] {\(\vec{a}\)};
+            \coordinate[label=below left:$ O $] (O);
+            \draw (0:0.8) arc (0:39:0.8) node[anchor=west, pos = 0.6] {\(\alpha\)};
+            \draw[-latex,LightOrange] (2.5,0) -- (2.5,2);
+            \filldraw[black] (2.5,2) circle (0.75pt) node[anchor=south east]{$B$};
+            \filldraw[black] (2.5,0) circle (0.75pt) node[anchor=north]{$B'$};
+            \draw (2.5,0.2) -- (2.3,0.2) -- (2.3,0);
+    \end{tikzpicture}
+    \end{figure}
+    \end{minipage}
+    \vspace*{3mm}
+    \begin{flalign}
+        \Rightarrow \textcolor{LightBlue}{\vec{a}} \cdot \textcolor{LightGreen}{\vec{b}} &= \textcolor{LightBlue}{|\vec{a}|} \cdot \textcolor{LightPurple}{|\vv{OB'}|} &\label{winkel_eq1}
+    \end{flalign}
+    \begin{minipage}{0.45\textwidth}
+        \begin{flalign*}
+            \cos{\alpha} &= \frac{\textcolor{LightPurple}{|\vv{OB'}|}}{\textcolor{LightGreen}{|\vec{b}|}} &\\
+            \Leftrightarrow \textcolor{LightPurple}{|\vv{OB'}|} &= \textcolor{LightGreen}{|\vec{b}|}\cdot \cos{\alpha}& \\
+            \textrm{mit (\ref{winkel_eq1})}: \hspace*{5mm} \textcolor{LightBlue}{\vec{a}} \cdot \textcolor{LightGreen}{\vec{b}} &= v \textcolor{LightBlue}{\vec{a}} \cdot \textcolor{LightGreen}{\vec{b}} \cdot \cos{\alpha}
+        \end{flalign*}
+        \begin{flalign*}
+            \Rightarrow \cos{\alpha} = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}|\cdot|\vec{b}|} &&
+        \end{flalign*}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \begin{figure}[H]
+            \centering
+        \begin{tikzpicture}
+            \draw[-latex] (0,0) -- (1.95,1.56)node[anchor=west]{\(\vec{b}\)};
+            \draw[-latex] (0,0) -- (2.5,0)node[anchor=west]{\(\vec{a}\)};
+            \draw[very thick,Red] (0:0.8) arc (0:39:0.8) node[anchor=west, pos = 0.6] {\(\alpha\)};
+            \draw (39:0.5) arc (39:360:0.5);
+        \end{tikzpicture}
+        \end{figure}
+    \end{minipage}
+    \begin{boxx}[Red]{Satz}
+        Unter dem Winkel zwischen zwei Vektoren $\vec{a}$ und $\vec{b}$ versteht man den \textbf{kleineren} der beiden Winkel, der entsteht, wenn man die Pfeile der Vektoren \textbf{zu einem gemeinsamen Anfangspunkt} zeichnet.
+        \\[5pt]
+        Für den Winkel $\alpha$ zwischen den Vektoren $\vec{a}$ und $\vec{b}$ gilt:
+        \[\cos{\alpha} = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| \cdot |\vec{b}|}\]
+    \end{boxx}
+    \begin{boxx}[DarkBlue]{Beispiel}
+        $a)$\hspace*{3mm}Bestimme den Winkel $\alpha$ des Dreiecks $ABC$ mit $A(1,-1,-5);\;B(3,2,-4);\; C(5,-1,-2)$.
+        \begin{align*}
+            \cos{\alpha} &= \frac{\vv{AB} \cdot \vv{AC}}{\left|\vv{AB}\right| \cdot \left|\vv{AC}\right|} \\
+            &= \frac{\begin{pmatrix}2\\3\\1\end{pmatrix}\cdot \begin{pmatrix}4\\0\\3\end{pmatrix}}{\sqrt{14} \cdot 5} = \frac{11}{5\sqrt{14}} \\
+            \alpha &= \arccos{\left(\frac{11}{5\sqrt{14}}\right)} \approx \qty{54}{\degree}
+        \end{align*}
+    \end{boxx}
+    \newpage
+    \begin{boxx}[DarkBlue]{}
+        $b)$\hspace*{3mm}Gegeben sind die Vektoren $\vec{a}$ und $\vec{b}$ mit $\displaystyle \vec{a} = \begin{pmatrix}1\\0\\1\end{pmatrix};\;\vec{b}=\begin{pmatrix}b\\1\\0\end{pmatrix}$. 
+        Bestimme $b$ so, dass der Winkel zwischen $\vec{a}$ und $\vec{b}$ \qty{60}{\degree} beträgt.
+
+        \begin{align*}
+            \cos{\qty{60}{\degree}} &= \frac{\begin{pmatrix}1\\0\\1\end{pmatrix}\cdot \begin{pmatrix}b\\1\\0\end{pmatrix}}{\sqrt{2}\cdot \sqrt{1+b^2}} \\
+            \frac{1}{2} &= \frac{b}{\sqrt{2}\cdot\sqrt{1+b^2}} 
+            2b &= \sqrt{2}\cdot \sqrt{1+b^2}&&|\;()^2\\
+            4b^2 &= 2\left(1+b^2\right) \\
+            4b^2 &= 2 + 2b^2 \\
+            b &= \pm 1
+        \end{align*}
+        \begin{align*}
+            &&&&\textrm{Probe}: \hspace*{5mm} b&=1:\hspace*{5mm}& \frac{1}{\sqrt{2}\cdot\sqrt{1+1^2}} &= \frac{1}{2} &&&&\\
+            &&&& b&=-1:\hspace*{5mm}&\frac{-1}{\sqrt{2}\cdot\sqrt{1+(-1)^2}} &= -\frac{1}{2} 
+        \end{align*}
+        \[\Rightarrow b = 1\]
     \end{boxx}
 \end{document}

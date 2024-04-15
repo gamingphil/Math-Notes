@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1712768881.48001 "f:/School/Jahrgangsstufe/M51 Mathe/Mathe Aufschriebe/notes.tex" "notes.pdf" "notes" 1712768897.41044 0
-  "C:/Users/Phil/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1709848744 328665 32d7d5382d62905abeb97bad9e411349 ""
+["pdflatex"] 1713198540.76036 "f:/School/Jahrgangsstufe/M51 Mathe/Mathe Aufschriebe/notes.tex" "notes.pdf" "notes" 1713198553.57396 0
+  "C:/Users/Phil/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1713034994 328665 32d7d5382d62905abeb97bad9e411349 ""
   "C:/Users/Phil/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1710078179 24231456 2223aa44271032b3595bed9eb4a1a314 ""
   "C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/xcharter/xch1_co4ru4.enc" 1690544071 4020 91498a27e387d1fb0a696939684f1ed8 ""
   "C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/xcharter/xch_rydp4l.enc" 1690544071 3163 7f55dff3d39d62a4166d93e3ebd1d5d5 ""
@@ -302,10 +302,10 @@
   "C:/Users/Phil/AppData/Local/Programs/MiKTeX/tex/latex/xfrac/xfrac.sty" 1708099996 14847 00e49ca86bcb9e60825f609034895f26 ""
   "C:/Users/Phil/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/Phil/AppData/Local/Programs/MiKTeX/tex/latex/xstring/xstring.sty" 1693735632 123 a302f2c651a95033260db60e51527ae8 ""
-  "f:/School/Jahrgangsstufe/M51 Mathe/Mathe Aufschriebe/notes.tex" 1712768858 79389 21299e8f520b3d26119bbc06d98f7fc6 ""
-  "notes.aux" 1712768896 6285 6136f16d3975416d8402a7e12fb0d69b "pdflatex"
-  "notes.out" 1712768896 8538 ffdf19e7d489e0e5de4c44d97c79dc0e "pdflatex"
-  "notes.tex" 1712768858 79389 21299e8f520b3d26119bbc06d98f7fc6 ""
+  "f:/School/Jahrgangsstufe/M51 Mathe/Mathe Aufschriebe/notes.tex" 1713198294 79251 0cb38b729abc4e31aef0dd4d4ccf97e6 ""
+  "notes.aux" 1713198553 6153 dd7a2205b1f123b41a2de5001716e340 "pdflatex"
+  "notes.out" 1713198553 8354 0e7f6d93325a5ff530de44399dafe9d3 "pdflatex"
+  "notes.tex" 1713198294 79251 0cb38b729abc4e31aef0dd4d4ccf97e6 ""
   (generated)
   "notes.aux"
   "notes.log"
