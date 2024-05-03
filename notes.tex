@@ -7,6 +7,7 @@
 \usepackage{amsthm} %  |
 \usepackage{siunitx} %  Typesetting (SI) units
 \DeclareSIUnit\litre{l}
+\sisetup{per-mode = fraction}
 %\usepackage{physics} % Advanced Mathematics of Physics, conflicts with siunitx
 \usepackage{multirow} % Tables with cells that span more than one row
 \usepackage{fancyhdr} % Custom page layout
@@ -16,11 +17,14 @@
 \usepackage{xcolor} % Handling colors
 \usepackage{float} % Improved floating objects such as figures and tables
 \usepackage{tikz} % Graphics and figures
+\usepackage{tikz-3dplot}
 \usetikzlibrary{arrows} % -> customizable arrow tips
 \usetikzlibrary{tikzmark}
+\usetikzlibrary{angles, quotes}
 \usepackage{pgfplots} % Plotting functions and data 
 \usepgfplotslibrary{fillbetween} % -> filling areas in pgfplots
 \pgfplotsset{compat=newest}
+\usepackage{tkz-base,tkz-euclide}
 \usepackage{systeme} % Systems of equations
 \usepackage{romanbar} % Roman numbers with bars
 \usepackage{titlepic} % Putting picture on the title page
@@ -39,7 +43,11 @@
 \usepackage{subcaption}
 \usepackage[scale=0.96]{XCharter} % Use the XCharter text font
 % \usepackage[xcharter]{newtxmath} % Set the math font
-
+\usepackage{esvect} % Nicer vectors (\vv{})
+\usepackage[linguistics]{forest}
+\usepackage{etoolbox}
+\AtBeginEnvironment{align}{\setcounter{equation}{0}}
+\AtBeginEnvironment{flalign}{\setcounter{equation}{0}}
 % Hyperref setup:
 \hypersetup{
     colorlinks=true,
@@ -97,8 +105,9 @@
 
 \usetikzlibrary{calc}
 
-\usepackage[many]{tcolorbox}
-
+\usepackage[many,skins,theorems]{tcolorbox}
+\tcbset{highlight math style={enhanced,
+  colframe=DarkCyan,colback=DarkCyan!5,arc=0pt,boxrule=1pt}}
 \newtcolorbox{boxx}[2][]{
     enhanced,
     fonttitle=\fontsize{11}{13.2}\selectfont\bfseries,
@@ -2205,4 +2214,1289 @@ Funktion bietet sich folgende Strategie:
         \end{align*}
     \end{enumerate}
 \end{boxx}
+\newpage
+\section{Geraden und Ebenen}
+\subsection{Vektoren im Raum}
+Vektoren kommen hauptsächlich auf folgende 3 Arten und Weisen vor:
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \tkzInit[xmax=4,ymax=3]
+            \tkzDrawX
+            \tkzDrawY
+            \tkzDefPoint(1,1){A}
+            \tkzDefPoint(2,2){B}
+            \tkzDefPoint(3,1){C}
+            \tkzDefPoint(4,2){D}
+            \tkzDrawSegment[-Triangle](A,B)
+            \tkzDrawSegment[-Triangle](C,D)
+            \tkzLabelPoint[below](1,0){$1$}
+            \tkzLabelPoint[left](0,1){$1$}
+            \tkzLabelSegment[right=1ex,pos=.4](A,B){$\vec{a}$}
+            \tkzLabelSegment[right=1ex,pos=.4](C,D){$\vec{a}$}
+        \end{tikzpicture}
+        \caption{Als Pfeil (mit beliebigem Anfang)}
+    \end{subfigure}%
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \tkzInit[xmax=4,ymax=3]
+            \tkzDrawX
+            \tkzDrawY
+            \tkzDefPoint(1.5,1){A}
+            \tkzDefPoint(4,3){B}
+            \tkzDrawPoints[size=3,shape=cross out](A, B)
+            \tkzDrawSegment[-Triangle](A,B)
+            \tkzLabelPoint[below](1,0){$1$}
+            \tkzLabelPoint[left](0,1){$1$}
+            \tkzLabelPoint[below](A){$A(1.5,1)$}
+            \tkzLabelPoint[left=1ex](B){$B(4,3)$}
+            \tkzLabelSegment[right=2ex,pos=.35](A,B){$\vv{AB}$}
+        \end{tikzpicture}
+        \caption{Als Pfeil (zwischen 2 Punkten)}
+    \end{subfigure}%
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \tkzInit[xmax=4,ymax=3]
+            \tkzDrawX
+            \tkzDrawY
+            \tkzDefPoint(0,0){A}
+            \tkzDefPoint(3,1){B}
+            \tkzDrawPoint[size=3,shape=cross out](B)
+            \tkzDrawSegment[-Triangle](A,B)
+            \tkzLabelPoint[below](1,0){$1$}
+            \tkzLabelPoint[left](0,1){$1$}
+            \tkzLabelPoint[right=1ex](B){$A(3,1)$}
+            \tkzText(2.5,2.8){\small$\displaystyle \vv{OA}=\begin{pmatrix}3\\1\end{pmatrix}$}
+            \tkzText(2.5,2.2){\small\color{Red}$\text{Ortsvektor von }A$}
+        \end{tikzpicture}
+        \caption{Als Punkt}
+    \end{subfigure}%
+\end{figure}
+
+\begin{boxx}[Red]{Gegenvektor}
+    Gegenvektor eines Vektors $\vec{a}$ ist der Vektor $-\vec{a}$.
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme den Gegenvektor zum Vektor $\displaystyle \vv{AB} = \begin{pmatrix}3 \\ 1 \\ -2 \end{pmatrix}$.
+    \[\vv{BA} = -\vv{AB} = \begin{pmatrix}-3 \\ -1 \\ 2\end{pmatrix}\]
+\end{boxx}
+\begin{boxx}[Red]{Mittelpunkt}
+    Der Mittelpunkt $M$ zweier Punkte $A(a_1,a_2,a_3)$ und $B(b_1,b_2,b_3)$ ergibt sich wiefolt:
+    \[M\left(\frac{a_1+b_2}{2}, \frac{a_2+b_2}{2}, \frac{a_3 + b_3}{2}\right)\]
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme den Mittelpunkt $M$ der Punkte $A(2,3,3)$ und $B(4,1,2)$.
+    \[\Rightarrow M(3,2,2.5)\]
+\end{boxx}
+\begin{boxx}[Red]{Betrag}
+    Der Betrag eines Vektors $\vec{a}$ ist geometrisch die Länge des zugehörigen Pfeils.
+    Er lässt sich mit dem Satz des Pythagoras berechnen:
+    \[|\vec{a}| = \left|\begin{pmatrix}
+        a_1 \\ a_2 \\ a_3
+    \end{pmatrix}\right| = \sqrt{a_1^2 + a_2^2 + a_3^2}\]
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Berechne den Betrag des Vektors $\displaystyle \vec{a} = \begin{pmatrix}3 \\ 2 \\ 6\end{pmatrix}$.
+    \[|\vec{a}| = \sqrt{9 + 4 + 36} = \sqrt{49} = 7\]
+\end{boxx}
+\begin{boxx}[Red]{Einheitsvektor}
+    Der Einheitsvektor $\vec{a}_0$ ist der Vektor, der in dieselbe Richtung wie $\vec{a}$ zeigt, und den Betrag 1 hat.
+    
+    Er errechnet sich mit:
+    \[\vec{a}_0 = \frac{1}{|\vec{a}|} \cdot \vec{a}\]
+\end{boxx} 
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme den Einheitsvektor $\vec{a}_0$ des Vektors $\vec{a} = \begin{pmatrix}3 \\ 2 \\ 6\end{pmatrix}$.
+    \[\vec{a}_0 = \frac{1}{7} \cdot \begin{pmatrix}3\\2\\6\end{pmatrix} \\\]
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Gegeben ist der Vektor $\displaystyle \vv{AB} = \begin{pmatrix}3\\3\\3\end{pmatrix}$.
+    Bestimme jeweils den fehlenden Punkt. \\
+    $a)$\hspace{3mm} $A(0,-1,2)$
+    \[\vv{OB} = \vv{OA} + \vv{AB} = \begin{pmatrix}0\\-1\\2\end{pmatrix} + \begin{pmatrix}3\\3\\3\end{pmatrix} = \begin{pmatrix}3\\2\\5\end{pmatrix}\]
+    \[\Rightarrow B(3,2,5)\]
+    $b)$\hspace{3mm} $B(2,0,3)$
+    \[\vv{OA} = \vv{OB} - \vv{AB} = \begin{pmatrix}2\\0\\3\end{pmatrix} - \begin{pmatrix}3\\3\\3\end{pmatrix} = \begin{pmatrix}-1\\-3\\0\end{pmatrix}\]
+    \[\Rightarrow A(-1,-3,0)\]
+\end{boxx}
+\newpage
+\subsection{Geraden im Raum}
+% Parametergleichung einer Geraden:
+% \[\vec{x} = \underbrace{\begin{pmatrix}1\\2\\3\end{pmatrix}}_{\text{\makebox[0pt]{Stützvektor}}} + \;r \cdot \underbrace{\begin{pmatrix}1\\1\\1\end{pmatrix}}_{\text{\makebox[0pt]{Richtungsvektor}}}\]
+\begin{boxx}[Red]{Allgemeine Parametergleichung einer Geraden}
+    \[g: \vec{x} = \color{Red}\vec{p}\color{black} + t\cdot\color{Yellow}\vec{u}\]
+    \begin{figure}[H]
+        \centering
+    \begin{tikzpicture}
+        \tkzDefPoint(0,0){A}
+        \tkzDefPoint(4,2){B}
+        \tkzDefPoint(1,0.5){P}
+        \tkzDefPoint(2,1){U}
+        \tkzDefPoint(3,1.5){E}
+        \tkzDrawSegment(A,B)
+        \tkzDrawPoint[size=3,shape=cross out,color=Red](P)
+        \tkzDrawPoint[size=3,shape=cross out](E)
+        \tkzLabelPoint[above](P){$P$}
+        \tkzDrawSegment[-Triangle,color=Yellow,thick](P,U)
+        \tkzLabelSegment[below,color=Yellow](P,U){$\vec{u}$}
+        \tkzLabelSegment[below,pos=0.97](A,B){$g$}
+    \end{tikzpicture}
+    \end{figure}
+    $\color{Red} \vec{p}\color{black}:$ Stützvektor
+
+    $\color{Yellow} \vec{u}\color{black}:$ Richtungsvektor
+\end{boxx}
+\begin{boxx}[Red]{Gegenseitige Lage von Geraden}
+    Es gibt vier mögliche gegenseitige Lagen zweier Geraden:
+    \begin{itemize}
+        \item parallel und verschieden (echt parallel)
+        \item identisch
+        \item sie schneiden sich in einem Punkt
+        \item windschief
+    \end{itemize}
+    \begin{figure}[H]
+        \centering
+        \begin{forest}
+            [Sind die Richtungsvektoren Vielfache?
+                [\textbf{ja}: parallel oder identisch
+                    [Haben sie gemeinsame Punkte?
+                        [\textbf{ja}: identisch]
+                        [\textbf{nein}: parallel]
+                    ]
+                ]
+                [\textbf{nein}: schneiden sich oder sind windschief
+                    [Haben sie gemeinsame Punkte?
+                        [\textbf{ja}: schneiden sich]
+                        [\textbf{nein}: windschief]
+                    ]
+                ]
+            ]
+        \end{forest}
+    \end{figure}
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Untersuche die gegenseitige Lage der Geraden $g$ und $h$.\\\\
+    $\displaystyle g:\vec{x} = \begin{pmatrix}1\\-1\\1\end{pmatrix} + r \cdot \begin{pmatrix}2\\3\\3\end{pmatrix};\; h: \vec{x} = \begin{pmatrix}1\\1\\0\end{pmatrix} + s \cdot \begin{pmatrix}1\\-1\\1\end{pmatrix}$ \\\\
+    Die Richtungsvektoren sind keine Vielfachen $\rightarrow$ schneiden sich oder sind windschief
+    \begin{align*}
+        &&&&&g\cap h: &\begin{pmatrix}1\\-1\\1\end{pmatrix} + r \cdot \begin{pmatrix}2\\3\\3\end{pmatrix} = \begin{pmatrix}1\\1\\0\end{pmatrix} + s \cdot \begin{pmatrix}1\\-1\\1\end{pmatrix}&&&&&&
+    \end{align*}
+    \begin{align*}
+        1+2r &= 1+s \\
+        -1+3r &= 1-s \\
+        1+ 3r &= s
+    \end{align*}
+    \begin{align}
+        2r - s &= 0 \label{geraden_eq1}\\
+        3r + s &= 2 \label{geraden_eq2}\\
+        3r - s &= -1 \label{geraden_eq3}
+    \end{align}
+    \begin{align*}
+        &&&&&\text{(\ref{geraden_eq2})} + \text{(\ref{geraden_eq3})}:& 6r &= 1 &&&&&&\\
+        &&&&&& r &= \frac{1}{6} \\
+        &&&&& r = \frac{1}{6} \text{ in (\ref{geraden_eq2})}:& 3 \cdot \frac{1}{6} + s &= 2 \\
+        &&&&&& s &= 1.5 \\
+        &&&&& r = \frac{1}{6};\; s = 1.5\text{ in (\ref{geraden_eq1})}:& \frac{1}{3} - 1.5 &\not= 0 \rightarrow \text{keine Schnittpunkte}
+    \end{align*}
+    \[\Rightarrow \text{windschief}\]
+\end{boxx}
+\subsection{Ebenen im Raum}
+\begin{figure}[H]
+    \centering
+    \tdplotsetmaincoords{60}{9}
+    \begin{tikzpicture}[tdplot_main_coords]
+        \filldraw[
+        draw=Yellow,%
+        fill=Yellow!20,%
+    ]          (-4,-3,4)
+            -- (4,-3,4)
+            -- (4,3,4)
+            -- (-4,3,4)
+            -- cycle;
+        \draw[->] (0,0,0) -- (-2,-1,4) node[anchor=north east,pos=0.5]{$\vec{a}$};
+        \draw[->] (0,0,0) -- (-1,1,4) node[anchor=south west,pos=0.5]{$\vec{b}$};
+        \draw[->] (0,0,0) -- (2.5,-1.5,4) node[anchor=north west,pos=0.5]{$\vec{c}$};
+        \filldraw[black] (-2,-1,4) circle (1.5pt) node[anchor=south east]{$A$};
+        \filldraw[black] (-1,1,4) circle (1.5pt) node[anchor=south east]{$B$};
+        \filldraw[black] (2.5,-1.5,4) circle (1.5pt) node[anchor=south west]{$C$};
+        \draw[Green,thick,->] (-2,-1,4) -- (-1,1,4) node[anchor=south east,pos=0.5]{$\vec{v}$};
+        \draw[Red,thick,->] (-2,-1,4) -- (2.5,-1.5,4) node[anchor=south west,pos=0.5]{$\vec{u}$};
+        \draw[->] (0,0,0) -- (2.2,1.5,4) node[anchor=south west,pos=1]{$x$};
+        \node[Yellow] at (-3.5,-2,4) {$E$};
+        \node[anchor=north east] at (0,0,0) {$O$};
+    \end{tikzpicture}
+\end{figure}
+\begin{align*}
+    E:\; \vec{x} &= \vv{OA} + r\cdot \vv{AC} + s \cdot \vv{AB} \hspace*{10mm} r,s \in \mathbb{R} \\
+    E:\; \vec{x} &= \vv{OA} + r\cdot \color{Red} \vec{u} \color{black} + s\cdot \color{Green} \vec{v}
+\end{align*}
+\begin{boxx}[Red]{Parametergleichung einer Ebene}
+    Jede Ebene lässt sich durch eine Parametergleichung der Form 
+    \[\vec{x} = \vec{p} + r \cdot \vec{u} + s \cdot \vec{v}\]
+    beschreiben. 
+    
+    $\vec{u}$ und $\vec{v}$ sind die Spannvektoren. 
+    Sie dürfen keine Veilfachen voneinader sein.
+    $\vec{p}$ ist der Stützvektor.
+\end{boxx}
+\newpage
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} Bestimme die Parametergleichung der Ebene, die durch die Punkte
+    $A$, $B$ und $C$ verläuft.
+
+    \[A(1,0,1);\; B(1,1,0);\; C(0,0,1)\]
+    \begin{align*}
+        E:\; \vec{x} &= \vv{OA} + r \cdot \vv{AC} + s \cdot \vv{AB} \\
+        E:\; \vec{x} &= \begin{pmatrix}1\\0\\1\end{pmatrix} + r \cdot \begin{pmatrix}-1\\0\\0\end{pmatrix} + s \cdot \begin{pmatrix}0\\1\\-1\end{pmatrix} \\
+    \end{align*}
+    $b)$\hspace{3mm} Gegeben ist die Ebene $E$ mit der Gleichung 
+    $\displaystyle \vec{x} = \begin{pmatrix}2\\0\\1\end{pmatrix} + r \cdot \begin{pmatrix}1\\3\\5\end{pmatrix} + s \cdot \begin{pmatrix}2\\-1\\1\end{pmatrix}$.\\
+
+    \hspace{6mm} Bestimme, ob die Punkte $A(7,5,4)$ und $B(7,1,8)$ auf der Ebene $E$ liegen.\\
+    \begin{align*}
+        &&&A(7,5,4):    & \begin{pmatrix}7\\5\\4\end{pmatrix} &= \begin{pmatrix}2\\0\\1\end{pmatrix} + r \cdot \begin{pmatrix}1\\3\\5\end{pmatrix} + s \cdot \begin{pmatrix}2\\-1\\1\end{pmatrix} &&&&\\
+        &&&&\begin{pmatrix}5\\5\\3\end{pmatrix} &= r \cdot \begin{pmatrix}1\\3\\5\end{pmatrix} + s \cdot \begin{pmatrix}2\\-1\\1\end{pmatrix}
+    \end{align*}
+    \begin{align}
+        5 &= r + 2s \label{ebenen_eq1}\\
+        5 &= 3r - s \label{ebenen_eq2}\\
+        3 &= 5r + s \label{ebenen_eq3}
+    \end{align}
+    \begin{align*}
+        &&&&&&&\text{(\ref{ebenen_eq2})} + \text{(\ref{ebenen_eq3})}:& 8 &= 8r &&&&&&&&\\
+        &&&&&&&& \rightarrow r &= 1 \\
+        &&&&&&& r = 1 \text{ in (\ref{ebenen_eq1})}:& 5 &= 1 + 2s \\
+        &&&&&&&& \rightarrow s &= 2 \\
+        &&&&&&& r = 1;\; s = 2\text{ in (\ref{ebenen_eq2})}:& 5 &\not= 3 - 2 \Rightarrow A \not\in E
+    \end{align*}
+
+    \begin{align*}
+        &&&B(7,1,8):    & \begin{pmatrix}7\\1\\8\end{pmatrix} &= \begin{pmatrix}2\\0\\1\end{pmatrix} + r \cdot \begin{pmatrix}1\\3\\5\end{pmatrix} + s \cdot \begin{pmatrix}2\\-1\\1\end{pmatrix} &&&&\\
+        &&&&\begin{pmatrix}5\\1\\7\end{pmatrix} &= r \cdot \begin{pmatrix}1\\3\\5\end{pmatrix} + s \cdot \begin{pmatrix}2\\-1\\1\end{pmatrix}
+    \end{align*}
+    \begin{align}
+        5 &= r + 2s \label{ebenen2_eq1}\\
+        1 &= 3r - s \label{ebenen2_eq2}\\
+        7 &= 5r + s \label{ebenen2_eq3}
+    \end{align}
+    \begin{align*}
+        &&&&&&&\text{(\ref{ebenen2_eq2})} + \text{(\ref{ebenen2_eq3})}:& 8 &= 8r &&&&&&&&\\
+        &&&&&&&& \rightarrow r &= 1 \\
+        &&&&&&& r = 1 \text{ in (\ref{ebenen2_eq1})}:& 5 &= 1 + 2s \\
+        &&&&&&&& \rightarrow s &= 2 \\
+        &&&&&&& r = 1;\; s = 2\text{ in (\ref{ebenen2_eq2})}:& 1 &= 3 - 2 \Rightarrow B\in E
+    \end{align*}
+    \newpage
+    $c)$\hspace{3mm} Überprüfe ob die Punkte $A$, $B$, $C$ und $D$ in einer Ebene liegen.
+    \[A(0,1,-1);\; B(2,3,5);\; C(-1,3,-1);\; D(2,2,2)\]
+    \[E:\; \vec{x} = \begin{pmatrix}0\\1\\-1\end{pmatrix} + r \cdot \begin{pmatrix}2\\2\\6\end{pmatrix} + s \cdot \begin{pmatrix}-1\\2\\0\end{pmatrix}\hspace*{5mm} \text{(Durch }A,B,C\text{)}\]
+    \begin{align*}
+        \begin{pmatrix}2\\2\\2\end{pmatrix} &= \begin{pmatrix}0\\1\\-1\end{pmatrix} + r \cdot \begin{pmatrix}2\\2\\6\end{pmatrix} + s \cdot \begin{pmatrix}-1\\2\\0\end{pmatrix} \\
+        \begin{pmatrix}2\\1\\3\end{pmatrix} &= r \cdot \begin{pmatrix}2\\2\\6\end{pmatrix} + s \cdot \begin{pmatrix}-1\\2\\0\end{pmatrix}
+    \end{align*}
+    \begin{align}
+        2 &= 2r - s \label{ebenen3_eq1}\\
+        1 &= 2r + 2s \label{ebenen3_eq2}\\
+        3 &= 6r \label{ebenen3_eq3}
+    \end{align}
+    \begin{align*}
+        &&&&&&&\text{(\ref{ebenen3_eq3})}:& 3 &= 6r &&&&&&&&\\
+        &&&&&&&& \rightarrow r &= \frac{1}{2} \\
+        &&&&&&& r = \frac{1}{2} \text{ in (\ref{ebenen3_eq1})}:& 2 &= 1 - s \\
+        &&&&&&&& \rightarrow s &= -1 \\
+        &&&&&&& r = \frac{1}{2};\; s = -1\text{ in (\ref{ebenen3_eq2})}:& 1 &\not= 1 - 2 \Rightarrow D\not\in E
+    \end{align*}
+    \begin{center}
+        $\Rightarrow$ $A$, $B$, $C$ und $D$ liegen nicht in einer Ebene.
+    \end{center}
+\end{boxx}
+\subsection{Zueinander orthogonale Vektoren -- Skalarprodukt}
+\begin{boxx}[Red]{Skalarprodukt}
+    Gegeben sind zwei Vektoren $\displaystyle \vec{a} = \begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix}$
+    und $\displaystyle \vec{b} = \begin{pmatrix}b_1\\b_2\\b_3\end{pmatrix}$.
+
+    Der Term 
+    \[\vec{a}\cdot \vec{b} = a_1b_1 + a_2b_2 + a_3b_3\]
+    heißt \textbf{Skalarprodukt} der Vektoren $\vec{a}$ und $\vec{b}$.\\
+
+    Zwei Vektoren sind genau dann orthogonal zueinander, wenn ihr Skalarprodukt $0$ ist.
+    \[\vec{a} \cdot \vec{b} = 0\]
+\end{boxx}
+\begin{boxx}[Purple]{Beweis}
+    \begin{align*}
+        \vec{a} \cdot \vec{a} &= a_1^2 + a_2^2 + a_3^2 
+        = \left(\sqrt{a_1^2 + a_2^2 + a_3^2 }\right)^2 
+        = \left|\vec{a}\right|^2
+    \end{align*}
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme, ob sich die Geraden $g$ und $h$ orthogonal schneiden.
+    \[g:\;\vec{x} = \begin{pmatrix}8\\-9\\7\end{pmatrix} + s \cdot \begin{pmatrix}2\\13\\1\end{pmatrix};\hspace*{3mm}h:\;\vec{x} = \begin{pmatrix}8\\-9\\7\end{pmatrix} + r \cdot \begin{pmatrix}1\\-2\\1\end{pmatrix}\]
+    \[g \cap h: P(8,-9,7)\]
+    \[\begin{pmatrix}2\\13\\1\end{pmatrix} \cdot \begin{pmatrix}1\\-2\\1\end{pmatrix} = 2 - 26 +1 \not= 0\]
+    \begin{center}
+        $\Rightarrow$ Sie schneiden sich nicht orthogonal.
+    \end{center}
+\end{boxx}
+\subsection{Normalen- und Koordinatengleichung einer Ebene}
+Der Punkt $P$ ist ein beliebiger Punkt in der  Ebene $E$.
+
+Der Vektor $\vec{n}$ steht orthogonal auf der Ebene $E$ und wird
+\textbf{Normalvektor} der Ebene $E$ genannt.
+\begin{figure}[H]
+    \centering
+    \tdplotsetmaincoords{60}{9}
+    \begin{tikzpicture}[tdplot_main_coords]
+        \filldraw[
+        draw=Yellow,%
+        fill=Yellow!20,%
+    ]          (-2,-3,4)
+            -- (6,-3,4)
+            -- (6,3,4)
+            -- (-2,3,4)
+            -- cycle;
+        \draw[->] (0,0,0) -- (2,0,4) node[anchor=north west,pos=0.5]{$\vec{p}$};
+        \filldraw[black] (2,0,4) circle (1.5pt) node[anchor=north west]{$P$};
+        \draw[->] (2,0,4) -- (2,0,7) node[anchor=west,pos=0.45]{$\vec{n}$};
+        \draw[->] (0,0,0) -- (0.5,-1.5,4) node[anchor=east,pos=0.5]{$\vec{x}$};
+        \filldraw[black] (0.5,-1.5,4) circle (1.5pt) node[anchor=south east]{$X$};
+        \draw[->] (2,0,4) -- (0.5,-1.5,4) node[anchor=south east,pos=0.35]{$\vv{PX}$};
+        \node[Yellow] at (5.5,-2,4) {$E$};
+        \node[anchor=north east] at (0,0,0) {$O$};
+    \end{tikzpicture}
+\end{figure}
+Die Vektoren $\vec{n}$ und $\vec{x} - \vec{p}$ sind orthogonal,
+daher gilt $\displaystyle \left(\vec{x} - \vec{p}\right)\cdot \vec{n} = 0$.
+
+Auch umgekehrt gilt, dass ein Punkt $X$, der die Gleichung $\displaystyle \left(\vec{x} - \vec{p}\right)\cdot \vec{n} = 0$
+erfüllt, in der Ebene $E$ liegt.
+\begin{boxx}[Red]{Normalengleichung einer Ebene}
+    Eine Ebene $E$ mit dem Stützvektor $\vec{p}$ und dem Normalvektor $\vec{n}$ wird beschreiben durch die Gleichung:
+    \[E:\; \left(\vec{x} - \vec{p}\right)\cdot \vec{n} = 0\]
+    Alle Punkte $X$, die diese Gleichung erfüllen, liegen in $E$.
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Gib die Normalengleichung der Ebene mit dem Normalvektor $\displaystyle \vec{n} = \begin{pmatrix}4\\1\\-2\end{pmatrix}$,
+    die auf $P(1,2,3)$ liegt.
+    \[E:\; \left[\vec{x} - \begin{pmatrix}1\\2\\3\end{pmatrix}\right]\cdot \begin{pmatrix}4\\1\\-2\end{pmatrix} = 0\]
+\end{boxx}
+Durch Ausmultiplizieren der Normalengleichung erhält man eine weitere Gleichung, um die Ebene zu beschreiben.
+\begin{align*}
+    \left[\vec{x} - \begin{pmatrix}1\\2\\3\end{pmatrix}\right]\cdot \begin{pmatrix}\color{Orange}4\\ \color{Orange}1\\ \color{Orange}-2\end{pmatrix} &= 0 \\
+    \vec{x}\cdot \begin{pmatrix}4\\1\\-2\end{pmatrix} - \begin{pmatrix}1\\2\\3\end{pmatrix} \cdot \begin{pmatrix}4\\1\\-2\end{pmatrix} &= 0 \\
+    \begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix} \begin{pmatrix}4\\1\\-2\end{pmatrix} - \begin{pmatrix}1\\2\\3\end{pmatrix} \cdot \begin{pmatrix}4\\1\\-2\end{pmatrix} &= 0 \\
+    4x_1 + x_2 - 2x_3 - \left(4+2-6\right) &= 0 \\
+    \color{Orange}4\color{black}x_1 + \color{Orange}1\color{black}x_2 \color{Orange}- 2\color{black}x_3 &= 0 \\
+\end{align*}
+\begin{boxx}[Red]{Koordinatengleichung einer Ebene}
+    Jede Ebene $E$ lässt sich durch eine \textbf{Koordinatengleichung} der Form
+    \[ax_1 + bx_2 + cx_3 = d\]
+    beschreiben. Mindestens einer der Koeffizienten muss ungleich 0 sein. \\
+
+    Der Normalvektor $\vec{n}$ einer Ebene $E$ mit der Koordinatengleichung $ax_1 + bx_2 + cx_3 = d$
+    ist $\displaystyle \vec{n} = \begin{pmatrix}a\\b\\c\end{pmatrix}$.
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Begründe, dass die Ebenen $E_1$ und $E_2$ parallel sind.
+    \[E_1:\; 2x_1 + 3x_2 + 4x_3 = 5\]
+    \[E_2:\; 2x_1 + 3x_2 + 4x_3 = 9\]
+    \begin{center}
+        $E_1$ und $E_2$ haben den gleichen Normalvektor.\\
+        $\Rightarrow E_1 \parallel E_2$
+    \end{center}
+\end{boxx}
+Die Koordinatenebenen lassen sich mit folgenden Koordinatengleichungen beschreiben:
+\begin{itemize}
+    \item $x_1x_2$-Ebene: $x_3 = 0$
+    \item $x_1x_3$-Ebene: $x_2 = 0$
+    \item $x_2x_3$-Ebene: $x_1 = 0$
+\end{itemize}
+\subsection{Ebenengleichungen umformen -- das Kreuzprodukt}
+\[E:\; \vec{x} = \begin{pmatrix}1\\3\\2\end{pmatrix} + r \cdot \begin{pmatrix}-2\\-1\\-1\end{pmatrix} + s \cdot \begin{pmatrix}2\\-5\\3\end{pmatrix}\]
+Um die Ebene $E$ mit einer Normalen- oder Koordinatengleichung zu beschreiben, 
+
+braucht man $\vec{n}$ mit 
+$\displaystyle \vec{n} \cdot \begin{pmatrix}-2\\-1\\-1\end{pmatrix} = 0$ 
+und $\displaystyle \vec{n} \cdot \begin{pmatrix}2\\-5\\-3\end{pmatrix} = 0$.
+
+\begin{boxx}[Red]{Kreuzprodukt}
+    Unter dem Kreuzprodukt zweier Vektoren $\vec{a}$ und $\vec{b}$ im $\mathbb{R}^3$
+    versteht man den Vektor $\vec{a} \times \vec{b}$ ("kreuz") mit:
+    \begin{align*}
+        \vec{a} \times \vec{b} = \begin{pmatrix}
+            a_2b_3 - a_3b_2 \\
+            a_3b_1 - a_1b_3 \\
+            a_1b_2 - a_2b_1
+        \end{pmatrix}
+    \end{align*}
+    $\vec{a} \times \vec{b}$ ist orthogonal zu $\vec{a}$ und $\vec{b}$, 
+    falls $\vec{a}$ und $\vec{b}$ keine Vielfachen sind.
+    $\vec{a} \times \vec{b} = \vec{0}$ genau dann, wenn $\vec{a}$ und $\vec{b}$ Vielfache voneinader sind.
+\end{boxx}
+\begin{boxx}[Green]{Rechenverfahren}
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{.2\textwidth}
+            \centering
+            \begin{align*}
+                \vec{a} \times \vec{b} &= \begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix} \times \begin{pmatrix}b_1\\b_2\\b_3\end{pmatrix}=
+            \end{align*}
+        \end{subfigure}%
+        \begin{subfigure}[b]{.15\textwidth}
+            \centering
+            \begin{tabular}{ccc}
+                \tikzmark{a1_1}$a_1$ && $b_1$\tikzmark{b1_1} \\ 
+                $a_2$\tikzmark{a2_1} && \tikzmark{b2_1}$b_2$ \\ 
+                $a_3$\tikzmark{a3_1} && \tikzmark{b3_1}$b_3$ \\ 
+                $a_1$\tikzmark{a1_2} && \tikzmark{b1_2}$b_1$ \\ 
+                $a_2$\tikzmark{a2_2} && \tikzmark{b2_2}$b_2$ \\ 
+                \tikzmark{a3_2}$a_3$ &&$b_3$\tikzmark{b3_2}
+            \end{tabular}
+            \begin{tikzpicture}[overlay, remember picture, shorten >=7pt, shorten <=7pt, transform canvas={yshift=.25\baselineskip}]
+                \draw [Red] ([xshift=-5pt]{pic cs:a2_1}) -- ([xshift=5pt]{pic cs:b3_1});
+                \draw [LightBlue] ([xshift=-5pt]{pic cs:a3_1}) -- ([xshift=5pt]{pic cs:b2_1});
+                \draw [Red] ([xshift=-5pt]{pic cs:a3_1}) -- ([xshift=5pt]{pic cs:b1_2});
+                \draw [LightBlue] ([xshift=-5pt]{pic cs:a1_2}) -- ([xshift=5pt]{pic cs:b3_1});
+                \draw [Red] ([xshift=-5pt]{pic cs:a1_2}) -- ([xshift=5pt]{pic cs:b2_2});
+                \draw [LightBlue] ([xshift=-5pt]{pic cs:a2_2}) -- ([xshift=5pt]{pic cs:b1_2});
+                \draw ([xshift=-7pt]{pic cs:a1_1}) -- ([xshift=7pt]{pic cs:b1_1});
+                \draw ([xshift=-7pt]{pic cs:a3_2}) -- ([xshift=7pt]{pic cs:b3_2});
+            \end{tikzpicture}
+        \end{subfigure}%\
+        \begin{subfigure}[b]{.2\textwidth}
+            \centering
+            \begin{align*}
+                = \begin{pmatrix}
+                    \color{Red}a_2b_3 \color{black}- \color{LightBlue}a_3b_2 \\
+                    \color{Red}a_3b_1 \color{black}- \color{LightBlue}a_1b_3 \\
+                    \color{Red}a_1b_2 \color{black}- \color{LightBlue}a_2b_1
+                \end{pmatrix}
+            \end{align*}
+        \end{subfigure}
+    \end{figure}
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Gib die Koordinatengleichung der Ebene $E$ mit $\displaystyle \vec{x} = \begin{pmatrix}1\\3\\2\end{pmatrix} + r \cdot \begin{pmatrix}-2\\-1\\-1\end{pmatrix} + s \cdot \begin{pmatrix}2\\-5\\-3\end{pmatrix}$ an.
+    \begin{align*}
+        \vec{n}:\hspace*{5mm} \begin{pmatrix}-2\\-1\\-1\end{pmatrix} \times \begin{pmatrix}2\\-5\\-3\end{pmatrix} &=  \begin{pmatrix}3-5\\-2-6\\10+2\end{pmatrix} =  \begin{pmatrix}-2\\-8\\12\end{pmatrix} \\
+        \vec{n} &=  \begin{pmatrix}-1\\-4\\6\end{pmatrix}
+    \end{align*}
+    \[E:\; -x_1 - 4x_2 + 6x_3 = d\]
+    \begin{align*}
+        \text{mit }P(1,3,2):\hspace*{5mm} -1-4\cdot3+6\cdot2 = d = - 1
+    \end{align*}
+    \[\Rightarrow E:\; -x_1 - 4x_2 + 6x_3 = -1\]
+\end{boxx}
+\[E:\; 2x_1 - 3x_2 -x_3 = 8\]
+Um die Ebene $E$ mit einer Parametergleichung zu beschreiben, gibt es zwei Vorgehensweisen:
+\begin{enumerate}
+    \item 3 Punkte finden, die die Gleichung erfüllen, also in der Ebene liegen, die nicht auf einer Geraden liegen.
+    \begin{center}
+        Wir wählen
+    \end{center}
+    \[P_1(0,0,-8);\;P_2(4,0,0);\; P_3(5,0,2)\]
+    \begin{align*}
+        E:\; \vec{x} &= \vv{OP_1} + r \cdot \vv{P_1P_2} + s \cdot \vv{P_1P_3} \\
+        \vec{x} &= \begin{pmatrix}0\\0\\-8\end{pmatrix} + r \cdot \color{Red}\begin{pmatrix}4\\0\\8\end{pmatrix} \color{black}+ s \cdot \color{Red}\begin{pmatrix}5\\0\\10\end{pmatrix}
+    \end{align*}
+    \begin{center}
+        $\begin{pmatrix}4\\0\\8\end{pmatrix}$ und $\begin{pmatrix}5\\0\\10\end{pmatrix}$ sind Vielfache von $\begin{pmatrix}1\\0\\2\end{pmatrix}$.
+        Wir wählen einen weiteren Punkt $P_4(1,-2,0)$ statt $P_3$.
+    \end{center}
+    \[\Rightarrow E:\; \vec{x} = \begin{pmatrix}0\\0\\-8\end{pmatrix} + r \cdot \begin{pmatrix}1\\-2\\8\end{pmatrix} + s \cdot \begin{pmatrix}4\\0\\8\end{pmatrix}\]
+    \item Auflösen nach einer Variable und die anderen den Parametern $r$ und $s$ gleichsetzen.
+    Dann die Vektoren so wählen, dass die Zeilen mit den Gleichungen übereinstimmen.
+    \[E:\; 2x_1 - 3x_2 -x_3 = 8\]
+    \begin{align*}
+        x_1 &= r \\
+        x_2 &= s \\
+        x_3 &= 2x_1 - 3x_2 - 8 \\
+        &= 2r - 3s -8
+    \end{align*}
+    \[\Rightarrow E:\; \begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix} = \begin{pmatrix}0\\0\\-8\end{pmatrix} + r \cdot \begin{pmatrix}1\\0\\2\end{pmatrix} + s \cdot \begin{pmatrix}0\\1\\3\end{pmatrix}\]
+\end{enumerate}
+\subsection{Ebenen veranschaulichen}
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \begin{tikzpicture}[x=0.5cm,y=0.5cm,z=-0.3cm,>=stealth, scale = 0.9]
+        % The axes
+        \draw[->] (xyz cs:x=-8.5) -- (xyz cs:x=8.5) node[above] {$x_2$};
+        \draw[->] (xyz cs:y=-8.5) -- (xyz cs:y=8.5) node[right] {$x_3$};
+        \draw[->] (xyz cs:z=-8.5) -- (xyz cs:z=8.5) node[below] {$x_1$};
+        % For some reason, the axes are labled very bizarrely in Germany.
+        % What's usually the z-axis is the x1-axis, the x-axis the x2-axis and
+        % the y-axis the x3-axis. Therefore coordinates (x,y,z) actually have 
+        % to be put into TikZ as (y, z, x) -.-
+
+        % The thin ticks
+        \foreach \coo in {-8,-7,...,8}
+        {
+          \draw (\coo,-1.5pt) -- (\coo,1.5pt);
+          \draw (-1.5pt,\coo) -- (1.5pt,\coo);
+          \draw (xyz cs:y=-0.15pt,z=\coo) -- (xyz cs:y=0.15pt,z=\coo);
+        }
+        % The thick ticks
+        \foreach \coo in {-5,5}
+        {
+          \draw[thick] (\coo,-3pt) -- (\coo,3pt) node[below=6pt] {\coo};
+          \draw[thick] (-3pt,\coo) -- (3pt,\coo) node[left=6pt] {\coo};
+          \draw[thick] (xyz cs:y=-0.3pt,z=\coo) -- (xyz cs:y=0.3pt,z=\coo) node[below=8pt] {\coo};
+        }
+        \filldraw[Red] (0,0,6) circle (1.5pt) node[anchor=south east]{$S_1$};
+        \filldraw[Red] (2,0,0) circle (1.5pt) node[anchor=north west]{$S_2$};
+        \filldraw[Red] (0,4,0) circle (1.5pt) node[anchor=south west]{$S_3$};
+        \path[
+        fill=Red,
+        fill opacity = 0.2,
+    ]          (0,0,6)
+            -- (2,0,0)
+            -- (0,4,0)
+            -- cycle;
+        \draw [Red] (0,0,6) -- (2,0,0) node[anchor=north west,pos=0.7]{$s_{12}$};
+        \draw [Red] (2,0,0) -- (0,4,0) node[anchor=west,pos=0.62]{$s_{23}$};
+        \draw [Red] (0,4,0) -- (0,0,6) node[anchor=south east,pos=0.4]{$s_{31}$};
+        \end{tikzpicture}
+\end{wrapfigure}
+
+\hspace*{1mm}
+\vspace*{2.1cm}
+\[E:\;2x_1 + 6x_2 +3x_3 = 12\]
+\begin{center}
+    Die Schnittpunkte der Ebene mit den Koordinatenachsen heißen \textbf{Spurpunkte}.
+\end{center}
+\[S_1(6,0,0);\; S_2(0,2,0);\; S_3(0,0,4)\]
+
+\begin{center}
+    Die gemeinsamen Punkte der Ebene mit den Koordinatenebenen heißen \textbf{Spurgeraden}.
+\end{center}
+\WFclear
+\newpage
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \begin{tikzpicture}[x=0.5cm,y=0.5cm,z=-0.3cm,>=stealth, scale = 0.9]
+        % The axes
+        \draw[->] (xyz cs:x=-8.5) -- (xyz cs:x=8.5) node[above] {$x_2$};
+        \draw[->] (xyz cs:y=-8.5) -- (xyz cs:y=8.5) node[right] {$x_3$};
+        \draw[->] (xyz cs:z=-8.5) -- (xyz cs:z=8.5) node[below] {$x_1$};
+
+        % The thin ticks
+        \foreach \coo in {-8,-7,...,8}
+        {
+          \draw (\coo,-1.5pt) -- (\coo,1.5pt);
+          \draw (-1.5pt,\coo) -- (1.5pt,\coo);
+          \draw (xyz cs:y=-0.15pt,z=\coo) -- (xyz cs:y=0.15pt,z=\coo);
+        }
+        % The thick ticks
+        \foreach \coo in {-5,5}
+        {
+          \draw[thick] (\coo,-3pt) -- (\coo,3pt) node[below=6pt] {\coo};
+          \draw[thick] (-3pt,\coo) -- (3pt,\coo) node[left=6pt] {\coo};
+          \draw[thick] (xyz cs:y=-0.3pt,z=\coo) -- (xyz cs:y=0.3pt,z=\coo) node[below=8pt] {\coo};
+        }
+        \filldraw[Red] (0,0,6) circle (1.5pt) node[anchor=south east]{$S_1$};
+        \filldraw[Red] (2,0,0) circle (1.5pt) node[anchor=north west]{$S_2$};
+        \path[
+        fill=Red,
+        fill opacity = 0.2,
+    ]          (0,9,6)
+            -- (0,0,6)
+            -- (2,0,0)
+            -- (2,9,0)
+            -- cycle;
+        \draw [Red] (0,9,6) -- (0,0,6);
+        \draw [Red] (0,0,6) -- (2,0,0) node[anchor=north west,pos=0.7]{$s_{12}$};
+        \draw [Red] (2,0,0) -- (2,9,0);
+        \end{tikzpicture}
+\end{wrapfigure}
+
+\hspace*{1mm}
+\vspace*{2.5cm}
+\[E:\;2x_1 + 6x_2 = 12\]
+
+\[S_1(6,0,0);\; S_2(0,2,0)\]
+
+\begin{center}
+    $E$ ist parallel zur $x_3$-Achse
+\end{center}
+\vspace*{3cm}
+\WFclear
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \begin{tikzpicture}[x=0.5cm,y=0.5cm,z=-0.3cm,>=stealth, scale = 0.9]
+        % The axes
+        \draw[->] (xyz cs:x=-8.5) -- (xyz cs:x=8.5) node[above] {$x_2$};
+        \draw[->] (xyz cs:y=-8.5) -- (xyz cs:y=8.5) node[right] {$x_3$};
+        \draw[->] (xyz cs:z=-8.5) -- (xyz cs:z=8.5) node[below] {$x_1$};
+
+        % The thin ticks
+        \foreach \coo in {-8,-7,...,8}
+        {
+          \draw (\coo,-1.5pt) -- (\coo,1.5pt);
+          \draw (-1.5pt,\coo) -- (1.5pt,\coo);
+          \draw (xyz cs:y=-0.15pt,z=\coo) -- (xyz cs:y=0.15pt,z=\coo);
+        }
+        % The thick ticks
+        \foreach \coo in {-5,5}
+        {
+          \draw[thick] (\coo,-3pt) -- (\coo,3pt) node[below=6pt] {\coo};
+          \draw[thick] (-3pt,\coo) -- (3pt,\coo) node[left=6pt] {\coo};
+          \draw[thick] (xyz cs:y=-0.3pt,z=\coo) -- (xyz cs:y=0.3pt,z=\coo) node[below=8pt] {\coo};
+        }
+        \filldraw[Red] (0,0,3) circle (1.5pt) node[anchor=south east]{$S_1$};
+        \path[
+        fill=Red,
+        fill opacity = 0.2,
+    ]          (-6,-6,3)
+            -- (6,-6,3)
+            -- (6,6,3)
+            -- (-6,6,3)
+            -- cycle;
+        \draw [Red,dashed] (0,-6,3) -- (0,6,3);
+        \draw [Red,dashed] (-6,0,3) -- (6,0,3);
+        \draw [Red] (-6,-6,3) -- (6,-6,3) -- (6,6,3) -- (-6,6,3) -- cycle;
+        \end{tikzpicture}
+\end{wrapfigure}
+
+\hspace*{1mm}
+\vspace*{2.5cm}
+\[E:\;4x_1 = 12\]
+\[E:\;x_1 = 3\]
+\[S_1(3,0,0)\]
+
+\begin{center}
+    $E$ ist parallel zur $x_2x_3$-Ebene.
+\end{center}
+\vspace*{3.5cm}
+\WFclear
+Um eine Ebenengleichung anhand der Spurpunkte zu bestimmen, gilt mit allgemeinen Spurpunkten
+\[S_1(a,0,0);\; S_2(0,b,0);\; S_3(0,0,c)\]
+für die Ebene:
+\[E:\; \frac{1}{a} x_1 + \frac{1}{b} x_2 + \frac{1}{c} x_3 = 1\]
+Durch multiplizieren mit dem gemeinsamen Vielfachen $abc$ erhält man eine ganzzahlige Ebenengleichung.
+\newpage
+\subsection{Gegenseitige Lage von Ebenen und Geraden}
+\begin{figure}[H]
+    \centering
+    \begin{forest}
+        [Unterscheide
+            [Nur die gegenseitige Lage ist gefragt\\$\rightarrow$ $\vec{n};\vec{u}_g$ untersuchen]
+            [Schnittpunkt ist gefragt\\$\rightarrow$ $g \cap E$]
+        ]
+    \end{forest}
+\end{figure}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme die Lage der Geraden $g$, $h$ und $i$ zu $E:\; 2x_1 + 5x_2 - x_3 = 49$ und berechne ggf. den Schnittpunkt.\\
+
+    $a)$\hspace{3mm} $g:\; \vec{x} = \begin{pmatrix}3\\4\\7\end{pmatrix} + t\cdot \begin{pmatrix}2\\1\\-1\end{pmatrix}$
+    \begin{align*}
+        \begin{pmatrix}2\\1\\-1\end{pmatrix} \cdot \begin{pmatrix}2\\5\\-1\end{pmatrix} \not = 0 \hspace*{3mm} \rightarrow \text{$g$ und $E$ schneiden sich}
+    \end{align*}
+    \[g:\; \begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix} = \begin{pmatrix}3\\4\\7\end{pmatrix} + t\cdot \begin{pmatrix}2\\1\\-1\end{pmatrix}\]
+    \begin{align*}
+        2(3+2t) + 5(4+t) - (7-t) &= 49 \\
+        6 +4t + 20 +5t -7 +t &= 49 \\
+        10 t &= 30 \\
+        t &= 3
+    \end{align*}
+    \begin{align*}
+        \text{in }g: \hspace*{6mm} \vec{x} = \begin{pmatrix}3\\4\\7\end{pmatrix} + 3 \cdot \begin{pmatrix}2\\1\\-1\end{pmatrix} = \begin{pmatrix}9\\7\\4\end{pmatrix}
+    \end{align*}
+    \[\Rightarrow S(9,7,4)\]
+    $b)$\hspace{3mm} $h:\; \vec{x} = \begin{pmatrix}3\\8\\-3\end{pmatrix} + t\cdot \begin{pmatrix}2\\-1\\-1\end{pmatrix}$
+    \begin{align*}
+        \begin{pmatrix}2\\-1\\-1\end{pmatrix} \cdot \begin{pmatrix}2\\5\\-1\end{pmatrix} = 0 \hspace*{3mm} \rightarrow \text{$g$ und $E$ liegen parallel oder $g$ liegt in $E$}
+    \end{align*}
+    \begin{align*}
+       P(3,8,-3) \text{ in }E: \hspace*{6mm} 2\cdot 3 + 5 \cdot 8 - (-3) = 49
+    \end{align*}
+    \begin{center}
+        $\Rightarrow$ $g$ liegt in $E$
+    \end{center}
+    \newpage
+    $c)$\hspace{3mm} $i:\; \vec{x} = \begin{pmatrix}3\\4\\7\end{pmatrix} + t\cdot \begin{pmatrix}2\\-1\\-1\end{pmatrix}$
+    \begin{align*}
+        \begin{pmatrix}2\\-1\\-1\end{pmatrix} \cdot \begin{pmatrix}2\\5\\-1\end{pmatrix} = 0 \hspace*{3mm} \rightarrow \text{$g$ und $E$ liegen parallel oder $g$ liegt in $E$}
+    \end{align*}
+    \begin{align*}
+       P(3,4,7) \text{ in }E: \hspace*{6mm} 2\cdot 3 + 5 \cdot 4 - 7 \not= 49
+    \end{align*}
+    \begin{center}
+        $\Rightarrow$ $i$ liegt parallel zu $E$
+    \end{center}
+\end{boxx}
+\subsection{Gegenseitige Lage von Ebenen}
+
+Es gibt drei mögliche gegenseitige Lagen zweier Ebenen:
+\begin{itemize}
+    \item parallel und verschieden (echt parallel)
+    \item identisch
+    \item sie schneiden sich in einer Geraden
+\end{itemize}
+\begin{boxx}[Red]{Fallunterscheidung}
+    Gegeben sind die Ebenen $E$ und $F$ mit:
+\[E:\; \left(\vec{x}- \vec{p}\right)\cdot \vec{n}_E = 0 \hspace*{6mm} F:\; \left(\vec{x}- \vec{q}\right)\cdot \vec{n}_F = 0\]
+    \begin{figure}[H]
+        \centering
+        \begin{forest}
+            [Sind die Normalvektoren $\vec{n}_E$ und $\vec{n}_F$ Vielfache?
+                [\textbf{ja}: $E$ und $F$ sind \\parallel oder identisch
+                    [$P$ liegt in $F$ bzw. \\$Q$ liegt in $E$: \\identisch]
+                    [$P$ liegt nicht in $F$ bzw. \\$Q$ liegt nicht in $E$: \\echt parallel]
+                ]
+                [\textbf{nein}: $E$ und $F$ schneiden\\ sich in einer Geraden
+                    [{$\vec{n}_E \cdot \vec{n}_F = 0$}:\\ $E$ und $F$ schneiden \\sich orthogonal]
+                    [{$\vec{n}_E \cdot \vec{n}_F \not = 0$}: \\ $E$ und $F$ schneiden sich]
+                ]
+            ]
+        \end{forest}
+    \end{figure}
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme die Schnittgerade der beiden Ebenen.\\
+
+    $a)$\hspace{3mm} $E_1:\; x_1 - x_2 + 3x_3 = 12;\; E_2:\;\vec{x} = \begin{pmatrix}8\\0\\2\end{pmatrix}+ r\cdot \begin{pmatrix}-4\\1\\1\end{pmatrix} + s \cdot \begin{pmatrix}5\\0\\-1\end{pmatrix}$
+    \begin{align*}
+        E_1 \cap E_2: \hspace*{5mm}8-4r +5s -r + 3(2+r-s) &= 12 \\
+        -2r + 2s &= -2 \\
+        2s &= -2+2r \\
+        s &= r - 1
+    \end{align*}
+    \begin{align*}
+        s = r - 1 \text{ in } E_2: \hspace*{5mm} \vec{x} &= \begin{pmatrix}8\\0\\2\end{pmatrix}+ r\cdot \begin{pmatrix}-4\\1\\1\end{pmatrix} + (r-1) \cdot \begin{pmatrix}5\\0\\-1\end{pmatrix} \\
+        \vec{x} &= \begin{pmatrix}8\\0\\2\end{pmatrix}+ r\cdot \begin{pmatrix}-4\\1\\1\end{pmatrix} + r \cdot \begin{pmatrix}5\\0\\-1\end{pmatrix} - \begin{pmatrix}5\\0\\-1\end{pmatrix} \\
+        \Rightarrow g:\;\vec{x} &= \begin{pmatrix}3\\0\\3\end{pmatrix} + r \cdot \begin{pmatrix}1\\1\\0\end{pmatrix}
+    \end{align*}
+    $b)$\hspace{3mm} $F_1:\; 3x_1 - 4x_2 + x_3 = 1;\; F_2:\;5x_1 + 2x_2 - 3x_3 = 6$
+    \begin{align}
+        F_1 \cap F_2: \hspace*{10mm}3x_1 - 4x_2 + x_3 &= 1 \label{ebenen4_eq1}\\
+        5x_1 + 2x_2 - 3x_3 &= 6 \label{ebenen4_eq2}
+    \end{align}
+    \begin{align*}
+        &&&&&\text{(\ref{ebenen4_eq1})} + 2\cdot\text{(\ref{ebenen4_eq2})}: & 13x_1 - 5x_3 &= 13&&|\;x_3=t&&&& \\
+        &&&&&& 13x_1 -5t &= 13 &&|\;+5t;\;\cdot \frac{1}{13}\\
+        &&&&&& x_1 &= 1 + \frac{5}{13}t && \\
+    \end{align*}
+    \begin{align*}
+        &&&&&x_1 = 1 + \frac{5}{13}t \text{ in (\ref{ebenen4_eq2})}: &5\left(1+\frac{5}{13}t\right)+2x_2 -3t &= 6&&&&&& \\
+        &&&&&&\frac{25}{13}t + 2x_2 -3t &= 1 \\
+        &&&&&& x_2 &= \frac{1}{2} + \frac{7}{13}t
+    \end{align*}
+    \begin{align*}
+        &&\vec{x} &= \begin{pmatrix}1\\0.5\\0\end{pmatrix} + t \cdot \begin{pmatrix}\sfrac{5}{13}\\\sfrac{7}{13}\\1\end{pmatrix} &&|\;\vec{n} \cdot 13&&\\
+        &&\Rightarrow h:\;\vec{x} &= \begin{pmatrix}1\\0.5\\0\end{pmatrix} + s \cdot \begin{pmatrix}5\\7\\13\end{pmatrix}
+    \end{align*}
+\end{boxx}
+\newpage
+\section{Abstände und Winkel}
+\subsection{Abstand eines Punktes zu einer Ebene}
+\label{abstandpunkteebene}
+Unter dem Abstand eines Punktes $P$ von einer Ebene $E$ versteht man 
+immer die Länge der kürztmöglichsten Verbindung des Punktes und der Ebene.
+
+Diesen erhält man, indem man von $P$ aus das Lot auf die Ebene $E$ fällt 
+und den Abstand des Punktes $P$ vom Lotfußpunkt $L$ bestimmt.
+\begin{figure}[H]
+    \centering
+    \tdplotsetmaincoords{60}{9}
+    \begin{tikzpicture}[tdplot_main_coords]
+        \filldraw[
+        draw=Yellow,%
+        fill=Yellow!20,%
+    ]          (-2,-3,4)
+            -- (6,-3,4)
+            -- (6,3,4)
+            -- (-2,3,4)
+            -- cycle;
+        \node[Yellow] at (5.5,-2,4) {$E$};
+        \filldraw[black] (2,0,4) circle (1.5pt) node[anchor=north west]{$L$};
+        \filldraw[black] (2,0,7) circle (1.5pt) node[anchor=north west]{$P$};
+        \draw[->] (2,0,4) -- (2,0,7);
+        \draw (2,0,4.25) -- (1.75,0,4.25) -- (1.75,0,4);
+        \draw[dashed] (2,0,1) -- (2,0,4)node[anchor=west,pos=0.2]{$g$};
+    \end{tikzpicture}
+\end{figure}
+Hierzu stellt man eine Hilfsgerade $g$ auf, die orthogonal zur Ebene $E$ ist
+und durch den Punkt $P$ verläuft.
+Als Richtungsvektor von $g$ wählt man daher den Normalenvektor der Ebene $E$
+und als Stützvektor den Ortsvektor des Punktes $P$.
+Dem Lotfußpunkt erhält man als Schnittpunkt der Hilfsgerade $g$ mit der Ebene $E$.
+\begin{boxx}[Red]{Hessesche Normalform}
+    Wenn man als Normalenvektor einer Ebene $E$ einen Einheitsvektor ($\left|\vec{n}_0\right|=1$) nimmt,
+    heißt die Ebenengleichung $\displaystyle E:\; \left(\vec{x}- \vec{p}\right)\cdot \vec{n}_0 = 0$ 
+    \textbf{Hessesche Normalform (HNF)}.
+
+    Hiermit lässt sich der Abstand $d$ eines Punktes $R$ von der Ebene $E$ einfach in einem Schritt berechnen.
+
+    Es gilt:
+    \[d = \left|\left(\vec{r}-\vec{p}\right)\cdot \vec{n}_0\right|\]
+\end{boxx}
+\begin{boxx}[DarkBlue]{Beispiel}
+    $a)$\hspace{3mm} Bestimme den Abstand des Punktes $R(9,4,-3)$ von der Ebene $E$ mit $\displaystyle E:\; \left[\vec{x} - \begin{pmatrix}1\\-3\\1\end{pmatrix}\right] \cdot \begin{pmatrix}1\\2\\2\end{pmatrix} = 0$. 
+    \begin{align*}
+        \left|\begin{pmatrix}1\\2\\2\end{pmatrix}\right| = \sqrt{1^2 + 2^2 + 2^2} &= 3 \\
+        E \text{ in HNF}: \hspace*{5mm} \left[\vec{x} - \begin{pmatrix}1\\-3\\1\end{pmatrix}\right] \cdot \frac{1}{3}\begin{pmatrix}1\\2\\2\end{pmatrix} &= 0
+    \end{align*}
+    \begin{align*}
+        d(R,E) &= \left|\left[\begin{pmatrix}9\\4\\-3\end{pmatrix}-\begin{pmatrix}1\\-3\\1\end{pmatrix}\right] \cdot \frac{1}{3} \begin{pmatrix}1\\2\\2\end{pmatrix}\right| \\
+        &= \left|\begin{pmatrix}8\\7\\-4\end{pmatrix} \cdot \begin{pmatrix}1\\2\\2\end{pmatrix}\cdot \frac{1}{3}\right| = \left|(8+14-8) \cdot \frac{1}{3}\right| = \frac{14}{3}
+    \end{align*}
+\end{boxx}
+\begin{boxx}[DarkBlue]{}
+    $b)$\hspace{3mm} Bestimme den Abstand des Punktes $Q(1,6,2)$ von der Ebene $F$ mit $\displaystyle F:\;x_1 - 2x_2 + 4x_3 = 1$.
+    \begin{align*}
+        \left|\begin{pmatrix}1\\-2\\4\end{pmatrix}\right| = \sqrt{1^2 + (-2)^2 + 4^2} &= \sqrt{21} \\
+        F \text{ in HNF}: \hspace*{5mm} \frac{x_1 - 2x_2 + 4x_3-1}{\sqrt{21}} &= 0
+    \end{align*}
+    \begin{align*}
+        d(Q,F) &= \left|\frac{1- 2\cdot 6 + 4\cdot 2 - 1}{\sqrt{21}}\right|\\
+        &=\left|\frac{-4}{\sqrt{21}}\right| = \frac{4}{\sqrt{21}}
+    \end{align*}
+    $b)$\hspace{3mm} Bestimme die zur Ebene $E$ mit $\displaystyle E:\; 12x_1 + 6x_2 - 4x_3 = 5$ parallele Ebenen $F_1$ und $F_2$, die von $E$ 
+    \hspace*{6mm} den Abstand $3$ LE haben.
+    \begin{align*}
+        F:\; 12x_1 + 6x_2 - 4x_3 = k;\;R(r_1,r_2,r_3) \in F
+    \end{align*}
+    \begin{align*}
+        E \text{ in HNF}: \hspace*{5mm} \frac{12x_1+6x_2-4x_3-5}{14} &= 0\\
+        d(R,E) &= 3 \\
+        \left|\frac{12r_1+6r_2-4r_3-5}{14}\right| &= 3 \\
+    \end{align*}
+    \begin{align*}
+        \text{Fall 1}:&&\frac{12r_1+6r_2-4r_3-5}{14} &= 3&&\\
+        &&12r_1+6r_2-4r_3-5 &= 42 \\
+        &&12r_1+6r_2-4r_3 &= 47 \\
+        &&\Rightarrow F_1:\; 12x_1+6x_2-4x_3 &= 47
+    \end{align*}
+    \begin{align*}
+        \text{Fall 2}:&&\frac{12r_1+6r_2-4r_3-5}{14} &= -3 &&\\
+        &&12r_1+6r_2-4r_3-5 &= -42 \\
+        &&12r_1+6r_2-4r_3 &= -37 \\
+        &&\Rightarrow F_2:\; 12x_1+6x_2-4x_3 &= -37
+    \end{align*}
+\end{boxx}
+\newpage
+\subsection{Abstand eines Punktes zu einer Gerade}
+\label{abstandpunktgerade}
+Der Verbindungsvektor zwischen dem Punkt $Q$ und einem allgemeinen Geradenpunkt $P$ 
+muss senkrecht zum Richtungsvektor $\vec{u}$ der Gerade $g$ sein.
+
+Dazu setzt man das Skalarprodukt $\vv{QP}\cdot \vec{u} = 0$. 
+Man erhält den Parameter, für den dies der Fall ist.
+Setzt man diesen in den allgemeinen Geradenpunkt $P$ ein, erhält man den Lotfußpunkt $L$.
+
+Der Abständ dann beträgt dann $d = |\vv{QL}|$.
+\begin{figure}[H]
+    \centering
+\begin{tikzpicture}[scale=0.5]
+    \draw[thick] (0,0) -- (0,5) node[anchor=east, pos = 0.95] {\(g\)};
+    \filldraw[black] (0,1) circle (2.5pt) node[anchor=west]{$L$};
+    \filldraw[black] (-5,1) circle (2.5pt) node[anchor=south]{$Q$};
+    \draw[-latex,line width = 1pt] (0,1) -- (0,4) node[anchor=west, pos = 0.8] {\(\vec{u}\)};
+    \draw[latex-latex,dashed,thick] (-5,1) -- (0,1) node [anchor=south, pos = 0.5] {\(d = |\vv{QL}|\)};
+\end{tikzpicture}
+\end{figure}
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme den Abstand zwischen dem Punkt $Q(6,-6,9)$
+    und der Gerade $g$ mit $\displaystyle g: \vec{x} = \begin{pmatrix}4\\5\\6\end{pmatrix} + r \cdot \begin{pmatrix}-2\\1\\1\end{pmatrix}$.
+    \begin{align*}
+        \begin{pmatrix}4\\5\\6\end{pmatrix} + r \cdot \begin{pmatrix}-2\\1\\1\end{pmatrix} &= \begin{pmatrix}4-2r\\5+r\\6+r\end{pmatrix} \\
+        \vv{QP} = \begin{pmatrix}4-2r\\5+r\\6+r\end{pmatrix} - \begin{pmatrix}6\\-6\\9\end{pmatrix} &= \begin{pmatrix}-2r-2\\r+11\\r-3\end{pmatrix} 
+    \end{align*}
+    \begin{align*}
+        \vv{QP} \cdot \vec{v} &= 0 \\
+        \begin{pmatrix}-2r-2\\r+11\\r-3\end{pmatrix} \cdot \begin{pmatrix}-2\\1\\1\end{pmatrix} &= 0 \\
+        (-2)(-2r-2) + (r+11) + (r-3) &= 0 \\
+        r &= -2 
+    \end{align*}
+    \begin{align*}
+        \vv{OL} &= \begin{pmatrix}4-2\cdot (-2)\\5+(-2)\\6+(-2)\end{pmatrix} = \begin{pmatrix}8\\3\\4\end{pmatrix} \Rightarrow L(8,3,4) \\
+        \vv{QL} &= \begin{pmatrix}8\\3\\4\end{pmatrix} - \begin{pmatrix}6\\-6\\9\end{pmatrix} = \begin{pmatrix}2\\9\\-5\end{pmatrix} \\
+        |\vv{QL}| &= \left|\begin{pmatrix}2\\9\\-5\end{pmatrix}\right| = \sqrt{2^2+ 9^2 + (-5)^2} = \sqrt{110}
+    \end{align*}
+\end{boxx}
+\newpage
+\subsection{Abstand zweier Geraden}
+Der Abstand zwischen zwei Geraden $g$ und $h$ lassen sich wiefolt bestimmen:
+\begin{enumerate}
+    \item Schneiden sich $g$ und $h$ beträgt der Abstand $d=0$.
+    \item Verlaufen $g$ und $h$ parallel zueinander, wählt man einen beliebigen Punkt $R$ auf der Geraden $g$
+    und bestimmt den Abstand von $R$ zu $h$. (s. \textit{\ref*{abstandpunktgerade} Abstand eines Punktes zu einer Gerade})
+    \item Sind $g$ und $h$ windschief, gibt es zwei Möglichkeit, je nach dem ob nur der Abstand oder auch die Lotfußpunkte gefragt sind. 
+\end{enumerate}
+\textbf{1. Möglichkeit (Lotfußpunkte):}
+
+    Man stellt die allgemeinen Geradenpunkte $P_g$ und $P_h$ der Geraden $g$ und $h$ auf.
+
+    Der allgemeine Verbindungsvektor $\vv{P_gP_h}$ zwischen den Geraden $g$ und $h$ muss
+    sowohl zum Richtungsvektor $\vec{u}_g$ der Gerade $g$ als auch zum Richtungsvektor $\vec{u}_h$
+    der Gerade $h$ orthogonal sein:
+    \begin{align}
+        \vv{P_gP_h} \cdot \vec{u}_g = 0 \\
+        \vv{P_gP_h} \cdot \vec{u}_h = 0 
+    \end{align}
+    Die Lösung dieses Gleichungssystem führt die beiden Parameter der Geradengleichungen,
+    die zu den Lotfußpunkten $L_g$ und $L_h$ führen.
+    
+    Der Abstand beträgt beträgt dann $d = |\vv{L_gL_h}|$.\\
+    \medskip
+
+\textbf{2. Möglichkeit (nur Abstand):}
+
+    Zur Berechnung des Abstands zwischen den Geraden $g$ und $h$ dient die Formel
+    \[d(g,h) = |(\vec{q}-\vec{p})\cdot \vec{n}_0|\]
+    Dabei wählt man $P \in g;\, Q \in h$, und $\vec{n}_0$ ist der Einheitsvektor 
+    (vgl. \textit{\ref*{abstandpunkteebene} Hessesche Normalform}) von $\vec{n}$
+    mit:
+    \[\vec{n} = \vec{u}_g \times \vec{u}_h\]
+\begin{boxx}[DarkBlue]{Beispiel}
+    Bestimme den Abstand der Geraden $g$ und $h$ mit 
+    $\displaystyle g:\;\vec{x} = \begin{pmatrix}1\\4\\2\end{pmatrix} + s\cdot \begin{pmatrix}0\\1\\2\end{pmatrix};\;h:\; \vec{x} = \begin{pmatrix}2\\0\\1\end{pmatrix} + t \cdot \begin{pmatrix}4\\-1\\-1\end{pmatrix}$.
+    \textbf{1. Möglichkeit:}
+
+    \begin{align*}
+        \vv{OP_g} &= \begin{pmatrix}1\\4+s\\2+2s\end{pmatrix}\\
+        \vv{OP_h} &= \begin{pmatrix}2+4t\\-t\\1-t\end{pmatrix}\\
+        \vv{P_gP_h} &= \begin{pmatrix}2+4t\\-t\\1-t\end{pmatrix} - \begin{pmatrix}1\\4+s\\2+2s\end{pmatrix} = \begin{pmatrix}1+4t\\-4-t-s\\-1-t-2s\end{pmatrix}
+    \end{align*}
+    \begin{align}
+        \begin{pmatrix}1+4t\\-4-t-s\\-1-t-2s\end{pmatrix} \cdot \begin{pmatrix}0\\1\\2\end{pmatrix} &= 0 \\
+        \begin{pmatrix}1+4t\\-4-t-s\\-1-t-2s\end{pmatrix} \cdot \begin{pmatrix}4\\-1\\-1\end{pmatrix} &= 0
+    \end{align}
+    \begin{align}
+        \Leftrightarrow -3t - 5s &= 6 \\
+        \Leftrightarrow 18t + 3s &= -9 
+    \end{align}
+    \[\Rightarrow s=-1;\;t=-\frac{1}{3}\]
+    \begin{align*}
+        \vv{OL_g} &= \begin{pmatrix}1\\4+(-1)\\2+2(-1)\end{pmatrix} = \begin{pmatrix}1\\3\\0\end{pmatrix}\\
+        \vv{OL_h} &= \begin{pmatrix}2+4\left(-\sfrac{1}{3}\right)\\-\left(-\sfrac{1}{3}\right)\\1-\left(-\sfrac{1}{3}\right)\end{pmatrix} = \begin{pmatrix}\sfrac{2}{3}\\\sfrac{1}{3}\\\sfrac{4}{3}\end{pmatrix}
+    \end{align*}
+    \begin{align*}
+        \Rightarrow d &= |\vv{L_gL_h}| = \sqrt{\left(\frac{2}{3}-1\right)^2+ \left(\frac{1}{3}-3\right)^2 + \left(\frac{4}{3}\right)^2} = 3
+    \end{align*}
+    \textbf{2. Möglichkeit:}
+    \begin{align*}
+        \vec{n} &= \begin{pmatrix}0\\1\\2\end{pmatrix} \times \begin{pmatrix}4\\-1\\-1\end{pmatrix} = \begin{pmatrix}1\\8\\-4\end{pmatrix}; |\vec{n}| = 9
+    \end{align*}
+    \begin{align*}
+        d(g,h) &= \left|\left[\begin{pmatrix}1\\4\\2\end{pmatrix}- \begin{pmatrix}2\\0\\1\end{pmatrix}\right] \cdot \frac{1}{9} \begin{pmatrix}1\\8\\-4\end{pmatrix}\right| \\
+        &= \left|\begin{pmatrix}-1\\4\\1\end{pmatrix}\cdot \begin{pmatrix}1\\8\\-4\end{pmatrix} \cdot \frac{1}{9}\right| \\
+        &= \left|27 \cdot \frac{1}{9}\right| = 3
+    \end{align*}
+\end{boxx}
+\newpage
+\subsection{Spiegelung und Symmetrie}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \draw (-4,0) -- (-4,3) node[anchor=north, pos=0] {\(u\)};
+    \filldraw[black] (-6,1.5) circle (1pt) node[anchor=east]{$P$};
+    \filldraw[black] (-2,1.5) circle (1pt) node[anchor=west]{$P'$};
+    \draw[dashed] (-6,1.5) -- (-2,1.5);
+    \draw (-4,1.75) -- (-4.25,1.75) -- (-4.25,1.5);
+    \node[align=center] at (-4,-1) {Achsenspiegelung};
+    \filldraw[black] (4,1.5) circle (1pt) node[anchor=north]{$Z$};
+    \filldraw[black] (2,0.5) circle (1pt) node[anchor=east]{$P$};
+    \filldraw[black] (6,2.5) circle (1pt) node[anchor=west]{$P'$};
+    \draw[dashed] (2,0.5) -- (4,1.5) -- (6,2.5);
+    \node[align=center] at (4,-1) {Punktspiegelung};
+\end{tikzpicture}
+\end{figure}
+\bigskip
+Spiegelung und Symmetrie im $\mathbb{R}^3$:
+\begin{multicols}{2}
+
+    \vspace*{0.6cm}
+\begin{figure}[H]
+    \centering
+    \tdplotsetmaincoords{70}{9}
+    \begin{tikzpicture}[tdplot_main_coords]
+    \filldraw[black] (0,0,1.5) circle (1pt) node[anchor=north]{$Z$};
+    \filldraw[black] (-2,0,0.5) circle (1pt) node[anchor=east]{$P$};
+    \filldraw[black] (2,0,2.5) circle (1pt) node[anchor=west]{$P'$};
+    \draw[dashed] (-2,0,0.5) -- (0,0,1.5) -- (2,0,2.5);
+    \node[align=center] at (0,0,-1) {Punktspiegelung};
+\end{tikzpicture}
+\end{figure}
+\vspace*{-1cm}
+\begin{align*}
+    \vv{OP'} &= \vv{OP} + 2\cdot \vv{PZ}\\
+    \vv{OP'} &= \vv{OZ} + \vv{PZ}
+\end{align*}
+\begin{figure}[H]
+    \centering
+    \tdplotsetmaincoords{60}{9}
+    \begin{tikzpicture}[tdplot_main_coords]
+        \draw (-3,0,3) -- (3,0,3) node[anchor=north, pos=0.02] {\(g\)};
+        \filldraw[black] (0,0,5) circle (1pt) node[anchor=east]{$P$};
+        \filldraw[black] (0,0,1) circle (1pt) node[anchor=west]{$P'$};
+        \filldraw[black] (0,0,3) circle (1pt) node[anchor=north west]{$F$};
+        \draw[dashed] (0,0,1) -- (0,0,5);
+        \draw (0,0,3.25) -- (-0.25,0,3.25) -- (-0.25,0,3);
+        \node[align=center] at (0,0,0) {Spiegelung an Gerade};
+\end{tikzpicture}
+\end{figure}
+\vspace*{-1cm}
+\begin{align*}
+    \vv{OP'} &= \vv{OP} + 2\cdot \vv{PF}\\
+    \vv{OP'} &= \vv{OF} + \vv{PF}
+\end{align*}
+\end{multicols}
+
+\begin{figure}[H]
+    \centering
+    \tdplotsetmaincoords{60}{9}
+    \begin{tikzpicture}[tdplot_main_coords]
+        \filldraw[
+        draw=Yellow,%
+        fill=Yellow!20,%
+    ]          (-2.5,-2,4)
+            -- (2.5,-2,4)
+            -- (2.5,2,4)
+            -- (-2.5,2,4)
+            -- cycle;
+        \node[Yellow] at (2,-1.25,4) {$E$};
+        \filldraw[black] (0,0,4) circle (1.5pt) node[anchor=north west]{$F$};
+        \filldraw[black] (0,0,6) circle (1.5pt) node[anchor=north west]{$P$};
+        \filldraw[black] (0,0,2) circle (1.5pt) node[anchor=north west]{$P'$};
+        \draw (0,0,4.25) -- (-0.25,0,4.25) -- (-0.25,0,4);
+        \draw[dashed] (0,0,6) -- (0,0,4) -- (0,0,2);
+        \node[align=center] at (0,0,0) {Spiegelung an Ebene};
+    \end{tikzpicture}
+\end{figure}
+\vspace*{-1cm}
+\begin{align*}
+    \vv{OP'} &= \vv{OP} + 2\cdot \vv{PF}\\
+    \vv{OP'} &= \vv{OF} + \vv{PF}
+\end{align*}
+\newpage
+\begin{boxx}[DarkBlue]{Beispiel}
+    Spiegle den Punkt $P(3,3,0)$
+
+    $a)$\hspace{3mm} am Punkt $Z(1,-2,5)$
+    \begin{align*}
+        \vv{OP'} &= \vv{OZ} + \vv{PZ} \\
+        &= \begin{pmatrix}1\\-2\\5\end{pmatrix} + \begin{pmatrix}-2\\-5\\5\end{pmatrix} \\
+        &= \begin{pmatrix}-1\\-7\\10\end{pmatrix}\\
+        &\Rightarrow P'(-1,-7,10)
+    \end{align*}
+    $b)$\hspace{3mm} an der Gerade $g$ mit $g:\; \vec{x} = \begin{pmatrix}-2\\-4\\9\end{pmatrix} + t \cdot \begin{pmatrix}1\\-2\\2\end{pmatrix}$
+        \[\vv{G} = \begin{pmatrix}-2+t\\-4-2t\\9+2t\end{pmatrix}\]
+        \begin{align*}
+            \vv{PG}\cdot \vec{u} &= 0 \\
+            \begin{pmatrix}-5+t\\-7-2t\\9+2t\end{pmatrix} \cdot \begin{pmatrix}1\\-2\\2\end{pmatrix} &= 0 \\
+            27 + 9t&=0 \\
+            t &= -3 \\
+            \Rightarrow \vv{OL} = \begin{pmatrix}-2+(-3)\\-4-2(-3)\\9+2(-3)\end{pmatrix} &=  \begin{pmatrix}-5\\2\\3\end{pmatrix}
+        \end{align*}
+        \begin{align*}
+            \vv{OP'} &= \vv{OL} + \vv{PL} \\
+            &= \begin{pmatrix}-5\\2\\3\end{pmatrix} + \begin{pmatrix}-8\\-1\\3\end{pmatrix} = \begin{pmatrix}-13\\1\\6\end{pmatrix}
+        \end{align*}
+        \[\Rightarrow P'(-13,1,6)\]
+    $c)$\hspace{3mm} an der Ebene $E$ mit $E: 3x_1 + 2x_2 + x_3 = 8$
+        \[l:\; \vec{x} = \begin{pmatrix}3\\3\\0\end{pmatrix} + r \cdot \begin{pmatrix}3\\2\\1\end{pmatrix}\]
+        \begin{align*}
+            l \cap E: \hspace*{5mm} 3(3+3r) + 2(3+2r) + r &= 8 \\
+            14r +15 &= 8 \\
+            r &= - \frac{1}{2}
+        \end{align*}
+        \begin{align*}
+            \vv{OL}&= \begin{pmatrix}3\\3\\0\end{pmatrix} - \frac{1}{2} \cdot \begin{pmatrix}3\\2\\1\end{pmatrix} = \begin{pmatrix}1.5\\2\\-0.5\end{pmatrix} \\
+            \vv{OP'} &= \vv{OL} + \vv{PF} \\
+            &= \begin{pmatrix}1.5\\2\\-0.5\end{pmatrix} + \begin{pmatrix}-1.5\\-1\\-0.5\end{pmatrix} = \begin{pmatrix}0\\1\\-1\end{pmatrix}
+        \end{align*}
+        \[\Rightarrow P'(0,1,-1)\]
+\end{boxx}
+\subsection{Modellieren von geradlinigen Bewegung}
+    U-Boote, Flugzeuge, etc. bewegen sich oft näherungsweise geradlinig und mit konstanter Geschwindigkeit.
+    Ihre Bahngleichungen können somit durch Geradengleichungen beschreiben werden.
+    \[\vec{x} = \vec{p} + t\cdot\vec{v}\]
+    Dabei steht
+    \begin{itemize}
+        \item der Parameter $t$ für die vergangene Zeit nach (Beobachtungs-)Beginn der Bewegung,
+        \item der Stützvektor $\vec{p}$ für die Koordinaten des Startpunktes der Bewegung,
+        \item der Richtungsvektor $\vec{v}$ für die Änderung der Koordinaten des Objekts innerhalb einer Zeiteinheit,
+        \item die Länge des Richtungsvektors $|\vec{v}|$ für Geschwindigkeit des Objekts.
+    \end{itemize}
+    \begin{boxx}[DarkBlue]{Beispiel}
+        Ein Modellflugzeug befindet sich zu Beginn der Beobachtung im Punkt $A(100,100,100)$.
+        Nach 3 Stunden befindet es sich im Punkt $B(10,250,85)$ (Längenangaben in $\unit{\kilo\meter}$).
+
+        $a)$\hspace{3mm} Gebe die Bahngleichungen an.
+        \begin{align*}
+            \vv{AB} &= \begin{pmatrix}-90\\150\\-15\end{pmatrix} \text{ in } \qty{3}{\hour} \\
+            &\rightarrow \frac{1}{3} \cdot \begin{pmatrix}-90\\150\\-15\end{pmatrix}  = \begin{pmatrix}-30\\50\\-5\end{pmatrix}
+        \end{align*}
+        \[\text{Bahngleichung: } \vec{x} = \begin{pmatrix}100\\100\\100\end{pmatrix} + t \cdot \begin{pmatrix}-30\\50\\-5\end{pmatrix} \text{ ($t$ in $\unit{\hour}$, $x$ in $\unit{\kilo\meter}$)}\]
+        $b)$\hspace{3mm} Bestimme, ob das Flugzeug steigt oder sinkt und mit welcher Geschwindigkeit es fliegt.
+        \begin{center}
+            $x_3$-Komponente von $\vec{v}$ ist negativ ($-5$), also sinkt das Flugzeug.
+        \end{center}
+        \begin{align*}
+            |\vec{v}| &= \sqrt{(-30)^2 + 50^2 + (-5)^2} \approx 58.52 \\
+            &\Rightarrow \qty{58.52}{\kilo\meter\per\hour}
+        \end{align*}
+        $c)$\hspace{3mm} Wo befindet sich das Flugzeug $\qty{1.2}{\hour}$ nach Beobachtungsbeginn?
+            \begin{align*}
+                \vec{x} &= \begin{pmatrix}100\\100\\100\end{pmatrix} + 1.2 \cdot \begin{pmatrix}-30\\50\\-5\end{pmatrix} = \begin{pmatrix}64\\160\\94\end{pmatrix} \\
+                &\Rightarrow \text{Im Punkt } P(64,160,94)
+            \end{align*}
+        Die Bahngleichungen der Flugzeuge 1 und 2 lauten:
+        \[F_1:\; \vec{x} = \begin{pmatrix}0\\0\\0\end{pmatrix} + t \cdot \begin{pmatrix}4\\4\\1\end{pmatrix};\; F_2:\; \vec{x} = \begin{pmatrix}-30\\-15\\8\end{pmatrix} + t \cdot \begin{pmatrix}12\\9\\0\end{pmatrix}\text{ ($t$ in $\unit{\minute}$, $x$ in $\unit{\kilo\meter}$)}\]
+        $a)$\hspace{3mm} Bestimme, ob es zu einem Zusammenstoß der beiden Flugzeuge kommt.
+        \begin{align*}
+            \begin{pmatrix}0\\0\\0\end{pmatrix} + t \cdot \begin{pmatrix}4\\4\\1\end{pmatrix} &=  \begin{pmatrix}-30\\-15\\8\end{pmatrix} + t \cdot \begin{pmatrix}12\\9\\0\end{pmatrix} \\
+            t \cdot \begin{pmatrix}-8\\-5\\1\end{pmatrix} &= \begin{pmatrix}-30\\-15\\8\end{pmatrix}
+        \end{align*}
+        \begin{center}
+            $t=3.75$ aus Zeile 1$;\;t=3$ aus Zeile 2
+
+            $\Rightarrow$ keine Lösung
+
+            $\Rightarrow$ Es kommt zu keinem Zusammenstoß
+        \end{center}
+        $b)$\hspace{3mm} Bestimme, ob sich die beiden Flugbahnen schneiden.
+        \begin{align*}
+            \begin{pmatrix}0\\0\\0\end{pmatrix} + s \cdot \begin{pmatrix}4\\4\\1\end{pmatrix} &=  \begin{pmatrix}-30\\-15\\8\end{pmatrix} + t \cdot \begin{pmatrix}12\\9\\0\end{pmatrix}
+        \end{align*}
+        \begin{align}
+            4s-12t &= -30 \label{model_eq1}\\
+            4s-9t &= -15 \label{model_eq2}\\
+            s &= 8 \label{model_eq3}
+        \end{align}
+        \begin{align*}
+            &&&&&&& s = 8 \text{ in (\ref{model_eq1})}:& 32-12t &= -30 &&&&&&&&\\
+            &&&&&&& & t &=\frac{31}{6} \\
+            &&&&&&& s = 8 \text{ in (\ref{model_eq2})}:& 32-9t &= -15 \\
+            &&&&&&& & t &=\frac{47}{9} 
+        \end{align*}
+        \begin{center}
+            $\Rightarrow$ keine Lösung
+
+            $\Rightarrow$ Die Flugbahnen schneiden sich nicht
+        \end{center}
+    \end{boxx}
+    \newpage 
+    \subsection{Winkel zwischen Vektoren}
+    \begin{minipage}{0.45\textwidth}
+        \begin{flalign*}
+            \textcolor{LightBlue}{\vec{a}} \cdot \textcolor{LightGreen}{\vec{b}} &= \textcolor{LightBlue}{\vec{a}} \cdot \left(\textcolor{LightPurple}{\vv{OB}} + \textcolor{LightOrange}{\vv{B'B}}\right) &\\
+            &= \textcolor{LightBlue}{\vec{a}} \cdot \textcolor{LightPurple}{\vv{OB}} + \underbrace{\textcolor{LightBlue}{\vec{a}}\cdot\textcolor{LightOrange}{\vv{B'B}}}_{\text{\parbox{1.2cm}{\centering $=0$, da \\$\textcolor{LightBlue}{\vec{a}} \perp \textcolor{LightOrange}{\vv{B'B}}$}}} \\
+            &= \underbrace{\textcolor{LightBlue}{|\vec{a}|} \cdot \textcolor{Red}{\vec{a}_0}}_{\textcolor{LightBlue}{\vec{a}}} \cdot \underbrace{\textcolor{LightPurple}{|\vv{OB'}|} \cdot \textcolor{Red}{\vec{a}_0}}_{\textcolor{LightPurple}{\vv{OB'}}} \\
+            &= \textcolor{LightBlue}{|\vec{a}|} \cdot \textcolor{LightPurple}{|\vv{OB'}|} \cdot \underbrace{\textcolor{Red}{\vec{a}_0} \cdot \textcolor{Red}{\vec{a}_0}}_{=|\vec{a}_0|^2 = 1}
+        \end{flalign*}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+    \begin{figure}[H]
+        \begin{tikzpicture}[scale=1.5]
+            \draw[-latex,LightGreen] (0,0) -- (2.5,2) node[anchor=south east, pos=0.5] {\(\vec{b}\)};
+            \draw[-latex,LightPurple] (0,0) -- (2.5,0);
+            \draw[-latex,Red] (0,0) -- (1,0) node[anchor=north,pos=0.5] {\(\vec{a}_0\)};
+            \draw[-latex,LightBlue] (2.5,0) -- (4,0) node[anchor=north,pos=0.5] {\(\vec{a}\)};
+            \coordinate[label=below left:$ O $] (O);
+            \draw (0:0.8) arc (0:39:0.8) node[anchor=west, pos = 0.6] {\(\alpha\)};
+            \draw[-latex,LightOrange] (2.5,0) -- (2.5,2);
+            \filldraw[black] (2.5,2) circle (0.75pt) node[anchor=south east]{$B$};
+            \filldraw[black] (2.5,0) circle (0.75pt) node[anchor=north]{$B'$};
+            \draw (2.5,0.2) -- (2.3,0.2) -- (2.3,0);
+    \end{tikzpicture}
+    \end{figure}
+    \end{minipage}
+    \vspace*{3mm}
+    \begin{flalign}
+        \Rightarrow \textcolor{LightBlue}{\vec{a}} \cdot \textcolor{LightGreen}{\vec{b}} &= \textcolor{LightBlue}{|\vec{a}|} \cdot \textcolor{LightPurple}{|\vv{OB'}|} &\label{winkel_eq1}
+    \end{flalign}
+    \begin{minipage}{0.45\textwidth}
+        \begin{flalign*}
+            \cos{\alpha} &= \frac{\textcolor{LightPurple}{|\vv{OB'}|}}{\textcolor{LightGreen}{|\vec{b}|}} &\\
+            \Leftrightarrow \textcolor{LightPurple}{|\vv{OB'}|} &= \textcolor{LightGreen}{|\vec{b}|}\cdot \cos{\alpha}& \\
+            \textrm{mit (\ref{winkel_eq1})}: \hspace*{5mm} \textcolor{LightBlue}{\vec{a}} \cdot \textcolor{LightGreen}{\vec{b}} &= v \textcolor{LightBlue}{\vec{a}} \cdot \textcolor{LightGreen}{\vec{b}} \cdot \cos{\alpha}
+        \end{flalign*}
+        \begin{flalign*}
+            \Rightarrow \cos{\alpha} = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}|\cdot|\vec{b}|} &&
+        \end{flalign*}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \begin{figure}[H]
+            \centering
+        \begin{tikzpicture}
+            \draw[-latex] (0,0) -- (1.95,1.56)node[anchor=west]{\(\vec{b}\)};
+            \draw[-latex] (0,0) -- (2.5,0)node[anchor=west]{\(\vec{a}\)};
+            \draw[very thick,Red] (0:0.8) arc (0:39:0.8) node[anchor=west, pos = 0.6] {\(\alpha\)};
+            \draw (39:0.5) arc (39:360:0.5);
+        \end{tikzpicture}
+        \end{figure}
+    \end{minipage}
+    \begin{boxx}[Red]{Satz}
+        Unter dem Winkel zwischen zwei Vektoren $\vec{a}$ und $\vec{b}$ versteht man den \textbf{kleineren} der beiden Winkel, der entsteht, wenn man die Pfeile der Vektoren \textbf{zu einem gemeinsamen Anfangspunkt} zeichnet.
+        \\[5pt]
+        Für den Winkel $\alpha$ zwischen den Vektoren $\vec{a}$ und $\vec{b}$ gilt:
+        \[\cos{\alpha} = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| \cdot |\vec{b}|}\]
+    \end{boxx}
+    \begin{boxx}[DarkBlue]{Beispiel}
+        $a)$\hspace*{3mm}Bestimme den Winkel $\alpha$ des Dreiecks $ABC$ mit $A(1,-1,-5);\;B(3,2,-4);\; C(5,-1,-2)$.
+        \begin{align*}
+            \cos{\alpha} &= \frac{\vv{AB} \cdot \vv{AC}}{\left|\vv{AB}\right| \cdot \left|\vv{AC}\right|} \\
+            &= \frac{\begin{pmatrix}2\\3\\1\end{pmatrix}\cdot \begin{pmatrix}4\\0\\3\end{pmatrix}}{\sqrt{14} \cdot 5} = \frac{11}{5\sqrt{14}} \\
+            \alpha &= \arccos{\left(\frac{11}{5\sqrt{14}}\right)} \approx \qty{54}{\degree}
+        \end{align*}
+    \end{boxx}
+    \newpage
+    \begin{boxx}[DarkBlue]{}
+        $b)$\hspace*{3mm}Gegeben sind die Vektoren $\vec{a}$ und $\vec{b}$ mit $\displaystyle \vec{a} = \begin{pmatrix}1\\0\\1\end{pmatrix};\;\vec{b}=\begin{pmatrix}b\\1\\0\end{pmatrix}$. 
+        Bestimme $b$ so, dass der Winkel zwischen $\vec{a}$ und $\vec{b}$ \qty{60}{\degree} beträgt.
+
+        \begin{align*}
+            \cos{\qty{60}{\degree}} &= \frac{\begin{pmatrix}1\\0\\1\end{pmatrix}\cdot \begin{pmatrix}b\\1\\0\end{pmatrix}}{\sqrt{2}\cdot \sqrt{1+b^2}} \\
+            \frac{1}{2} &= \frac{b}{\sqrt{2}\cdot\sqrt{1+b^2}} 
+            2b &= \sqrt{2}\cdot \sqrt{1+b^2}&&|\;()^2\\
+            4b^2 &= 2\left(1+b^2\right) \\
+            4b^2 &= 2 + 2b^2 \\
+            b &= \pm 1
+        \end{align*}
+        \begin{align*}
+            &&&&\textrm{Probe}: \hspace*{5mm} b&=1:\hspace*{5mm}& \frac{1}{\sqrt{2}\cdot\sqrt{1+1^2}} &= \frac{1}{2} &&&&\\
+            &&&& b&=-1:\hspace*{5mm}&\frac{-1}{\sqrt{2}\cdot\sqrt{1+(-1)^2}} &= -\frac{1}{2} 
+        \end{align*}
+        \[\Rightarrow b = 1\]
+    \end{boxx}
+    \subsection{Schnittwinkel}
+    \begin{boxx}[Red]{Satz}
+        Für den  Schnittwinkel $\alpha$ zwischen
+        \begin{itemize}
+            \item zwei Geraden $g$ und $h$ mit Richtungsvektoren $\vec{u}$ und $\vec{v}$ gilt: $\displaystyle \cos{\alpha} = \frac{|\vec{u} \cdot \vec{v}|}{|\vec{u}|\cdot|\vec{v}|}$
+            \item zwei Ebenen $E_1$ und $E_2$ mit Normalenvektoren $\vec{n}_1$ und $\vec{n}_2$ gilt: $\displaystyle \cos{\alpha} = \frac{|\vec{n}_1 \cdot \vec{n}_2|}{|\vec{n}_1|\cdot|\vec{n_2}|}$
+            \item der Geraden $g$ der Ebene $E_1$ gilt: $\displaystyle \sin{\alpha} = \frac{|\vec{u} \cdot \vec{n}_1|}{|\vec{u}|\cdot|\vec{n}_1|}$
+        \end{itemize}
+    \end{boxx}
+    \begin{boxx}[Yellow]{Anmerkung}
+        Unter dem Winkel zweier benachbarter Flächen in geometrischen Körpern im
+        Inneren dieses Körpers.
+        Dieser kann auch größer als \qty{90}{\degree} sein (Nebenwinkel des Schnittwinkels).
+    \end{boxx}
+    \newpage
+    \begin{boxx}[DarkBlue]{Beispiel}
+        $a)$\hspace*{3mm} Berechne den Schnittwinkel zwischen den Geraden $g$ und $h$ mit
+
+        \hspace*{8mm}$\displaystyle g:\;\vec{x} = \begin{pmatrix}-2\\8\\3\end{pmatrix} + r \cdot \begin{pmatrix}4\\-2\\0\end{pmatrix};\; h:\; \vec{x} = \begin{pmatrix}2\\13\\11\end{pmatrix} + s \cdot \begin{pmatrix}1\\3\\4\end{pmatrix}$.
+        \begin{align*}
+            \varphi &= \arccos\left(\frac{|\vec{u} \cdot \vec{v}|}{|\vec{u}|\cdot|\vec{v}|}\right)
+            = \arccos\left(\frac{\left|\begin{pmatrix}4\\-2\\0\end{pmatrix} \cdot \begin{pmatrix}1\\3\\4\end{pmatrix}\right|}{\left|\begin{pmatrix}4\\-2\\0\end{pmatrix}\right| \cdot \left|\begin{pmatrix}1\\3\\4\end{pmatrix}\right|}\right)\\
+            &= \arccos\left(\frac{|-2|}{\sqrt{20}\cdot\sqrt{26}}\right) =\qty{85}{\degree}
+        \end{align*}
+        $b)$\hspace*{3mm} Berechne den Schnittwinkel zwischen der Geraden $g$ und der Ebene $E$ mit
+        
+        \hspace*{7mm}$\displaystyle g:\; \vec{x} = \begin{pmatrix}-2\\8\\3\end{pmatrix} + r \cdot \begin{pmatrix}4\\-2\\0\end{pmatrix};\; E:\; x_1-x_2+2x_3 = 6$.
+        \begin{align*}
+            \varphi &= \arcsin\left(\frac{|\vec{u} \cdot \vec{n}_1|}{|\vec{u}|\cdot|\vec{n}_1|}\right)
+            = \arcsin\left(\frac{\left|\begin{pmatrix}4\\-2\\0\end{pmatrix}\cdot \begin{pmatrix}1\\-1\\2\end{pmatrix}\right|}{\left|\begin{pmatrix}4\\-2\\0\end{pmatrix}\right|\cdot \left|\begin{pmatrix}1\\-1\\2\end{pmatrix}\right|}\right)\\
+            &= \arcsin\left(\frac{|6|}{\sqrt{20}\cdot \sqrt{6}}\right) = \qty{33.21}{\degree}
+        \end{align*}
+    \end{boxx}
 \end{document}
