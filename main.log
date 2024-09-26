@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.3.10)  3 MAY 2024 14:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.3.10)  3 MAY 2024 19:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1366,28 +1366,64 @@ LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
 (Font)              scaled to size 13.82408pt on input line 166.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
 (Font)              scaled to size 13.82408pt on input line 166.
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 11.52008pt on input line 167.
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
+(Font)              scaled to size 11.52008pt on input line 167.
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 10.56007pt on input line 168.
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
+(Font)              scaled to size 10.56007pt on input line 168.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 173.
+ (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 173.
+ (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+esvect on input line 173.
+ (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/esvect\uesvect.fd
+File: uesvect.fd 
+)
+LaTeX Font Info:    Trying to load font information for TS1+XCharter-TLF on input line 173.
+ (C:\Users\Phil\AppData\Local\Programs\MiKTeX\tex/latex/xcharter\ts1xcharter-tlf.fd
+File: TS1XCharter-TLF.fd 2020/05/25 (msharpe) Font definitions for TS1/XCharter-TLF.
+)
+LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 9.60007pt on input line 173.
+LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 6.72005pt on input line 173.
+LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 4.80003pt on input line 173.
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 6.72005pt on input line 173.
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 4.80003pt on input line 173.
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
+(Font)              scaled to size 9.60007pt on input line 177.
  [1
 
-{C:/Users/Phil/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/xcharter/xch_rydp4l.enc}] (main.aux)
+{C:/Users/Phil/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/xcharter/xch_rydp4l.enc}{C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/xcharter/xch1_co4ru4.enc}] (main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: FE30925E91661C6B6D3CF3091D805984;259.
+(rerunfilecheck)             Checksum: D2728BAC8580CEBED5A8E4A8BB23843A;434.
  ) 
 Here is how much of TeX's memory you used:
- 60792 strings out of 474456
- 1528461 string characters out of 5743205
- 2056920 words of memory out of 5000000
- 82080 multiletter control sequences out of 15000+600000
- 578105 words of font info for 42 fonts, out of 8000000 for 9000
+ 60971 strings out of 474456
+ 1532451 string characters out of 5743205
+ 2073928 words of memory out of 5000000
+ 82229 multiletter control sequences out of 15000+600000
+ 626077 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 86i,5n,99p,1656b,933s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/xcharter/XCharter-Bold.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/xcharter/XCharter-Roman.pfb>
-Output written on main.pdf (1 page, 68331 bytes).
+ 86i,10n,99p,1656b,1062s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/xcharter/XCharter-Bold.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/xcharter/XCharter-Roman.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Phil/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on main.pdf (1 page, 174490 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
- 3 named destinations out of 1000 (max. 500000)
- 117 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 87 PDF objects out of 1000 (max. 8388607)
+ 4 named destinations out of 1000 (max. 500000)
+ 125 words of extra memory for PDF output out of 10000 (max. 10000000)
 

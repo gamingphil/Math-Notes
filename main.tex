@@ -164,4 +164,27 @@
 
 \setcounter{section}{7}
 \section{Grundlagen der Wahrscheinlichkeitsrechnung}
+\subsection{Elementare Kombinatorik}
+\begin{boxx}[Red]{Laplace-Experiment}
+    Ein Laplace-Experiment ist ein Zufallsexperiment, 
+    bei dem alle Ergebnisse gleich wahrscheinlich sind. (Bspw. Würfel, Münzwurf, etc.)
+
+    Für die Wahrscheinlichkeit eines Ergebnisses gilt:
+    \[P(E) = \frac{\textrm{Anzahl günstiger Ergebnisse}}{\textrm{Anzahl möglicher Ergebnisse}}\]
+\end{boxx}
+\begin{boxx}[Yellow]{Permutation und Kombination}
+    \begin{itemize}
+        \item Wenn die Reihenfolge keine Rolle spielt, handelt es sich um eine \textbf{Kombination}.
+        \item Wenn die Reihenfolge eine Rolle spielt, handelt es sich um eine \textbf{Permutation}.
+    \end{itemize}
+\end{boxx}
+\begin{boxx}[Green]{Allgemeine Kombinatorik}
+    Anzahl der Möglichkeiten bei $k$-maligem Ziehen aus $n$ Elementen:
+    \begin{itemize}
+        \item Permutation mit Wiederholung: $\displaystyle \underbrace{n\cdot n \cdot \ldots \cdot n}_{k \textrm{-mal}} = n^k$
+        \item Permutation ohne Wiederholung: $\displaystyle \frac{n!}{(n-k)!}$
+        \item Kombination ohne Wiederholung: $\displaystyle \frac{n!}{k!(n-k)!} = \begin{pmatrix}n\\k\end{pmatrix}$
+        \item Kombination mit Wiederholung: $\displaystyle \frac{(k+n-1)!}{k!(n-1)!} = \begin{pmatrix}k+n-1\\k\end{pmatrix}$
+    \end{itemize}
+\end{boxx}
 \end{document}
